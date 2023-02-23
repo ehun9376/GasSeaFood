@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
+		94A8E73429A799CC00E37402 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73329A799CC00E37402 /* SceneDelegate.swift */; };
+		94A8E73629A799CC00E37402 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* ViewController.swift */; };
+		94A8E73929A799CC00E37402 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73729A799CC00E37402 /* Main.storyboard */; };
+		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
+		94A8E73E29A799CD00E37402 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73C29A799CD00E37402 /* LaunchScreen.storyboard */; };
+		94A8E74929A799CE00E37402 /* GasSeaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E74829A799CE00E37402 /* GasSeaFoodTests.swift */; };
+		94A8E75329A799CE00E37402 /* GasSeaFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E75229A799CE00E37402 /* GasSeaFoodUITests.swift */; };
+		94A8E75529A799CE00E37402 /* GasSeaFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E75429A799CE00E37402 /* GasSeaFoodUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94A8E74529A799CE00E37402 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94A8E72629A799CC00E37402 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94A8E72D29A799CC00E37402;
+			remoteInfo = GasSeaFood;
+		};
+		94A8E74F29A799CE00E37402 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94A8E72629A799CC00E37402 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94A8E72D29A799CC00E37402;
+			remoteInfo = GasSeaFood;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		94A8E73329A799CC00E37402 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		94A8E73529A799CC00E37402 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94A8E73829A799CC00E37402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		94A8E73A29A799CD00E37402 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94A8E73D29A799CD00E37402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		94A8E73F29A799CD00E37402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94A8E74429A799CE00E37402 /* GasSeaFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GasSeaFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A8E74829A799CE00E37402 /* GasSeaFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasSeaFoodTests.swift; sourceTree = "<group>"; };
+		94A8E74E29A799CE00E37402 /* GasSeaFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GasSeaFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A8E75229A799CE00E37402 /* GasSeaFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasSeaFoodUITests.swift; sourceTree = "<group>"; };
+		94A8E75429A799CE00E37402 /* GasSeaFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasSeaFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94A8E72B29A799CC00E37402 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74129A799CE00E37402 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74B29A799CE00E37402 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94A8E72529A799CC00E37402 = {
+			isa = PBXGroup;
+			children = (
+				94A8E73029A799CC00E37402 /* GasSeaFood */,
+				94A8E74729A799CE00E37402 /* GasSeaFoodTests */,
+				94A8E75129A799CE00E37402 /* GasSeaFoodUITests */,
+				94A8E72F29A799CC00E37402 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		94A8E72F29A799CC00E37402 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94A8E72E29A799CC00E37402 /* GasSeaFood.app */,
+				94A8E74429A799CE00E37402 /* GasSeaFoodTests.xctest */,
+				94A8E74E29A799CE00E37402 /* GasSeaFoodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94A8E73029A799CC00E37402 /* GasSeaFood */ = {
+			isa = PBXGroup;
+			children = (
+				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
+				94A8E73329A799CC00E37402 /* SceneDelegate.swift */,
+				94A8E73529A799CC00E37402 /* ViewController.swift */,
+				94A8E73729A799CC00E37402 /* Main.storyboard */,
+				94A8E73A29A799CD00E37402 /* Assets.xcassets */,
+				94A8E73C29A799CD00E37402 /* LaunchScreen.storyboard */,
+				94A8E73F29A799CD00E37402 /* Info.plist */,
+			);
+			path = GasSeaFood;
+			sourceTree = "<group>";
+		};
+		94A8E74729A799CE00E37402 /* GasSeaFoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				94A8E74829A799CE00E37402 /* GasSeaFoodTests.swift */,
+			);
+			path = GasSeaFoodTests;
+			sourceTree = "<group>";
+		};
+		94A8E75129A799CE00E37402 /* GasSeaFoodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				94A8E75229A799CE00E37402 /* GasSeaFoodUITests.swift */,
+				94A8E75429A799CE00E37402 /* GasSeaFoodUITestsLaunchTests.swift */,
+			);
+			path = GasSeaFoodUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94A8E72D29A799CC00E37402 /* GasSeaFood */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94A8E75829A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFood" */;
+			buildPhases = (
+				94A8E72A29A799CC00E37402 /* Sources */,
+				94A8E72B29A799CC00E37402 /* Frameworks */,
+				94A8E72C29A799CC00E37402 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GasSeaFood;
+			productName = GasSeaFood;
+			productReference = 94A8E72E29A799CC00E37402 /* GasSeaFood.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94A8E74329A799CE00E37402 /* GasSeaFoodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94A8E75B29A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFoodTests" */;
+			buildPhases = (
+				94A8E74029A799CE00E37402 /* Sources */,
+				94A8E74129A799CE00E37402 /* Frameworks */,
+				94A8E74229A799CE00E37402 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94A8E74629A799CE00E37402 /* PBXTargetDependency */,
+			);
+			name = GasSeaFoodTests;
+			productName = GasSeaFoodTests;
+			productReference = 94A8E74429A799CE00E37402 /* GasSeaFoodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		94A8E74D29A799CE00E37402 /* GasSeaFoodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94A8E75E29A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFoodUITests" */;
+			buildPhases = (
+				94A8E74A29A799CE00E37402 /* Sources */,
+				94A8E74B29A799CE00E37402 /* Frameworks */,
+				94A8E74C29A799CE00E37402 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94A8E75029A799CE00E37402 /* PBXTargetDependency */,
+			);
+			name = GasSeaFoodUITests;
+			productName = GasSeaFoodUITests;
+			productReference = 94A8E74E29A799CE00E37402 /* GasSeaFoodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94A8E72629A799CC00E37402 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					94A8E72D29A799CC00E37402 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					94A8E74329A799CE00E37402 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 94A8E72D29A799CC00E37402;
+					};
+					94A8E74D29A799CE00E37402 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 94A8E72D29A799CC00E37402;
+					};
+				};
+			};
+			buildConfigurationList = 94A8E72929A799CC00E37402 /* Build configuration list for PBXProject "GasSeaFood" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 94A8E72529A799CC00E37402;
+			productRefGroup = 94A8E72F29A799CC00E37402 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94A8E72D29A799CC00E37402 /* GasSeaFood */,
+				94A8E74329A799CE00E37402 /* GasSeaFoodTests */,
+				94A8E74D29A799CE00E37402 /* GasSeaFoodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94A8E72C29A799CC00E37402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A8E73E29A799CD00E37402 /* LaunchScreen.storyboard in Resources */,
+				94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */,
+				94A8E73929A799CC00E37402 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74229A799CE00E37402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74C29A799CE00E37402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94A8E72A29A799CC00E37402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A8E73629A799CC00E37402 /* ViewController.swift in Sources */,
+				94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */,
+				94A8E73429A799CC00E37402 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74029A799CE00E37402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A8E74929A799CE00E37402 /* GasSeaFoodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94A8E74A29A799CE00E37402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A8E75529A799CE00E37402 /* GasSeaFoodUITestsLaunchTests.swift in Sources */,
+				94A8E75329A799CE00E37402 /* GasSeaFoodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94A8E74629A799CE00E37402 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94A8E72D29A799CC00E37402 /* GasSeaFood */;
+			targetProxy = 94A8E74529A799CE00E37402 /* PBXContainerItemProxy */;
+		};
+		94A8E75029A799CE00E37402 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94A8E72D29A799CC00E37402 /* GasSeaFood */;
+			targetProxy = 94A8E74F29A799CE00E37402 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94A8E73729A799CC00E37402 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94A8E73829A799CC00E37402 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		94A8E73C29A799CD00E37402 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94A8E73D29A799CD00E37402 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94A8E75629A799CE00E37402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		94A8E75729A799CE00E37402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94A8E75929A799CE00E37402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GasSeaFood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94A8E75A29A799CE00E37402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GasSeaFood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		94A8E75C29A799CE00E37402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GasSeaFood.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GasSeaFood";
+			};
+			name = Debug;
+		};
+		94A8E75D29A799CE00E37402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GasSeaFood.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GasSeaFood";
+			};
+			name = Release;
+		};
+		94A8E75F29A799CE00E37402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GasSeaFood;
+			};
+			name = Debug;
+		};
+		94A8E76029A799CE00E37402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GH2ZWT255;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ehun.GasSeaFoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GasSeaFood;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94A8E72929A799CC00E37402 /* Build configuration list for PBXProject "GasSeaFood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94A8E75629A799CE00E37402 /* Debug */,
+				94A8E75729A799CE00E37402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94A8E75829A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94A8E75929A799CE00E37402 /* Debug */,
+				94A8E75A29A799CE00E37402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94A8E75B29A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFoodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94A8E75C29A799CE00E37402 /* Debug */,
+				94A8E75D29A799CE00E37402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94A8E75E29A799CE00E37402 /* Build configuration list for PBXNativeTarget "GasSeaFoodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94A8E75F29A799CE00E37402 /* Debug */,
+				94A8E76029A799CE00E37402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94A8E72629A799CC00E37402 /* Project object */;
+}
