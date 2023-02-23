@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="113" id="agB-SO-KC2" customClass="LabelCell" customModule="GasSeaFood" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="499" height="113"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="agB-SO-KC2" id="b2A-mO-5j8">
+                <rect key="frame" x="0.0" y="0.0" width="499" height="113"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXe-b1-nSU">
+                        <rect key="frame" x="20" y="10" width="459" height="93"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="AXe-b1-nSU" secondAttribute="bottom" constant="10" id="0OF-mr-Twy"/>
+                    <constraint firstAttribute="trailing" secondItem="AXe-b1-nSU" secondAttribute="trailing" constant="20" id="LgX-qC-OdX"/>
+                    <constraint firstItem="AXe-b1-nSU" firstAttribute="leading" secondItem="b2A-mO-5j8" secondAttribute="leading" constant="20" id="OSY-y3-5mG"/>
+                    <constraint firstItem="AXe-b1-nSU" firstAttribute="top" secondItem="b2A-mO-5j8" secondAttribute="top" constant="10" id="ia8-WT-zTt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="AXe-b1-nSU" id="b4F-O3-UhD"/>
+            </connections>
+            <point key="canvasLocation" x="-269.46564885496184" y="-5.9859154929577469"/>
+        </tableViewCell>
+    </objects>
+</document>
