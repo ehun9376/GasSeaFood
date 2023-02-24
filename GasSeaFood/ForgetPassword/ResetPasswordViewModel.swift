@@ -8,7 +8,7 @@ import Foundation
 
 
 protocol ResetPasswordViewMethod {
-    func saveAndReturnAction()
+    func saveAndReturnAction(success: Bool)
 }
 
 class ResetPasswordViewModel: NSObject {
@@ -17,9 +17,14 @@ class ResetPasswordViewModel: NSObject {
     
     var adapter: TableViewAdapter?
     
-    init(delegate: ResetPasswordViewMethod? = nil, adapter: TableViewAdapter? = nil) {
+    var regisModel: RegisModel?
+    
+    var password: String = ""
+    
+    init(delegate: ResetPasswordViewMethod? = nil, adapter: TableViewAdapter? = nil, regisModel: RegisModel?) {
         self.delegate = delegate
         self.adapter = adapter
+        self.regisModel = regisModel
     }
     
     
@@ -34,7 +39,7 @@ class ResetPasswordViewModel: NSObject {
         let phoneRowModel = TitleTextFieldRowModel(title: "設定新密碼",
                                                 placeHolder: "請輸入您的新密碼",
                                                 textDidChange: { [weak self] text in
-            
+            self?.password = text
         })
         
         rowModels.append(phoneRowModel)
@@ -52,7 +57,19 @@ class ResetPasswordViewModel: NSObject {
         rowModels.append(emptyRowModel)
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "返回登入畫面", buttonAction: { [weak self] in
-            self?.delegate?.saveAndReturnAction()
+            
+            if var array = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
+                array = array.filter({$0.cellphoneNumber != self?.regisModel?.phoneNumber ?? ""})
+                self?.regisModel?.password = self?.password ?? ""
+                if let model = self?.regisModel {
+                    array.append(model)
+                    UserInfoCenter.shared.storeData(model: array, .regisModelList)
+                    self?.delegate?.saveAndReturnAction(success: true)
+                    return
+                }
+            }
+            self?.delegate?.saveAndReturnAction(success: false)
+            
         })
         
         rowModels.append(loginRowModel)

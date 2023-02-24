@@ -18,11 +18,15 @@ class ButtonCellRowModel: CellRowModel {
     
     var buttonAction: (()->())?
     
+    var buttonHeight: CGFloat = 50
+    
     init(
         buttonTitle: String?,
+        buttonHeight: CGFloat = 50,
         buttonAction: (()->())?
     ) {
         self.buttonTitle = buttonTitle
+        self.buttonHeight = buttonHeight
         self.buttonAction = buttonAction
     }
     
@@ -31,6 +35,8 @@ class ButtonCellRowModel: CellRowModel {
 class ButtonCell: UITableViewCell {
     
     @IBOutlet weak var button: UIButton!
+    
+    @IBOutlet weak var buttonheight: NSLayoutConstraint!
     
     var rowModel: ButtonCellRowModel?
     
@@ -64,5 +70,6 @@ extension ButtonCell: BaseCellView {
         guard let rowModel = model as? ButtonCellRowModel else { return }
         self.rowModel = rowModel
         self.button.setTitle(rowModel.buttonTitle, for: .normal)
+        self.buttonheight.constant = rowModel.buttonHeight
     }
 }

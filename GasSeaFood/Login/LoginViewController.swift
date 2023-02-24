@@ -31,10 +31,20 @@ class LoginViewController: BaseTableViewController {
 }
 
 extension LoginViewController: LoginMethod {
-    
-    func loginComplete() {
+    func loginComplete(success: Bool, number: String) {
         
+        if success {
+            self.showToast(message: "登入成功", complete: {
+                let vc = UINavigationController(rootViewController: HomeViewController(number: number))
+                UIApplication.shared.windows.first?.rootViewController = vc
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+            })
+        } else {
+            self.showToast(message: "帳號密碼錯誤")
+        }
+
     }
+    
     
     func forgetPasswordAction() {
         let vc = ForgetPasswordViewController()

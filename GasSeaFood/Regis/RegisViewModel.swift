@@ -8,8 +8,34 @@
 import Foundation
 import UIKit
 
+struct RegisModel: Codable {
+    
+    var name: String = ""
+
+    var sex: String = ""
+    
+    var address: String = ""
+    
+    var cellphoneNumber: String = ""
+    
+    var phoneNumber: String = ""
+    
+    var email: String = ""
+    
+    var password: String = ""
+    
+    var confirmPassword: String = ""
+    
+    var inviewCode: String = ""
+    
+    var gas: String = ""
+    
+    var rule: Bool = false
+    
+}
+
 protocol RegisMethod {
-    func regisComplete()
+    func regisComplete(success: Bool)
 }
 
 class RegisViewModel: NSObject {
@@ -17,6 +43,8 @@ class RegisViewModel: NSObject {
     var delegate: RegisMethod?
     
     var adapter: TableViewAdapter?
+    
+    var regisModel = RegisModel()
     
     init(delegate: RegisMethod? = nil, adapter: TableViewAdapter? = nil) {
         self.delegate = delegate
@@ -30,13 +58,13 @@ class RegisViewModel: NSObject {
         
         let nameRow = TitleTextFieldRowModel(title: "名字",
                                                 textDidChange: { [weak self] text in
-            
+            self?.regisModel.name = text
         })
         
         rowModels.append(nameRow)
         
         let sexRow = TwoButtonRowModel(buttonAction: { [weak self] text in
-            
+            self?.regisModel.sex = text
         })
         
         rowModels.append(sexRow)
@@ -44,14 +72,8 @@ class RegisViewModel: NSObject {
         let addressRow = TitleTwoButtonsTextfieldRowModel(title: "居住地址",
                                                           country: "縣/市",
                                                           area: "地區",
-                                                          countryButtonAction: { [weak self] _ in
-            
-        },
-                                                          areaButtonAction: {[weak self] _ in
-            
-        },
-                                                          textDidChange: {[weak self] _ in
-            
+                                                          textDidChange: {[weak self] text in
+            self?.regisModel.address = text
         })
         
         rowModels.append(addressRow)
@@ -65,35 +87,35 @@ class RegisViewModel: NSObject {
         
         let cellphoneRow = TitleTextFieldRowModel(title: "手機號碼",
                                                  textDidChange: { [weak self] text in
-            
+            self?.regisModel.cellphoneNumber = text
         })
         
         rowModels.append(cellphoneRow)
         
         let phoneRow = TitleTextFieldRowModel(title: "市內電話號碼",
                                                  textDidChange: { [weak self] text in
-            
+            self?.regisModel.phoneNumber = text
         })
         
         rowModels.append(phoneRow)
         
         let emailRow = TitleTextFieldRowModel(title: "電子信箱",
                                                  textDidChange: { [weak self] text in
-            
+            self?.regisModel.email = text
         })
         
         rowModels.append(emailRow)
         
         let passwordRow = TitleTextFieldRowModel(title: "密碼",
                                                  textDidChange: { [weak self] text in
-            
+            self?.regisModel.password = text
         })
         
         rowModels.append(passwordRow)
         
         let confirmPasswordRow = TitleTextFieldRowModel(title: "確認密碼",
                                                  textDidChange: { [weak self] text in
-            
+            self?.regisModel.confirmPassword = text
         })
         
         rowModels.append(confirmPasswordRow)
@@ -101,7 +123,7 @@ class RegisViewModel: NSObject {
         let inviteCodeRow = TitleTextFieldRowModel(title: "家人邀請碼",
                                                    required: false,
                                                    textDidChange: { [weak self] text in
-            
+            self?.regisModel.inviewCode = text
         })
         
         rowModels.append(inviteCodeRow)
@@ -112,13 +134,32 @@ class RegisViewModel: NSObject {
         ]),
                                         needImage: true,
                                         labelTapAction: {
-            
+            self.regisModel.rule.toggle()
         })
         
         rowModels.append(ruleRow)
         
         let regisRowModel = ButtonCellRowModel(buttonTitle: "完成註冊", buttonAction: { [weak self] in
-            self?.delegate?.regisComplete()
+            
+            guard let model = self?.regisModel else { return }
+            
+            
+            if var array = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
+                array.append(model)
+                
+                UserInfoCenter.shared.storeData(model: array, .regisModelList)
+                self?.delegate?.regisComplete(success: true)
+                return
+            } else {
+                let array: [RegisModel] = [model]
+                
+                UserInfoCenter.shared.storeData(model: array, .regisModelList)
+                self?.delegate?.regisComplete(success: true)
+                return
+            }
+            self?.delegate?.regisComplete(success: false)
+            
+            
         })
         
         rowModels.append(regisRowModel)

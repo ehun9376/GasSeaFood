@@ -16,14 +16,17 @@ class TitleTextFieldRowModel: CellRowModel {
     
     var title: String?
     
-    var textDidChange: ((String?)->())?
+    var text: String?
+    
+    var textDidChange: ((String)->())?
     
     var placeHolder: String?
     
     var required: Bool = true
     
-    init(title: String? = nil, placeHolder: String? = nil, required: Bool = true, textDidChange: ((String?) -> ())? = nil) {
+    init(title: String? = nil, text: String? = nil, placeHolder: String? = nil, required: Bool = true, textDidChange: ((String) -> ())? = nil) {
         self.title = title
+        self.text = text
         self.placeHolder = placeHolder
         self.required = required
         self.textDidChange = textDidChange
@@ -43,7 +46,7 @@ class TitleTextFieldCell: UITableViewCell {
 
     override func awakeFromNib() {
         self.selectionStyle = .none
-        self.contentTextField.addTarget(self, action: #selector(textFieldDidEdit(_:)), for: .valueChanged)
+        self.contentTextField.addTarget(self, action: #selector(textFieldDidEdit(_:)), for: .editingChanged)
         
         self.titleLabel.font = .systemFont(ofSize: 16,weight: .bold)
         
@@ -52,7 +55,7 @@ class TitleTextFieldCell: UITableViewCell {
     }
     
     @objc func textFieldDidEdit(_ sender: UITextField) {
-        self.rowModel?.textDidChange?(sender.text)
+        self.rowModel?.textDidChange?(sender.text ?? "")
     }
     
 }
@@ -73,6 +76,10 @@ extension TitleTextFieldCell: BaseCellView {
                 string: placeHolder,
                 attributes: [.paragraphStyle: centeredParagraphStyle]
             )
+        }
+    
+        if let text = rowModel.text {
+            self.contentTextField.text = text
         }
 
     }

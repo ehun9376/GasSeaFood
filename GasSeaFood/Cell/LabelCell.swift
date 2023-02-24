@@ -43,8 +43,10 @@ class LabelCell: UITableViewCell {
         self.titleLabel.isUserInteractionEnabled = true
         self.titleLabel.textAlignment = .center
         
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(labelTapAction))
+        tap1.numberOfTapsRequired = 1
         self.checkImageView.image = UIImage(named: "uncheck")?.resizeImage(targetSize: .init(width: 20, height: 20))
-        self.checkImageView.addGestureRecognizer(tap)
+        self.checkImageView.addGestureRecognizer(tap1)
         self.checkImageView.isUserInteractionEnabled = true
         self.checkImageView.layer.borderWidth = 2
         self.checkImageView.layer.borderColor = UIColor.black.cgColor
@@ -59,6 +61,7 @@ class LabelCell: UITableViewCell {
         
         self.rowModel?.labelTapAction?()
     }
+
 }
 
 extension LabelCell: BaseCellView {

@@ -130,6 +130,9 @@ open class BaseViewController: UIViewController {
     
     private func defaultNavigationSet() {
         let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .init(hex: "3472D9")
         UINavigationBar.appearance().tintColor = .white

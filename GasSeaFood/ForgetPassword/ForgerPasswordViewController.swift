@@ -31,9 +31,14 @@ class ForgetPasswordViewController: BaseTableViewController {
 
 extension ForgetPasswordViewController: ForgetPasswordMethod {
     
-    func resetButtonAction() {
-        let vc = ResetPasswordViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    func resetButtonAction(success: Bool, model: RegisModel?) {
+        if let model = model {
+            let vc = ResetPasswordViewController(model: model)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.showToast(message: "查無此號碼")
+        }
+
     }
-    
+
 }

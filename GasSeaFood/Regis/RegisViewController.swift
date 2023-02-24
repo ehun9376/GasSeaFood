@@ -31,8 +31,17 @@ class RegisViewController: BaseTableViewController {
 }
 
 extension RegisViewController: RegisMethod {
-    func regisComplete() {
+    
+    func regisComplete(success: Bool) {
         
+        if success {
+            self.showToast(message: "註冊成功", complete: {
+                self.dismiss(animated: true)
+            })
+        } else {
+            self.showSingleAlert(title: "提示", message: "註冊失敗請再試一次", confirmTitle: "OK", confirmAction: nil)
+        }
+
     }
     
     

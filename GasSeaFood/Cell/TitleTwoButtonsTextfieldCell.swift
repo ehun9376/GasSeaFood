@@ -19,18 +19,12 @@ class TitleTwoButtonsTextfieldRowModel: CellRowModel {
     
     var area: String?
     
-    var countryButtonAction: ((String)->())?
-    
-    var areaButtonAction: ((String)->())?
-    
     var textDidChange: ((String)->())?
     
-    init(title: String? = nil, country: String? = nil, area: String? = nil, countryButtonAction: ( (String) -> ())? = nil, areaButtonAction: ( (String) -> ())? = nil, textDidChange: ( (String) -> ())? = nil) {
+    init(title: String? = nil, country: String? = nil, area: String? = nil, textDidChange: ( (String) -> ())? = nil) {
         self.title = title
         self.country = country
         self.area = area
-        self.countryButtonAction = countryButtonAction
-        self.areaButtonAction = areaButtonAction
         self.textDidChange = textDidChange
     }
     
@@ -103,19 +97,20 @@ class TitleTwoButtonsTextfieldCell: UITableViewCell {
     
     func setCountryButtonTitle(title: String) {
         self.countryButton.setTitle(title + "   ", for: .normal)
-        self.rowModel?.countryButtonAction?(title)
+        self.rowModel?.country = title
     }
     
 
     func setAreaButtonTitle(title: String) {
         self.areaButton.setTitle(title + "   ", for: .normal)
-        self.rowModel?.areaButtonAction?(title)
+        self.rowModel?.area = title
     }
     
 
     
     @objc func textFieldDidEdit(_ sender: UITextField) {
-        self.rowModel?.textDidChange?(sender.text ?? "")
+        let text = (self.rowModel?.country ?? "") + (self.rowModel?.area ?? "") + (sender.text ?? "")
+        self.rowModel?.textDidChange?(text)
     }
     
 }
@@ -123,7 +118,7 @@ class TitleTwoButtonsTextfieldCell: UITableViewCell {
 extension TitleTwoButtonsTextfieldCell: BaseCellView {
     func setupCellView(model: BaseCellModel) {
         guard let rowModel = model as? TitleTwoButtonsTextfieldRowModel else { return }
-        
+        self.rowModel = rowModel
         self.titleLabel.text = rowModel.title
         self.countryButton.setTitle((rowModel.country ?? "") + "   ", for: .normal)
         self.areaButton.setTitle((rowModel.area ?? "") + "   ", for: .normal)
