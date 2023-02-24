@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+class LaunchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +76,17 @@ class LaunchViewController: UIViewController {
     func gotoLogin() {
         
         let vc = UINavigationController(rootViewController: LoginViewController())
-        vc.modalPresentationStyle = .fullScreen
-                
+               
         self.present(vc, animated: true)
         
     }
     
     func gotoRegis() {
-        
+        let vc = UINavigationController()
+        let child2 = RegisViewController()
+        child2.navigationItem.backBarButtonItem = UIBarButtonItem()
+        vc.viewControllers = [child2]
+        self.present(vc, animated: true)
     }
 
 

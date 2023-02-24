@@ -16,6 +16,8 @@ open class BaseViewController: UIViewController {
     
     public var barAppearanceBackgroundColor: UIColor = .white
     
+
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -127,14 +129,13 @@ open class BaseViewController: UIViewController {
     }
     
     private func defaultNavigationSet() {
-        
-        if #available(iOS 14.0, *) {
-            self.navigationItem.backButtonDisplayMode = .minimal
-        }
-        
-        if #available(iOS 15.0, *){
-            UITableView.appearance().sectionHeaderTopPadding = 0
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .init(hex: "3472D9")
+        UINavigationBar.appearance().tintColor = .white
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+       
     }
  
 }

@@ -12,17 +12,22 @@ class LabelCellRowModel: CellRowModel {
     override func cellReUseID() -> String {
         return "LabelCell"
     }
-    var title: String?
+    var titleAttr: NSAttributedString?
+    
+    var needImage: Bool = false
     
     var labelTapAction: (()->())?
     
-    init(title: String? = nil, labelTapAction: (() -> ())? = nil) {
-        self.title = title
+    init(titleAttr: NSAttributedString? = nil, needImage: Bool = false, labelTapAction: (() -> ())? = nil) {
+        self.titleAttr = titleAttr
+        self.needImage = needImage
         self.labelTapAction = labelTapAction
     }
 }
 
 class LabelCell: UITableViewCell {
+    
+    @IBOutlet weak var checkImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -37,9 +42,21 @@ class LabelCell: UITableViewCell {
         self.titleLabel.addGestureRecognizer(tap)
         self.titleLabel.isUserInteractionEnabled = true
         self.titleLabel.textAlignment = .center
+        
+        self.checkImageView.image = UIImage(named: "uncheck")?.resizeImage(targetSize: .init(width: 20, height: 20))
+        self.checkImageView.addGestureRecognizer(tap)
+        self.checkImageView.isUserInteractionEnabled = true
+        self.checkImageView.layer.borderWidth = 2
+        self.checkImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     @objc func labelTapAction() {
+        
+        if self.rowModel?.needImage ?? false {
+            self.checkImageView.isHighlighted.toggle()
+            self.checkImageView.backgroundColor = self.checkImageView.isHighlighted ? .init(hex: "3472D9") : .clear
+        }
+        
         self.rowModel?.labelTapAction?()
     }
 }
@@ -47,12 +64,11 @@ class LabelCell: UITableViewCell {
 extension LabelCell: BaseCellView {
     func setupCellView(model: BaseCellModel) {
         guard let rowModel = model as? LabelCellRowModel else { return }
-        let attr = NSAttributedString(string: rowModel.title ?? "",
-                                      attributes: [
-                                        NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
-                                        NSAttributedString.Key.foregroundColor: UIColor.lightGray
-                                      ])
-        self.titleLabel.attributedText = attr
+        self.rowModel = rowModel
+        self.checkImageView.isHidden = !rowModel.needImage
+        self.titleLabel.attributedText = rowModel.titleAttr
+        self.checkImageView.layer.cornerRadius = 10
+        self.checkImageView.image
+        
     }
 }

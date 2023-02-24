@@ -35,6 +35,12 @@ open class BaseTableViewController: BaseViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.setupDefaultTableView()
+        self.defaultTableView.separatorStyle = .none
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEdit)))
+    }
+    
+    @objc func endEdit() {
+        self.view.endEditing(true)
     }
     
     private func setupDefaultTableView() {

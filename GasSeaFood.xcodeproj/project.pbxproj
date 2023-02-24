@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360C41ED29A83BDC00E2D960 /* ForgerPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41EC29A83BDC00E2D960 /* ForgerPasswordViewController.swift */; };
+		360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41EE29A83C0900E2D960 /* ForgerPasswordViewModel.swift */; };
+		360C41F129A84C7000E2D960 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F029A84C7000E2D960 /* ResetPasswordViewController.swift */; };
+		360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F229A84C9000E2D960 /* ResetPasswordViewModel.swift */; };
+		360C41F529A84FA400E2D960 /* RegisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F429A84F9F00E2D960 /* RegisViewController.swift */; };
+		360C41F829A84FDE00E2D960 /* RegisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F729A84FDE00E2D960 /* RegisViewModel.swift */; };
+		360C41FA29A8597E00E2D960 /* TwoButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360C41F929A8597E00E2D960 /* TwoButtonCell.xib */; };
+		360C41FC29A859C900E2D960 /* TwoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41FB29A859C900E2D960 /* TwoButtonCell.swift */; };
+		360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */; };
+		360C420029A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
 		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
@@ -57,6 +67,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360C41EC29A83BDC00E2D960 /* ForgerPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgerPasswordViewController.swift; sourceTree = "<group>"; };
+		360C41EE29A83C0900E2D960 /* ForgerPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgerPasswordViewModel.swift; sourceTree = "<group>"; };
+		360C41F029A84C7000E2D960 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		360C41F229A84C9000E2D960 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		360C41F429A84F9F00E2D960 /* RegisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisViewController.swift; sourceTree = "<group>"; };
+		360C41F729A84FDE00E2D960 /* RegisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisViewModel.swift; sourceTree = "<group>"; };
+		360C41F929A8597E00E2D960 /* TwoButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoButtonCell.xib; sourceTree = "<group>"; };
+		360C41FB29A859C900E2D960 /* TwoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonCell.swift; sourceTree = "<group>"; };
+		360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTwoButtonsTextfieldCell.swift; sourceTree = "<group>"; };
+		360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTwoButtonsTextfieldCell.xib; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A8E73529A799CC00E37402 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +138,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360C41EB29A83BB400E2D960 /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				360C41EC29A83BDC00E2D960 /* ForgerPasswordViewController.swift */,
+				360C41EE29A83C0900E2D960 /* ForgerPasswordViewModel.swift */,
+				360C41F029A84C7000E2D960 /* ResetPasswordViewController.swift */,
+				360C41F229A84C9000E2D960 /* ResetPasswordViewModel.swift */,
+			);
+			path = ForgetPassword;
+			sourceTree = "<group>";
+		};
+		360C41F629A84FCF00E2D960 /* Regis */ = {
+			isa = PBXGroup;
+			children = (
+				360C41F429A84F9F00E2D960 /* RegisViewController.swift */,
+				360C41F729A84FDE00E2D960 /* RegisViewModel.swift */,
+			);
+			path = Regis;
+			sourceTree = "<group>";
+		};
 		94A8E72529A799CC00E37402 = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +183,10 @@
 			children = (
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
 				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
-				94A8E77E29A7A16B00E37402 /* Cell */,
+				360C41F629A84FCF00E2D960 /* Regis */,
+				360C41EB29A83BB400E2D960 /* ForgetPassword */,
 				94A8E77B29A7A06E00E37402 /* Login */,
+				94A8E77E29A7A16B00E37402 /* Cell */,
 				94A8E77829A79FFF00E37402 /* CustomView */,
 				94A8E73A29A799CD00E37402 /* Assets.xcassets */,
 				94A8E73C29A799CD00E37402 /* LaunchScreen.storyboard */,
@@ -208,6 +250,10 @@
 		94A8E77E29A7A16B00E37402 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */,
+				360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */,
+				360C41FB29A859C900E2D960 /* TwoButtonCell.swift */,
+				360C41F929A8597E00E2D960 /* TwoButtonCell.xib */,
 				94A8E78F29A7B7F400E37402 /* EmptyHeightCell.swift */,
 				94A8E79129A7B8BA00E37402 /* EmptyHeightCell.xib */,
 				94A8E78D29A7B62000E37402 /* ButtonCell.swift */,
@@ -326,7 +372,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360C41FA29A8597E00E2D960 /* TwoButtonCell.xib in Resources */,
 				94A8E73E29A799CD00E37402 /* LaunchScreen.storyboard in Resources */,
+				360C420029A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib in Resources */,
 				94A8E78229A7A45A00E37402 /* TitleImageCell.xib in Resources */,
 				94A8E78429A7AE3800E37402 /* TitleTextFieldCell.xib in Resources */,
 				94A8E78C29A7B5F100E37402 /* ButtonCell.xib in Resources */,
@@ -357,22 +405,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */,
+				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
 				94A8E78E29A7B62000E37402 /* ButtonCell.swift in Sources */,
 				94A8E77A29A7A06200E37402 /* LoginViewController.swift in Sources */,
+				360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */,
 				94A8E77429A79B5400E37402 /* KeyboardHelper.swift in Sources */,
 				94A8E77129A79B5400E37402 /* BaseCollectionViewController.swift in Sources */,
 				94A8E77729A79E2300E37402 /* ActionButton.swift in Sources */,
 				94A8E78029A7A17F00E37402 /* TitleImageCell.swift in Sources */,
+				360C41F529A84FA400E2D960 /* RegisViewController.swift in Sources */,
 				94A8E76B29A79B5400E37402 /* DeviceType.swift in Sources */,
 				94A8E77329A79B5400E37402 /* BaseViewController.swift in Sources */,
+				360C41FC29A859C900E2D960 /* TwoButtonCell.swift in Sources */,
 				94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */,
 				94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */,
 				94A8E77D29A7A07F00E37402 /* LoginViewModel.swift in Sources */,
 				94A8E76F29A79B5400E37402 /* BaseTableViewController.swift in Sources */,
+				360C41ED29A83BDC00E2D960 /* ForgerPasswordViewController.swift in Sources */,
 				94A8E76C29A79B5400E37402 /* CellProtocol.swift in Sources */,
 				94A8E76D29A79B5400E37402 /* CollectionViewAdapter.swift in Sources */,
 				94A8E78629A7AE5300E37402 /* TitleTextFieldCell.swift in Sources */,
+				360C41F129A84C7000E2D960 /* ResetPasswordViewController.swift in Sources */,
 				94A8E76E29A79B5400E37402 /* TableViewAdapter.swift in Sources */,
+				360C41F829A84FDE00E2D960 /* RegisViewModel.swift in Sources */,
 				94A8E79029A7B7F400E37402 /* EmptyHeightCell.swift in Sources */,
 				94A8E77029A79B5400E37402 /* Extension.swift in Sources */,
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
@@ -552,6 +608,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,6 +639,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

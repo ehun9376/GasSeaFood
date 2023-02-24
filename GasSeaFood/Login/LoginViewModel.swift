@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LoginMethod {
     
@@ -54,14 +55,21 @@ class LoginViewModel: NSObject {
         
         rowModels.append(passwordRow)
         
-        let forgetPasswordRowModel = LabelCellRowModel(title: "忘記密碼", labelTapAction: { [weak self] in
+        let attr = NSAttributedString(string: "忘記密碼",
+                                      attributes: [
+                                        NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
+                                        NSAttributedString.Key.foregroundColor: UIColor.lightGray
+                                      ])
+        
+        let forgetPasswordRowModel = LabelCellRowModel(titleAttr: attr, labelTapAction: { [weak self] in
             self?.delegate?.forgetPasswordAction()
         })
         
         rowModels.append(forgetPasswordRowModel)
         
         let emptyRowModel = EmptyHeightRowModel(cellHeight: 50.0, color: .white)
-        00
+        
         rowModels.append(emptyRowModel)
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "登入", buttonAction: { [weak self] in

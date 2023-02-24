@@ -14,9 +14,7 @@ class LoginViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.defaultTableView.separatorStyle = .none
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem()
         self.regisCellID(cellIDs: [
             "TitleImageCell",
             "TitleTextFieldCell",
@@ -24,17 +22,12 @@ class LoginViewController: BaseTableViewController {
             "ButtonCell",
             "EmptyHeightCell"
         ])
-        
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEdit)))
-        
+
         self.viewModel = .init(adapter: .init(self.defaultTableView), delegate: self)
         self.viewModel?.setupRow()
         
     }
-    
-    @objc func endEdit() {
-        self.view.endEditing(true)
-    }
+
 }
 
 extension LoginViewController: LoginMethod {
@@ -44,7 +37,8 @@ extension LoginViewController: LoginMethod {
     }
     
     func forgetPasswordAction() {
-        
+        let vc = ForgetPasswordViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
