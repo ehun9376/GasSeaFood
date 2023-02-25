@@ -24,6 +24,7 @@
 		360C420C29A8A32900E2D960 /* UserInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C420B29A8A32900E2D960 /* UserInfoCenter.swift */; };
 		360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C420E29A8AD9900E2D960 /* InfoViewController.swift */; };
 		360C421129A8ADAA00E2D960 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421029A8ADAA00E2D960 /* InfoViewModel.swift */; };
+		942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E5F5229A9E62200D3AF02 /* NetWork.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
 		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		360C420B29A8A32900E2D960 /* UserInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCenter.swift; sourceTree = "<group>"; };
 		360C420E29A8AD9900E2D960 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		360C421029A8ADAA00E2D960 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		942E5F5229A9E62200D3AF02 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A8E73529A799CC00E37402 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -214,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
-				360C420B29A8A32900E2D960 /* UserInfoCenter.swift */,
 				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
+				942E5F5229A9E62200D3AF02 /* NetWork.swift */,
 				360C420129A8972400E2D960 /* Home */,
 				360C420D29A8AD8800E2D960 /* Info */,
 				360C41F629A84FCF00E2D960 /* Regis */,
@@ -251,6 +253,7 @@
 		94A8E77529A79B5900E37402 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				360C420B29A8A32900E2D960 /* UserInfoCenter.swift */,
 				94A8E76729A79B5300E37402 /* BaseCollectionViewController.swift */,
 				94A8E76529A79B5300E37402 /* BaseTableViewController.swift */,
 				94A8E76929A79B5400E37402 /* BaseViewController.swift */,
@@ -475,6 +478,7 @@
 				360C420C29A8A32900E2D960 /* UserInfoCenter.swift in Sources */,
 				94A8E79029A7B7F400E37402 /* EmptyHeightCell.swift in Sources */,
 				94A8E77029A79B5400E37402 /* Extension.swift in Sources */,
+				942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */,
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
 				94A8E77229A79B5400E37402 /* JBJson.swift in Sources */,
 			);
