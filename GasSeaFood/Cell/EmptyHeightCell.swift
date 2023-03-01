@@ -16,16 +16,23 @@ class EmptyHeightRowModel: CellRowModel {
     var cellHeight: CGFloat = 0
     
     var color: UIColor = .white
+    
+    var attr: NSAttributedString?
+    
     init(
         cellHeight: CGFloat,
-        color: UIColor = .white
+        color: UIColor = .white,
+        attr: NSAttributedString? = nil
     ) {
         self.cellHeight = cellHeight
         self.color = color
+        self.attr = attr
     }
 }
 
 class EmptyHeightCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var backView: UIView!
     
@@ -33,7 +40,7 @@ class EmptyHeightCell: UITableViewCell {
     
     
     override func awakeFromNib() {
-        
+        titleLabel.numberOfLines = 0
     }
     
 }
@@ -44,5 +51,13 @@ extension EmptyHeightCell: BaseCellView {
         
         self.cellViewHeight.constant = rowModel.cellHeight
         self.backView.backgroundColor = rowModel.color
+        
+        if let attr = rowModel.attr {
+            self.titleLabel.attributedText = attr
+            self.titleLabel.isHidden = false
+        } else {
+            self.titleLabel.isHidden = true
+        }
+        
     }
 }

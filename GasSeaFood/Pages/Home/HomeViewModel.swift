@@ -10,6 +10,8 @@ import Foundation
 protocol HomeMethod {
     func logout()
     func infoAction()
+    func gotoScane()
+    func gotoList()
 }
 
 class HomeViewModel: NSObject {
@@ -50,13 +52,13 @@ class HomeViewModel: NSObject {
         rowModels.append(nameRow)
         
         let todayListRow = ButtonCellRowModel(buttonTitle: "今日訂單", buttonHeight: 150, buttonAction: {
-            
+            self.delegate?.gotoList()
         })
         
         rowModels.append(todayListRow)
         
         let scanRow = ButtonCellRowModel(buttonTitle: "前往掃描頁面", buttonHeight: 150, buttonAction: {
-            
+            self.delegate?.gotoScane()
         })
         
         rowModels.append(scanRow)

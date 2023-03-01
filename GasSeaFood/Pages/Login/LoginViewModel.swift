@@ -77,15 +77,16 @@ class LoginViewModel: NSObject {
         rowModels.append(emptyRowModel)
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "登入", buttonAction: { [weak self] in
+            self?.delegate?.loginComplete(success: true, number: "111")
             
-            if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                if let _ = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
-                    self?.delegate?.loginComplete(success: true, number: self?.account ?? "")
-                    return
-                }
-            }
-            
-            self?.delegate?.loginComplete(success: false, number: "")
+//            if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
+//                if let _ = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
+//                    self?.delegate?.loginComplete(success: true, number: self?.account ?? "")
+//                    return
+//                }
+//            }
+//
+//            self?.delegate?.loginComplete(success: false, number: "")
         })
         
         rowModels.append(loginRowModel)

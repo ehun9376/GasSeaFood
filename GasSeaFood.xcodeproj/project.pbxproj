@@ -24,6 +24,11 @@
 		360C420C29A8A32900E2D960 /* UserInfoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C420B29A8A32900E2D960 /* UserInfoCenter.swift */; };
 		360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C420E29A8AD9900E2D960 /* InfoViewController.swift */; };
 		360C421129A8ADAA00E2D960 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421029A8ADAA00E2D960 /* InfoViewModel.swift */; };
+		360C421429AED7F900E2D960 /* QrScaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421329AED7F900E2D960 /* QrScaneViewController.swift */; };
+		360C421829AEF64500E2D960 /* TodayListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421729AEF64500E2D960 /* TodayListController.swift */; };
+		360C421A29AEF66400E2D960 /* TodayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421929AEF66400E2D960 /* TodayListViewModel.swift */; };
+		3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321929AEFBFD009C5BF2 /* TodayListCell.swift */; };
+		3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */; };
 		942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E5F5229A9E62200D3AF02 /* NetWork.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
@@ -92,6 +97,11 @@
 		360C420B29A8A32900E2D960 /* UserInfoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCenter.swift; sourceTree = "<group>"; };
 		360C420E29A8AD9900E2D960 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		360C421029A8ADAA00E2D960 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		360C421329AED7F900E2D960 /* QrScaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScaneViewController.swift; sourceTree = "<group>"; };
+		360C421729AEF64500E2D960 /* TodayListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListController.swift; sourceTree = "<group>"; };
+		360C421929AEF66400E2D960 /* TodayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListViewModel.swift; sourceTree = "<group>"; };
+		3612321929AEFBFD009C5BF2 /* TodayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListCell.swift; sourceTree = "<group>"; };
+		3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayListCell.xib; sourceTree = "<group>"; };
 		942E5F5229A9E62200D3AF02 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +202,38 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		360C421229AED7C700E2D960 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
+				360C421629AEF61800E2D960 /* TodayList */,
+				360C41EB29A83BB400E2D960 /* ForgetPassword */,
+				360C41F629A84FCF00E2D960 /* Regis */,
+				360C420D29A8AD8800E2D960 /* Info */,
+				94A8E77B29A7A06E00E37402 /* Login */,
+				360C420129A8972400E2D960 /* Home */,
+				360C421529AEDA6E00E2D960 /* QrScane */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		360C421529AEDA6E00E2D960 /* QrScane */ = {
+			isa = PBXGroup;
+			children = (
+				360C421329AED7F900E2D960 /* QrScaneViewController.swift */,
+			);
+			path = QrScane;
+			sourceTree = "<group>";
+		};
+		360C421629AEF61800E2D960 /* TodayList */ = {
+			isa = PBXGroup;
+			children = (
+				360C421729AEF64500E2D960 /* TodayListController.swift */,
+				360C421929AEF66400E2D960 /* TodayListViewModel.swift */,
+			);
+			path = TodayList;
+			sourceTree = "<group>";
+		};
 		94A8E72529A799CC00E37402 = {
 			isa = PBXGroup;
 			children = (
@@ -216,13 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
-				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
 				942E5F5229A9E62200D3AF02 /* NetWork.swift */,
-				360C420129A8972400E2D960 /* Home */,
-				360C420D29A8AD8800E2D960 /* Info */,
-				360C41F629A84FCF00E2D960 /* Regis */,
-				360C41EB29A83BB400E2D960 /* ForgetPassword */,
-				94A8E77B29A7A06E00E37402 /* Login */,
+				360C421229AED7C700E2D960 /* Pages */,
 				94A8E77E29A7A16B00E37402 /* Cell */,
 				94A8E77829A79FFF00E37402 /* CustomView */,
 				94A8E73A29A799CD00E37402 /* Assets.xcassets */,
@@ -288,6 +325,8 @@
 		94A8E77E29A7A16B00E37402 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3612321929AEFBFD009C5BF2 /* TodayListCell.swift */,
+				3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */,
 				360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */,
 				360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */,
 				360C41FB29A859C900E2D960 /* TwoButtonCell.swift */,
@@ -422,6 +461,7 @@
 				94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */,
 				94A8E79229A7B8BA00E37402 /* EmptyHeightCell.xib in Resources */,
 				360C420A29A899E800E2D960 /* HeadInfoCell.xib in Resources */,
+				3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,12 +493,14 @@
 				94A8E77A29A7A06200E37402 /* LoginViewController.swift in Sources */,
 				360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */,
 				94A8E77429A79B5400E37402 /* KeyboardHelper.swift in Sources */,
+				3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */,
 				94A8E77129A79B5400E37402 /* BaseCollectionViewController.swift in Sources */,
 				94A8E77729A79E2300E37402 /* ActionButton.swift in Sources */,
 				94A8E78029A7A17F00E37402 /* TitleImageCell.swift in Sources */,
 				360C41F529A84FA400E2D960 /* RegisViewController.swift in Sources */,
 				94A8E76B29A79B5400E37402 /* DeviceType.swift in Sources */,
 				94A8E77329A79B5400E37402 /* BaseViewController.swift in Sources */,
+				360C421829AEF64500E2D960 /* TodayListController.swift in Sources */,
 				360C41FC29A859C900E2D960 /* TwoButtonCell.swift in Sources */,
 				360C420629A8975000E2D960 /* HomeViewModel.swift in Sources */,
 				94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */,
@@ -469,6 +511,7 @@
 				360C41ED29A83BDC00E2D960 /* ForgerPasswordViewController.swift in Sources */,
 				94A8E76C29A79B5400E37402 /* CellProtocol.swift in Sources */,
 				360C420329A8973500E2D960 /* HomeViewController.swift in Sources */,
+				360C421A29AEF66400E2D960 /* TodayListViewModel.swift in Sources */,
 				94A8E76D29A79B5400E37402 /* CollectionViewAdapter.swift in Sources */,
 				94A8E78629A7AE5300E37402 /* TitleTextFieldCell.swift in Sources */,
 				360C420829A8997F00E2D960 /* HeadInfoCell.swift in Sources */,
@@ -480,6 +523,7 @@
 				94A8E77029A79B5400E37402 /* Extension.swift in Sources */,
 				942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */,
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
+				360C421429AED7F900E2D960 /* QrScaneViewController.swift in Sources */,
 				94A8E77229A79B5400E37402 /* JBJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +696,7 @@
 				DEVELOPMENT_TEAM = 6GH2ZWT255;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GasSeaFood/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "我爽用你的相機顆顆";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -683,6 +728,7 @@
 				DEVELOPMENT_TEAM = 6GH2ZWT255;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GasSeaFood/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "我爽用你的相機顆顆";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

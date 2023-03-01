@@ -56,5 +56,15 @@ extension HomeViewController: HomeMethod {
         let vc = InfoViewController(number: self.viewModel?.defaultNumber ?? "")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    func gotoScane() {
+        let vc = QRCodeScannerViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true)
+    }
+    
+    func gotoList() {
+        let vc = TodayListController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
