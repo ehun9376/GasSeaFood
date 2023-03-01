@@ -26,6 +26,7 @@ class TodayListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
+        self.selectionStyle = .none
         
         self.titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         

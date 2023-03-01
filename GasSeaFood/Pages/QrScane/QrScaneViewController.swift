@@ -10,16 +10,23 @@ import Foundation
 import AVFoundation
 import UIKit
 
-class QRCodeScannerViewController: UIViewController {
+class QRCodeScannerViewController: BaseViewController {
 
     var captureSession: AVCaptureSession!
+    
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    let alertLabel: UILabel = .init()
+
     let preview: UIView = .init()
     
     let tableView = UITableView()
     
     var adapter: TableViewAdapter?
+    
+    var oldCode: String = ""
+    
+    var newCode: String = ""
 
 
     override func viewDidLoad() {
@@ -87,7 +94,7 @@ class QRCodeScannerViewController: UIViewController {
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     }
     
-    func setupRow() {
+    func setupRow(text: String? = nil) {
         
         var rowModels: [CellRowModel] = []
         
@@ -101,12 +108,16 @@ class QRCodeScannerViewController: UIViewController {
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold)
         ])
         
-        let secondAttr = NSMutableAttributedString(string: "瓦斯桶ID: xxxxxx", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold)
-        ])
+        if let text = text {
+            
+            let secondAttr = NSMutableAttributedString(string: "瓦斯桶ID: \(text)", attributes: [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold)
+            ])
+            
+            firstAttr.append(secondAttr)
+        }
         
-        
-        firstAttr.append(secondAttr)
+
         
         
         let titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: firstAttr)
@@ -114,7 +125,7 @@ class QRCodeScannerViewController: UIViewController {
         rowModels.append(titleRow)
         
         let buttonRow = ButtonCellRowModel(buttonTitle: "確認", buttonAction: {
-            
+            self.dismiss(animated: true)
         })
         
         rowModels.append(buttonRow)
@@ -140,21 +151,27 @@ class QRCodeScannerViewController: UIViewController {
         ])
     }
     
-    func setupAlertLabel() {
-        let alertLabel: UILabel = .init()
-        alertLabel.translatesAutoresizingMaskIntoConstraints = false
-        alertLabel.text = "請掃舊瓦斯桶!"
-        alertLabel.textAlignment = .center
-        alertLabel.font = .systemFont(ofSize: 24, weight: .bold)
-        alertLabel.textColor = .lightGray
+    func setupAlertLabel(hasOld: Bool) {
         
-        self.preview.addSubview(alertLabel)
+        for view in self.preview.subviews {
+            if let view = view as? UILabel {
+                view.removeFromSuperview()
+            }
+        }
+        
+        self.alertLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.alertLabel.text = hasOld ? "請掃新瓦斯桶!" : "請掃舊瓦斯桶!"
+        self.alertLabel.textAlignment = .center
+        self.alertLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        self.alertLabel.textColor = .lightGray
+        
+        self.preview.addSubview(self.alertLabel)
         
         NSLayoutConstraint.activate([
-            alertLabel.topAnchor.constraint(equalTo: self.preview.topAnchor),
-            alertLabel.leadingAnchor.constraint(equalTo: self.preview.leadingAnchor),
-            alertLabel.trailingAnchor.constraint(equalTo: self.preview.trailingAnchor),
-            alertLabel.bottomAnchor.constraint(equalTo: self.preview.bottomAnchor)
+            self.alertLabel.topAnchor.constraint(equalTo: self.preview.topAnchor),
+            self.alertLabel.leadingAnchor.constraint(equalTo: self.preview.leadingAnchor),
+            self.alertLabel.trailingAnchor.constraint(equalTo: self.preview.trailingAnchor),
+            self.alertLabel.bottomAnchor.constraint(equalTo: self.preview.bottomAnchor)
         ])
         
     }
@@ -174,11 +191,26 @@ class QRCodeScannerViewController: UIViewController {
         ])
         
         self.setupImageView()
-        self.setupAlertLabel()
+        self.setupAlertLabel(hasOld: false)
     }
 
     func found(code: String) {
-        print(code)
+        self.showAlert(title: "提示",
+                       message: self.oldCode == "" ? "掃碼成功：\(code)" : "配對成功：\(code)" ,
+                       confirmTitle: "下一步",
+                       cancelTitle: "重新掃描") {
+            self.oldCode = code
+            self.setupRow(text: code)
+            self.setupAlertLabel(hasOld: true)
+            DispatchQueue.global().async {
+                self.captureSession.startRunning()
+            }
+        } cancelAction: {
+            DispatchQueue.global().async {
+                self.captureSession.startRunning()
+            }
+        }
+ 
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -197,7 +229,7 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.found(code: stringValue)
         }
 
-        dismiss(animated: true)
+        
     }
     
     func setupAVSession() {
