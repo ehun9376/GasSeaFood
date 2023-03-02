@@ -29,6 +29,7 @@
 		360C421A29AEF66400E2D960 /* TodayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C421929AEF66400E2D960 /* TodayListViewModel.swift */; };
 		3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321929AEFBFD009C5BF2 /* TodayListCell.swift */; };
 		3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */; };
+		3612321E29AF42B1009C5BF2 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */; };
 		942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E5F5229A9E62200D3AF02 /* NetWork.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
@@ -102,6 +103,7 @@
 		360C421929AEF66400E2D960 /* TodayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListViewModel.swift; sourceTree = "<group>"; };
 		3612321929AEFBFD009C5BF2 /* TodayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListCell.swift; sourceTree = "<group>"; };
 		3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayListCell.xib; sourceTree = "<group>"; };
+		3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		942E5F5229A9E62200D3AF02 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
 				942E5F5229A9E62200D3AF02 /* NetWork.swift */,
+				3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */,
 				360C421229AED7C700E2D960 /* Pages */,
 				94A8E77E29A7A16B00E37402 /* Cell */,
 				94A8E77829A79FFF00E37402 /* CustomView */,
@@ -491,6 +494,7 @@
 				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
 				94A8E78E29A7B62000E37402 /* ButtonCell.swift in Sources */,
 				94A8E77A29A7A06200E37402 /* LoginViewController.swift in Sources */,
+				3612321E29AF42B1009C5BF2 /* CustomAlertController.swift in Sources */,
 				360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */,
 				94A8E77429A79B5400E37402 /* KeyboardHelper.swift in Sources */,
 				3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */,

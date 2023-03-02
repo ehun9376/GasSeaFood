@@ -193,23 +193,30 @@ class QRCodeScannerViewController: BaseViewController {
         self.setupImageView()
         self.setupAlertLabel(hasOld: false)
     }
+    
+    func showAlert(success: Bool, complete: (()->())? = nil) {
+        
+        let alert = CustomAlertController(title: success ? "瓦斯桶配對成功" : "換桶失敗",
+                                          content: success ? "已通知換桶成功" : "請重新掃描",
+                                          imageName: success ? "success" : "faild",
+                                          buttonTitle: "確定",
+                                          dismissAction: {
+            complete?()
+        })
+        self.present(alert, animated: true)
+    }
 
     func found(code: String) {
-        self.showAlert(title: "提示",
-                       message: self.oldCode == "" ? "掃碼成功：\(code)" : "配對成功：\(code)" ,
-                       confirmTitle: "下一步",
-                       cancelTitle: "重新掃描") {
-            self.oldCode = code
-            self.setupRow(text: code)
-            self.setupAlertLabel(hasOld: true)
+        
+        self.showAlert(success: true, complete: { [ weak self] in
+            self?.oldCode = code
+            self?.setupRow(text: code)
+            self?.setupAlertLabel(hasOld: true)
             DispatchQueue.global().async {
-                self.captureSession.startRunning()
+                self?.captureSession.startRunning()
             }
-        } cancelAction: {
-            DispatchQueue.global().async {
-                self.captureSession.startRunning()
-            }
-        }
+        })
+        
  
     }
 
@@ -223,8 +230,15 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         captureSession.stopRunning()
 
         if let metadataObject = metadataObjects.first {
-            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-            guard let stringValue = readableObject.stringValue else { return }
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject, let stringValue = readableObject.stringValue else {
+                
+                self.showAlert(success: false, complete: { [weak self] in
+                    DispatchQueue.global().async {
+                        self?.captureSession.startRunning()
+                    }
+                })
+                return
+            }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             self.found(code: stringValue)
         }
