@@ -57,6 +57,7 @@ class RegisViewModel: NSObject {
         
         
         let nameRow = TitleTextFieldRowModel(title: "名字",
+                                             text: self.regisModel.name,
                                                 textDidChange: { [weak self] text in
             self?.regisModel.name = text
         })
@@ -86,6 +87,7 @@ class RegisViewModel: NSObject {
 //        rowModels.append(addressRow)
         
         let cellphoneRow = TitleTextFieldRowModel(title: "手機號碼",
+                                                  text: self.regisModel.cellphoneNumber,
                                                  textDidChange: { [weak self] text in
             self?.regisModel.cellphoneNumber = text
         })
@@ -93,6 +95,7 @@ class RegisViewModel: NSObject {
         rowModels.append(cellphoneRow)
         
         let phoneRow = TitleTextFieldRowModel(title: "市內電話號碼",
+                                              text: self.regisModel.phoneNumber,
                                                  textDidChange: { [weak self] text in
             self?.regisModel.phoneNumber = text
         })
@@ -100,6 +103,7 @@ class RegisViewModel: NSObject {
         rowModels.append(phoneRow)
         
         let emailRow = TitleTextFieldRowModel(title: "電子信箱",
+                                              text: self.regisModel.email,
                                                  textDidChange: { [weak self] text in
             self?.regisModel.email = text
         })
@@ -107,6 +111,7 @@ class RegisViewModel: NSObject {
         rowModels.append(emailRow)
         
         let passwordRow = TitleTextFieldRowModel(title: "密碼",
+                                                 text: self.regisModel.password,
                                                  textDidChange: { [weak self] text in
             self?.regisModel.password = text
         })
@@ -114,6 +119,7 @@ class RegisViewModel: NSObject {
         rowModels.append(passwordRow)
         
         let confirmPasswordRow = TitleTextFieldRowModel(title: "確認密碼",
+                                                        text: self.regisModel.confirmPassword,
                                                  textDidChange: { [weak self] text in
             self?.regisModel.confirmPassword = text
         })
@@ -121,6 +127,7 @@ class RegisViewModel: NSObject {
         rowModels.append(confirmPasswordRow)
         
         let inviteCodeRow = TitleTextFieldRowModel(title: "家人邀請碼",
+                                                   text: self.regisModel.inviewCode,
                                                    required: false,
                                                    textDidChange: { [weak self] text in
             self?.regisModel.inviewCode = text
