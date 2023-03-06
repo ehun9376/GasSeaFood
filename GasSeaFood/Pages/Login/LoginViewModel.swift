@@ -81,7 +81,7 @@ class LoginViewModel: NSObject {
             
             if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
                 if let accountModel = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
-                    self?.delegate?.loginComplete(success: true, number: accountModel.account ?? "")
+                    self?.delegate?.loginComplete(success: true, number: accountModel.cellphoneNumber ?? "")
                     return
                 }
             }
