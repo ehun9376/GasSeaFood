@@ -80,8 +80,8 @@ class LoginViewModel: NSObject {
 //            self?.delegate?.loginComplete(success: true, number: "111")
             
             if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                if let _ = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
-                    self?.delegate?.loginComplete(success: true, number: self?.account ?? "")
+                if let accountModel = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
+                    self?.delegate?.loginComplete(success: true, number: accountModel.account ?? "")
                     return
                 }
             }
