@@ -31,7 +31,7 @@ class HomeViewModel: NSObject {
     }
     
     func setupRow() {
-        guard let model = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList)?.first(where: {$0.cellphoneNumber == self.defaultNumber}) else { return }
+        let model = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList)?.first(where: {$0.cellphoneNumber == self.defaultNumber})
         
         self.regisModel = model
         
@@ -41,7 +41,7 @@ class HomeViewModel: NSObject {
         
         rowModels.append(empty)
         
-        let nameRow = HeadInfoRowModel(name: model.name,
+        let nameRow = HeadInfoRowModel(name: model?.name ?? "",
                                        infoAction: {
             self.delegate?.infoAction()
         },
