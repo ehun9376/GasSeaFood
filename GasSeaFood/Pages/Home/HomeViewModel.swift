@@ -28,39 +28,45 @@ class HomeViewModel: NSObject {
     }
     
     func setupRow() {
-//        let model = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList)?.first(where: {$0.cellphoneNumber == self.defaultNumber})
-//
-//        self.regisModel = model
-//
-//        var rowModels: [CellRowModel] = []
-//
-//        let empty = EmptyHeightRowModel(cellHeight: 100, color: .white)
-//
-//        rowModels.append(empty)
-//
-//        let nameRow = HeadInfoRowModel(name: model?.name ?? "",
-//                                       infoAction: {
-//            self.delegate?.infoAction()
-//        },
-//                                       logoutAcction: {
-//            self.delegate?.logout()
-//        })
-//
-//        rowModels.append(nameRow)
-//
-//        let todayListRow = ButtonCellRowModel(buttonTitle: "今日訂單", buttonHeight: 150, buttonAction: {
-//            self.delegate?.gotoList()
-//        })
-//
-//        rowModels.append(todayListRow)
-//
-//        let scanRow = ButtonCellRowModel(buttonTitle: "前往掃描頁面", buttonHeight: 150, buttonAction: {
-//            self.delegate?.gotoScane()
-//        })
-//
-//        rowModels.append(scanRow)
-//
-//        self.adapter?.updateTableViewData(rowModels: rowModels)
+        
+        let cellPhoneNumber = UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? ""
+
+        InfoHelper.shared.getRegisModel(cellPhoneNumber: cellPhoneNumber) { [weak self] model in
+            guard let self = self else { return }
+            self.regisModel = model
+            
+            var rowModels: [CellRowModel] = []
+
+            let empty = EmptyHeightRowModel(cellHeight: 100, color: .white)
+
+            rowModels.append(empty)
+
+            let nameRow = HeadInfoRowModel(name: self.regisModel?.name ?? "",
+                                           infoAction: {
+                self.delegate?.infoAction()
+            },
+                                           logoutAcction: {
+                self.delegate?.logout()
+            })
+
+            rowModels.append(nameRow)
+            
+
+            let todayListRow = ButtonCellRowModel(buttonTitle: "今日訂單", buttonHeight: 150, buttonAction: {
+                self.delegate?.gotoList()
+            })
+
+            rowModels.append(todayListRow)
+
+            let scanRow = ButtonCellRowModel(buttonTitle: "前往掃描頁面", buttonHeight: 150, buttonAction: {
+                self.delegate?.gotoScane()
+            })
+
+            rowModels.append(scanRow)
+
+            self.adapter?.updateTableViewData(rowModels: rowModels)
+        }
+
     }
     
 }

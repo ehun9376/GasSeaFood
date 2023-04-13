@@ -25,7 +25,7 @@ class LoginViewModel: NSObject {
     
     var password: String = ""
     
-    var account: String = ""
+    var cellphoneNumber: String = ""
     
     init(
         adapter: TableViewAdapter?,
@@ -46,7 +46,7 @@ class LoginViewModel: NSObject {
         let accountRow = TitleTextFieldRowModel(title: "手機號碼",
                                                 placeHolder: "請輸入您的手機號碼",
                                                 textDidChange: { [weak self] text in
-            self?.account = text
+            self?.cellphoneNumber = text
         })
         
         rowModels.append(accountRow)
@@ -79,13 +79,13 @@ class LoginViewModel: NSObject {
         let loginRowModel = ButtonCellRowModel(buttonTitle: "登入", buttonAction: { [weak self] in
             
             let param: parameter = [
-                "phone": self?.account ?? "",
+                "phone": self?.cellphoneNumber ?? "",
                 "password": self?.password ?? ""
             ]
             
             APIService.shared.requestWithParam(urlText: .login, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in
                 if jsonModel?.status ?? true {
-                    UserInfoCenter.shared.storeValue(.cellphoneNumber, data: self?.password ?? "")
+                    UserInfoCenter.shared.storeValue(.cellphoneNumber, data: self?.cellphoneNumber ?? "")
                 }
                 self?.delegate?.loginComplete(success: jsonModel?.status ?? true)
             }

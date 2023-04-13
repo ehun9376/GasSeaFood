@@ -11,20 +11,29 @@ class InfoHelper: NSObject {
     
     static let shared = InfoHelper()
     
-    var regisModel: RegisModel?
+    private var regisModel: RegisModel?
     
-    func getRegisModel(cellPhoneNumber: String, complete: ((RegisModel?)->())? = nil) {
+    func getRegisModel(reset: Bool = true, cellPhoneNumber: String, complete: ((RegisModel?)->())? = nil) {
         
-        let param = [
-            "phone": cellPhoneNumber
-        ]
+        if reset {
+            self.regisModel = nil
+        }
         
-        APIService.shared.requestWithParam(urlText: .info, params: param, modelType: RegisModel.self) { jsonModel, error in
-            if let jsonModel = jsonModel {
-                self.regisModel = jsonModel
-                complete?(self.regisModel)
+        if let regisModel = self.regisModel {
+            complete?(regisModel)
+        } else {
+            let param = [
+                "phone": cellPhoneNumber
+            ]
+            
+            APIService.shared.requestWithParam(urlText: .info, params: param, modelType: RegisModel.self) { jsonModel, error in
+                if let jsonModel = jsonModel {
+                    self.regisModel = jsonModel
+                    complete?(self.regisModel)
+                }
             }
         }
+
     }
     
 }

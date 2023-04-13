@@ -36,7 +36,7 @@ class HomeViewController: BaseTableViewController {
 
 extension HomeViewController: HomeMethod {
     func logout() {
-        
+        UserInfoCenter.shared.cleanValue(.cellphoneNumber)
         self.showToast(message: "已登出") {
             let vc = LaunchViewController()
             UIApplication.shared.windows.first?.rootViewController = vc

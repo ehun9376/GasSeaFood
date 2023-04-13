@@ -60,6 +60,9 @@ class HeadInfoCell: UITableViewCell {
         self.infoButton.layer.cornerRadius = 10
         self.infoButton.layer.borderColor = UIColor.init(hex: "3472D9").cgColor
         self.infoButton.addTarget(self, action: #selector(infoAction), for: .touchUpInside)
+        
+        self.nameLabel.numberOfLines = 1
+        self.nameLabel.lineBreakMode = .byTruncatingMiddle
     }
     
     @objc func logoutAction() {
