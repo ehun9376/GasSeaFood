@@ -24,11 +24,14 @@ class TitleTextFieldRowModel: CellRowModel {
     
     var required: Bool = true
     
-    init(title: String? = nil, text: String? = nil, placeHolder: String? = nil, required: Bool = true, textDidChange: ((String) -> ())? = nil) {
+    var canEdit: Bool = true
+    
+    init(title: String? = nil, text: String? = nil, placeHolder: String? = nil, required: Bool = true,canEdit: Bool = true, textDidChange: ((String) -> ())? = nil) {
         self.title = title
         self.text = text
         self.placeHolder = placeHolder
         self.required = required
+        self.canEdit = canEdit
         self.textDidChange = textDidChange
     }
     
@@ -67,6 +70,7 @@ extension TitleTextFieldCell: BaseCellView {
         self.rowModel = rowModel
         self.titleLabel.text = rowModel.title
         self.requiredLabel.isHidden = rowModel.required
+        self.contentTextField.isUserInteractionEnabled = rowModel.canEdit
         
         
         let centeredParagraphStyle = NSMutableParagraphStyle()

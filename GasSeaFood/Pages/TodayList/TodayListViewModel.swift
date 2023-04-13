@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TodayListMethod {
-    
+    func cellDidSelect(title: String)
 }
 
 class TodayListViewModel: NSObject {
@@ -38,12 +38,14 @@ class TodayListViewModel: NSObject {
             break
         }
         
-        
-        
-        for today in list {
-            let row = TodayListCellRowModel(title: today)
+        for order in list {
+            let row = TodayListCellRowModel(title: order,
+                                            titleLabelAction: { [weak self] in
+                self?.delegate?.cellDidSelect(title: order)
+            })
             rowModels.append(row)
         }
+        
         self.adapter?.updateTableViewData(rowModels: rowModels)
     }
     

@@ -46,7 +46,7 @@ class LoginViewModel: NSObject {
         let accountRow = TitleTextFieldRowModel(title: "手機號碼",
                                                 placeHolder: "請輸入您的手機號碼",
                                                 textDidChange: { [weak self] text in
-            self?.account = text ?? ""
+            self?.account = text
         })
         
         rowModels.append(accountRow)
@@ -54,7 +54,7 @@ class LoginViewModel: NSObject {
         let passwordRow = TitleTextFieldRowModel(title: "密碼",
                                                  placeHolder: "請輸入您的密碼",
                                                  textDidChange: { [weak self] text in
-            self?.password = text ?? ""
+            self?.password = text
         })
         
         rowModels.append(passwordRow)
@@ -80,8 +80,8 @@ class LoginViewModel: NSObject {
 //            self?.delegate?.loginComplete(success: true, number: "111")
             
             if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                if let accountModel = models.first(where: {($0.cellphoneNumber ?? "") == (self?.account ?? "") && ($0.password ?? "") == (self?.password ?? "") }) {
-                    self?.delegate?.loginComplete(success: true, number: accountModel.cellphoneNumber ?? "")
+                if let accountModel = models.first(where: {($0.cellphoneNumber ) == (self?.account ?? "") && ($0.password) == (self?.password ?? "") }) {
+                    self?.delegate?.loginComplete(success: true, number: accountModel.cellphoneNumber )
                     return
                 }
             }

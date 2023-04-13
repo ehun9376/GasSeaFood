@@ -30,6 +30,7 @@
 		3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321929AEFBFD009C5BF2 /* TodayListCell.swift */; };
 		3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */; };
 		3612321E29AF42B1009C5BF2 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */; };
+		362C2CD529E7944300811E29 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD429E7944300811E29 /* OrderDetailViewController.swift */; };
 		942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E5F5229A9E62200D3AF02 /* NetWork.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
@@ -104,6 +105,7 @@
 		3612321929AEFBFD009C5BF2 /* TodayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListCell.swift; sourceTree = "<group>"; };
 		3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayListCell.xib; sourceTree = "<group>"; };
 		3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		362C2CD429E7944300811E29 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		942E5F5229A9E62200D3AF02 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
+				362C2CD329E793CD00811E29 /* OrderDetail */,
 				360C421629AEF61800E2D960 /* TodayList */,
 				360C41EB29A83BB400E2D960 /* ForgetPassword */,
 				360C41F629A84FCF00E2D960 /* Regis */,
@@ -234,6 +237,14 @@
 				360C421929AEF66400E2D960 /* TodayListViewModel.swift */,
 			);
 			path = TodayList;
+			sourceTree = "<group>";
+		};
+		362C2CD329E793CD00811E29 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				362C2CD429E7944300811E29 /* OrderDetailViewController.swift */,
+			);
+			path = OrderDetail;
 			sourceTree = "<group>";
 		};
 		94A8E72529A799CC00E37402 = {
@@ -529,6 +540,7 @@
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
 				360C421429AED7F900E2D960 /* QrScaneViewController.swift in Sources */,
 				94A8E77229A79B5400E37402 /* JBJson.swift in Sources */,
+				362C2CD529E7944300811E29 /* OrderDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

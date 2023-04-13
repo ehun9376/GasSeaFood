@@ -46,7 +46,7 @@ class ResetPasswordViewModel: NSObject {
         
         let passwordRow = TitleTextFieldRowModel(title: "再次輸入新密碼",
                                                  placeHolder: "請再次輸入新密碼",
-                                                 textDidChange: { [weak self] text in
+                                                 textDidChange: { text in
             
         })
         

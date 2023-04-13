@@ -42,7 +42,7 @@ class ForgerPasswordViewModel: NSObject {
         
         let passwordRow = TitleTextFieldRowModel(title: "驗證碼",
                                                  placeHolder: "請輸入您的驗證碼",
-                                                 textDidChange: { [weak self] text in
+                                                 textDidChange: { text in
             
         })
         

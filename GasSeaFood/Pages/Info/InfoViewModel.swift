@@ -35,25 +35,25 @@ class InfoViewModel: NSObject {
         
         var rowModels: [CellRowModel] = []
         
-        let nameRow = TitleTextFieldRowModel(title: "姓名", text: model.name, placeHolder: "請輸入姓名", required: false) { text in
+        let nameRow = TitleTextFieldRowModel(title: "姓名", text: model.name, placeHolder: "請輸入姓名", required: true) { text in
             self.regisModel?.name = text
         }
         
         rowModels.append(nameRow)
         
-        let cellphoneRow = TitleTextFieldRowModel(title: "手機號碼", text: model.cellphoneNumber, placeHolder: "請輸入姓名", required: false) { text in
+        let cellphoneRow = TitleTextFieldRowModel(title: "手機號碼", text: model.cellphoneNumber, placeHolder: "請輸入姓名", required: true, canEdit: false) { text in
             self.regisModel?.cellphoneNumber = text
         }
         
         rowModels.append(cellphoneRow)
         
-        let gasRow = TitleTextFieldRowModel(title: "瓦斯行", text: model.gas, placeHolder: "請輸入姓名", required: false) { text in
+        let gasRow = TitleTextFieldRowModel(title: "瓦斯行", text: model.gas, placeHolder: "請輸入姓名", required: true) { text in
             self.regisModel?.gas = text
         }
         
         rowModels.append(gasRow)
         
-        let emailRow = TitleTextFieldRowModel(title: "電子信箱", text: model.email, placeHolder: "請輸入姓名", required: false) { text in
+        let emailRow = TitleTextFieldRowModel(title: "電子信箱", text: model.email, placeHolder: "請輸入姓名", required: true) { text in
             self.regisModel?.email = text
         }
         

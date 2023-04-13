@@ -64,6 +64,10 @@ class TodayListController: BaseTableViewController {
         
 }
 extension TodayListController: TodayListMethod {
-    
+    func cellDidSelect(title: String) {
+        let vc = OrderDetailViewController()
+        vc.naviTitle = title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
