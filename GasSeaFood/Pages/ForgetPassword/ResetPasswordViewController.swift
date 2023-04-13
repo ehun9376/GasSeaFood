@@ -38,8 +38,8 @@ class ResetPasswordViewController: BaseTableViewController {
 extension ResetPasswordViewController: ResetPasswordViewMethod {
     
     func saveAndReturnAction(success: Bool) {
-        self.showToast(message: success ? "已重設密碼" : "發生錯誤，請再試一次",complete: {
-            self.navigationController?.popToRootViewController(animated: true)
+        self.showToast(message: success ? "已重設密碼" : "發生錯誤，請再試一次",complete: { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
         })
     }
     

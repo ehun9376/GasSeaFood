@@ -12,13 +12,6 @@ class HomeViewController: BaseTableViewController {
     
     var viewModel: HomeViewModel?
     
-    convenience init(
-        number: String
-    ){
-        self.init()
-        self.viewModel = .init(adapter: .init(self.defaultTableView), delegate: self, defaultNumber: number)
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +24,7 @@ class HomeViewController: BaseTableViewController {
             "EmptyHeightCell"
         ])
         
-       
+        self.viewModel = .init(adapter: .init(self.defaultTableView), delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +46,7 @@ extension HomeViewController: HomeMethod {
     }
     
     func infoAction() {
-        let vc = InfoViewController(number: self.viewModel?.defaultNumber ?? "")
+        let vc = InfoViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func gotoScane() {

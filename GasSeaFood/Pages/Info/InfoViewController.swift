@@ -11,13 +11,6 @@ class InfoViewController: BaseTableViewController {
     
     var viewModel: InfoViewModel?
     
-    convenience init(
-        number: String
-    ) {
-        self.init()
-        self.viewModel = .init(delegate: self, adapter: .init(self.defaultTableView), number: number)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "編輯個人檔案"
@@ -27,7 +20,7 @@ class InfoViewController: BaseTableViewController {
             "TitleTextFieldCell",
             "ButtonCell"
         ])
-        
+        self.viewModel = .init(delegate: self, adapter: .init(self.defaultTableView))
         self.viewModel?.setupRow()
     }
     

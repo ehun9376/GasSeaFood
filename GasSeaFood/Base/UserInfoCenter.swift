@@ -15,7 +15,7 @@ class UserInfoCenter: NSObject {
     static let shared = UserInfoCenter()
     
     enum UserInfoDataType: String {
-        case regisModelList
+       case cellphoneNumber
     }
     
     func storeValue(_ type: UserInfoDataType, data: Any?) {

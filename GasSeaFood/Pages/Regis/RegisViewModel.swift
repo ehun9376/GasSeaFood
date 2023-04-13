@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-struct RegisModel: Codable {
+class RegisModel: JsonModel {
+
+    
     
     var name: String = ""
 
@@ -32,10 +34,21 @@ struct RegisModel: Codable {
     
     var rule: Bool = false
     
+    required init(json: JBJson) {
+        self.name = json["name"].stringValue
+        self.cellphoneNumber = json["name"].stringValue
+        self.gas = json["store"].stringValue
+        self.email = json["email"].stringValue
+    }
+    
+    init() {
+        
+    }
+    
 }
 
 protocol RegisMethod {
-    func regisComplete(success: Bool)
+    func regisComplete(success: Bool, message: String)
 }
 
 class RegisViewModel: NSObject {
@@ -148,23 +161,17 @@ class RegisViewModel: NSObject {
         
         let regisRowModel = ButtonCellRowModel(buttonTitle: "完成註冊", buttonAction: { [weak self] in
             
-            guard let model = self?.regisModel else { return }
             
             
-            if var array = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                array.append(model)
-                
-                UserInfoCenter.shared.storeData(model: array, .regisModelList)
-                self?.delegate?.regisComplete(success: true)
-                return
-            } else {
-                let array: [RegisModel] = [model]
-                
-                UserInfoCenter.shared.storeData(model: array, .regisModelList)
-                self?.delegate?.regisComplete(success: true)
-                return
+            let param: parameter = [
+                "phone" : self?.regisModel.cellphoneNumber ?? "",
+                "name": self?.regisModel.name ?? "",
+                "password": self?.regisModel.password ?? ""
+            ]
+            
+            APIService.shared.requestWithParam(urlText: .regis, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in
+                self?.delegate?.regisComplete(success: jsonModel?.status ?? true, message: jsonModel?.message ?? "")
             }
-            self?.delegate?.regisComplete(success: false)
             
             
         })

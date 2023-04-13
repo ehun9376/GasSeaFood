@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginMethod {
     
-    func loginComplete(success:Bool, number: String)
+    func loginComplete(success:Bool)
     
     func forgetPasswordAction()
     
@@ -77,16 +77,19 @@ class LoginViewModel: NSObject {
         rowModels.append(emptyRowModel)
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "登入", buttonAction: { [weak self] in
-//            self?.delegate?.loginComplete(success: true, number: "111")
             
-            if let models = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                if let accountModel = models.first(where: {($0.cellphoneNumber ) == (self?.account ?? "") && ($0.password) == (self?.password ?? "") }) {
-                    self?.delegate?.loginComplete(success: true, number: accountModel.cellphoneNumber )
-                    return
+            let param: parameter = [
+                "phone": self?.account ?? "",
+                "password": self?.password ?? ""
+            ]
+            
+            APIService.shared.requestWithParam(urlText: .login, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in
+                if jsonModel?.status ?? true {
+                    UserInfoCenter.shared.storeValue(.cellphoneNumber, data: self?.password ?? "")
                 }
+                self?.delegate?.loginComplete(success: jsonModel?.status ?? true)
             }
-
-            self?.delegate?.loginComplete(success: false, number: "")
+            
         })
         
         rowModels.append(loginRowModel)

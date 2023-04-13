@@ -58,16 +58,16 @@ class ResetPasswordViewModel: NSObject {
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "返回登入畫面", buttonAction: { [weak self] in
             
-            if var array = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
-                array = array.filter({$0.cellphoneNumber != self?.regisModel?.phoneNumber ?? ""})
-                self?.regisModel?.password = self?.password ?? ""
-                if let model = self?.regisModel {
-                    array.append(model)
-                    UserInfoCenter.shared.storeData(model: array, .regisModelList)
-                    self?.delegate?.saveAndReturnAction(success: true)
-                    return
-                }
-            }
+//            if var array = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList) {
+//                array = array.filter({$0.cellphoneNumber != self?.regisModel?.phoneNumber ?? ""})
+//                self?.regisModel?.password = self?.password ?? ""
+//                if let model = self?.regisModel {
+//                    array.append(model)
+//                    UserInfoCenter.shared.storeData(model: array, .regisModelList)
+//                    self?.delegate?.saveAndReturnAction(success: true)
+//                    return
+//                }
+//            }
             self?.delegate?.saveAndReturnAction(success: false)
             
         })

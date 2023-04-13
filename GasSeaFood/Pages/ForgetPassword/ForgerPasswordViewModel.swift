@@ -53,12 +53,8 @@ class ForgerPasswordViewModel: NSObject {
         rowModels.append(emptyRowModel)
         
         let loginRowModel = ButtonCellRowModel(buttonTitle: "重新設定密碼", buttonAction: { [weak self] in
-            guard let model = UserInfoCenter.shared.loadData(modelType: [RegisModel].self, .regisModelList)?.first(where: {$0.cellphoneNumber == self?.number}) else {
-                self?.delegate?.resetButtonAction(success: false, model: nil)
-                return
-            }
             
-            self?.delegate?.resetButtonAction(success: true, model: model)
+//            self?.delegate?.resetButtonAction(success: true, model: model)
         })
         
         rowModels.append(loginRowModel)

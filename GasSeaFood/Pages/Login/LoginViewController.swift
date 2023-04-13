@@ -31,14 +31,20 @@ class LoginViewController: BaseTableViewController {
 }
 
 extension LoginViewController: LoginMethod {
-    func loginComplete(success: Bool, number: String) {
+
+    func loginComplete(success: Bool) {
         
         if success {
-            self.showToast(message: "登入成功", complete: {
-                let vc = UINavigationController(rootViewController: HomeViewController(number: number))
-                UIApplication.shared.windows.first?.rootViewController = vc
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-            })
+            let cellPhoneNumber = UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? ""
+            
+            InfoHelper.shared.getRegisModel(cellPhoneNumber: cellPhoneNumber) { [weak self] regisModel in
+                self?.showToast(message: "登入成功", complete: {
+                    let vc = UINavigationController(rootViewController: HomeViewController())
+                    UIApplication.shared.windows.first?.rootViewController = vc
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                })
+            }
+
         } else {
             self.showToast(message: "帳號密碼錯誤")
         }

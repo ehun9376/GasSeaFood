@@ -31,6 +31,9 @@
 		3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */; };
 		3612321E29AF42B1009C5BF2 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */; };
 		362C2CD529E7944300811E29 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD429E7944300811E29 /* OrderDetailViewController.swift */; };
+		362C2CD729E7CFD100811E29 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD629E7CFD100811E29 /* APIService.swift */; };
+		362C2CD929E7D0F800811E29 /* DefaultSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */; };
+		362C2CDB29E7E70100811E29 /* InfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CDA29E7E70100811E29 /* InfoHelper.swift */; };
 		942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E5F5229A9E62200D3AF02 /* NetWork.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
@@ -106,6 +109,9 @@
 		3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayListCell.xib; sourceTree = "<group>"; };
 		3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		362C2CD429E7944300811E29 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		362C2CD629E7CFD100811E29 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSuccessModel.swift; sourceTree = "<group>"; };
+		362C2CDA29E7E70100811E29 /* InfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHelper.swift; sourceTree = "<group>"; };
 		942E5F5229A9E62200D3AF02 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +278,9 @@
 			children = (
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
 				942E5F5229A9E62200D3AF02 /* NetWork.swift */,
+				362C2CD629E7CFD100811E29 /* APIService.swift */,
+				362C2CDA29E7E70100811E29 /* InfoHelper.swift */,
+				362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */,
 				3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */,
 				360C421229AED7C700E2D960 /* Pages */,
 				94A8E77E29A7A16B00E37402 /* Cell */,
@@ -522,6 +531,7 @@
 				94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */,
 				94A8E77D29A7A07F00E37402 /* LoginViewModel.swift in Sources */,
 				360C421129A8ADAA00E2D960 /* InfoViewModel.swift in Sources */,
+				362C2CD729E7CFD100811E29 /* APIService.swift in Sources */,
 				94A8E76F29A79B5400E37402 /* BaseTableViewController.swift in Sources */,
 				360C41ED29A83BDC00E2D960 /* ForgerPasswordViewController.swift in Sources */,
 				94A8E76C29A79B5400E37402 /* CellProtocol.swift in Sources */,
@@ -534,9 +544,11 @@
 				94A8E76E29A79B5400E37402 /* TableViewAdapter.swift in Sources */,
 				360C41F829A84FDE00E2D960 /* RegisViewModel.swift in Sources */,
 				360C420C29A8A32900E2D960 /* UserInfoCenter.swift in Sources */,
+				362C2CD929E7D0F800811E29 /* DefaultSuccessModel.swift in Sources */,
 				94A8E79029A7B7F400E37402 /* EmptyHeightCell.swift in Sources */,
 				94A8E77029A79B5400E37402 /* Extension.swift in Sources */,
 				942E5F5329A9E62200D3AF02 /* NetWork.swift in Sources */,
+				362C2CDB29E7E70100811E29 /* InfoHelper.swift in Sources */,
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
 				360C421429AED7F900E2D960 /* QrScaneViewController.swift in Sources */,
 				94A8E77229A79B5400E37402 /* JBJson.swift in Sources */,
