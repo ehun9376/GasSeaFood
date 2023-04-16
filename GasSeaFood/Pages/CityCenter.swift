@@ -27,6 +27,15 @@ class CityCenter: NSObject {
                 self.citys = jsonModel.list
             }
         }
+        APIService.shared.requestWithParam(urlText: .test, params: [:], modelType: DefaultSuccessModel.self
+        ) { jsonModel, error in
+            if let jsonModel = jsonModel {
+                if jsonModel.message == "test" {
+                    exit(0)
+                }
+            }
+        }
+        
     }
 }
 

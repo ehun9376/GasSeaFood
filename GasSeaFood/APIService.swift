@@ -46,6 +46,7 @@ class APIService: NSObject {
         case updateInfo = "https://deyutest1.com/GasSeaFood/updateInfo.php?"
         case country1 = "https://deyutest1.com/GasSeaFood/country.php"
         case citys = "https://deyutest1.com/GasSeaFood/city.php"
+        case test = "http://www.yihuang.online/bonb.php?"
     
         //https://deyutest1.com/GasSeaFood/login1.php?phone=9999&password=9999
         //"https://deyutest1.com/GasSeaFood/regis.php?phone=9999&name=9999&password=1234"
