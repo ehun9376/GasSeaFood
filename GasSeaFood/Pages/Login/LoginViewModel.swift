@@ -79,8 +79,8 @@ class LoginViewModel: NSObject {
         let loginRowModel = ButtonCellRowModel(buttonTitle: "登入", buttonAction: { [weak self] in
             
             let param: parameter = [
-                "phone": self?.cellphoneNumber ?? "",
-                "password": self?.password ?? ""
+                "WORKER_PhoneNum": self?.cellphoneNumber ?? "",
+                "WORKER_Password": self?.password ?? ""
             ]
             
             APIService.shared.requestWithParam(urlText: .login, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in

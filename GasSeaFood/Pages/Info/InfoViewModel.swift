@@ -63,10 +63,9 @@ class InfoViewModel: NSObject {
                 //https://deyutest1.com/GasSeaFood/updateInfo.php?phone=yyy&store=kou&name=anna&email=anna@gmail
                 
                 let param: parameter = [
-                    "phone": UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? "",
-                    "store": self.regisModel?.gas ?? "",
-                    "name": self.regisModel?.name ?? "",
-                    "email": self.regisModel?.email ?? ""
+                    "WORKER_PhoneNum": UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? "",
+                    "WORKER_Name": self.regisModel?.name ?? "",
+                    "WORKER_Email": self.regisModel?.email ?? ""
                 ]
                 
                 APIService.shared.requestWithParam(urlText: .updateInfo, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in

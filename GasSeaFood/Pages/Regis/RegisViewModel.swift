@@ -12,33 +12,36 @@ class RegisModel: JsonModel {
 
     
     
-    var name: String = ""
+    var name: String?
 
-    var sex: String = ""
+    var sex: String?
     
-    var address: String = ""
+    var address: String?
     
-    var cellphoneNumber: String = ""
+    var cellphoneNumber: String?
     
-    var phoneNumber: String = ""
+    var phoneNumber: String?
     
-    var email: String = ""
+    var email: String?
     
-    var password: String = ""
+    var password: String?
     
-    var confirmPassword: String = ""
+    var confirmPassword: String?
     
-    var inviewCode: String = ""
+    var inviewCode: String?
     
-    var gas: String = ""
+    var gas: String?
     
     var rule: Bool = false
     
     required init(json: JBJson) {
-        self.name = json["name"].stringValue
-        self.cellphoneNumber = json["name"].stringValue
+        self.name = json["WORKER_Name"].stringValue
+        self.sex = json["WORKER_Sex"].stringValue
+        self.cellphoneNumber = json["WORKER_PhoneNum"].stringValue
+        
         self.gas = json["store"].stringValue
-        self.email = json["email"].stringValue
+        self.address = json["WORKER_Address"].stringValue
+        self.email = json["WORKER_Email"].stringValue
     }
     
     init() {
@@ -162,11 +165,17 @@ class RegisViewModel: NSObject {
         let regisRowModel = ButtonCellRowModel(buttonTitle: "完成註冊", buttonAction: { [weak self] in
             
             
+//        https://deyutest1.com/GasSeaFood/regis.php?WORKER_Name=anna&WORKER_Sex=M&WORKER_PhoneNum=0987721&WORKER_HouseTelpNo=2603&WORKER_Password=1234&WORKER_Email=ehun@gmail&WORKER_Address=tai&WORKER_Company_Id=16776387
             
             let param: parameter = [
-                "phone" : self?.regisModel.cellphoneNumber ?? "",
-                "name": self?.regisModel.name ?? "",
-                "password": self?.regisModel.password ?? ""
+                "WORKER_Name" : self?.regisModel.name ?? "default",
+                "WORKER_Sex" : self?.regisModel.sex ?? "default",
+                "WORKER_PhoneNum" : self?.regisModel.cellphoneNumber ?? "default",
+                "WORKER_HouseTelpNo" : self?.regisModel.phoneNumber ?? "default",
+                "WORKER_Password" : self?.regisModel.password ?? "default",
+                "WORKER_Email" : self?.regisModel.email ?? "default",
+                "WORKER_Address" : self?.regisModel.address ?? "default",
+                "WORKER_Company_Id" : 16776387
             ]
             
             APIService.shared.requestWithParam(urlText: .regis, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in

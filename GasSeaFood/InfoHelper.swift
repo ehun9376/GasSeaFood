@@ -23,7 +23,7 @@ class InfoHelper: NSObject {
             complete?(regisModel)
         } else {
             let param = [
-                "phone": cellPhoneNumber
+                "WORKER_PhoneNum": cellPhoneNumber
             ]
             
             APIService.shared.requestWithParam(urlText: .info, params: param, modelType: RegisModel.self) { jsonModel, error in
