@@ -23,81 +23,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AF635CA-51BD-400A-9E0B-2F820A5F6DE6"
-            shouldBeEnabled = "Yes"
+            uuid = "73D36CCB-FC04-4ADC-984F-76A8F96EF462"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
+            filePath = "GasSeaFood/Cell/TitleTwoButtonsTextfieldCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "setAreaButton(country:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "95183261-7F06-4BE6-B264-3A3822A48FF6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "41977209-A18D-4210-A5E2-1514BDFD4DC5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3822903A-B213-4918-AD55-468520D793D2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A9C836C7-ECC8-4CB2-9339-0EB0FB197DAB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "73D36CCB-FC04-4ADC-984F-76A8F96EF462 - 813fe9488e4728af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GasSeaFood.TitleTwoButtonsTextfieldCell.setAreaButton(country: GasSeaFood.CountryModel) -&gt; ()"
+                  moduleName = "GasSeaFood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/GasSeaFood/GasSeaFood/Cell/TitleTwoButtonsTextfieldCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "73D36CCB-FC04-4ADC-984F-76A8F96EF462 - f7be8a72f1b0cda5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GasSeaFood.CityModel) -&gt; Swift.Bool in GasSeaFood.TitleTwoButtonsTextfieldCell.setAreaButton(country: GasSeaFood.CountryModel) -&gt; ()"
+                  moduleName = "GasSeaFood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yihuang/Desktop/GasSeaFood/GasSeaFood/Cell/TitleTwoButtonsTextfieldCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

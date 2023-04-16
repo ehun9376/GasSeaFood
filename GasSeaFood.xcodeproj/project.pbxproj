@@ -34,6 +34,7 @@
 		362C2CD729E7CFD100811E29 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD629E7CFD100811E29 /* APIService.swift */; };
 		362C2CD929E7D0F800811E29 /* DefaultSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */; };
 		362C2CDB29E7E70100811E29 /* InfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CDA29E7E70100811E29 /* InfoHelper.swift */; };
+		9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429FC3B29EC318D006F90E9 /* CityCenter.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
 		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		362C2CD629E7CFD100811E29 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSuccessModel.swift; sourceTree = "<group>"; };
 		362C2CDA29E7E70100811E29 /* InfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHelper.swift; sourceTree = "<group>"; };
+		9429FC3B29EC318D006F90E9 /* CityCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCenter.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A8E73529A799CC00E37402 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				94A8E73529A799CC00E37402 /* LaunchViewController.swift */,
+				9429FC3B29EC318D006F90E9 /* CityCenter.swift */,
 				362C2CD329E793CD00811E29 /* OrderDetail */,
 				360C421629AEF61800E2D960 /* TodayList */,
 				360C41EB29A83BB400E2D960 /* ForgetPassword */,
@@ -507,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */,
+				9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */,
 				360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */,
 				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
 				94A8E78E29A7B62000E37402 /* ButtonCell.swift in Sources */,

@@ -7,12 +7,15 @@
 
 import UIKit
 
-class LaunchViewController: BaseViewController {
 
+class LaunchViewController: BaseViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.setupAllSubView()
+        
+        CityCenter.share.start()
     }
     
     func setupAllSubView() {
@@ -26,7 +29,7 @@ class LaunchViewController: BaseViewController {
         stackView.addArrangedSubview(self.createTitleLabel())
         stackView.addArrangedSubview(self.createCommandButton(title: "登入", action: { self.gotoLogin() }))
         stackView.addArrangedSubview(self.createCommandButton(title: "註冊", action: { self.gotoRegis() }))
-         
+        
         self.view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -36,7 +39,7 @@ class LaunchViewController: BaseViewController {
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50)
         ])
         
-
+        
         
     }
     
@@ -76,7 +79,7 @@ class LaunchViewController: BaseViewController {
     func gotoLogin() {
         
         let vc = UINavigationController(rootViewController: LoginViewController())
-               
+        
         self.present(vc, animated: true)
         
     }
@@ -88,7 +91,7 @@ class LaunchViewController: BaseViewController {
         vc.viewControllers = [child2]
         self.present(vc, animated: true)
     }
-
-
+    
+    
 }
 

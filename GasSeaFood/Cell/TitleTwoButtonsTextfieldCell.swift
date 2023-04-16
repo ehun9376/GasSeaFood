@@ -61,15 +61,7 @@ class TitleTwoButtonsTextfieldCell: UITableViewCell {
         self.countryButton.titleLabel?.textAlignment = .left
         self.countryButton.layer.cornerRadius = 8
         self.countryButton.showsMenuAsPrimaryAction = true
-        self.countryButton.menu = UIMenu(
-            title: "",
-            children: [
-                UIAction(title: "台北") { [weak self] action in self?.setCountryButtonTitle(title: action.title)},
-                UIAction(title: "台中") { [weak self] action in self?.setCountryButtonTitle(title: action.title) },
-                UIAction(title: "台南") { [weak self] action in self?.setCountryButtonTitle(title: action.title) },
-                UIAction(title: "高雄") { [weak self] action in self?.setCountryButtonTitle(title: action.title) },
-            ]
-        )
+        self.defaultSet()
         
         if #available(iOS 15.0, *) {
             self.areaButton.configuration = nil
@@ -83,15 +75,7 @@ class TitleTwoButtonsTextfieldCell: UITableViewCell {
         self.areaButton.titleLabel?.textAlignment = .left
         self.areaButton.layer.cornerRadius = 8
         self.areaButton.showsMenuAsPrimaryAction = true
-        self.areaButton.menu = UIMenu(
-            title: "",
-            children: [
-                UIAction(title: "文山") { [weak self] action in self?.setAreaButtonTitle(title: action.title) },
-                UIAction(title: "松山") {  [weak self] action in self?.setAreaButtonTitle(title: action.title) },
-                UIAction(title: "信義") {  [weak self] action in self?.setAreaButtonTitle(title: action.title)  },
-                UIAction(title: "大安") {  [weak self] action in self?.setAreaButtonTitle(title: action.title) },
-            ]
-        )
+
 
     }
     
@@ -111,6 +95,33 @@ class TitleTwoButtonsTextfieldCell: UITableViewCell {
     @objc func textFieldDidEdit(_ sender: UITextField) {
         let text = (self.rowModel?.country ?? "") + (self.rowModel?.area ?? "") + (sender.text ?? "")
         self.rowModel?.textDidChange?(text)
+    }
+    
+    func defaultSet() {
+        
+        let countrys = CityCenter.share.countrys
+
+        var actions: [UIAction] = []
+        
+        for country in countrys {
+            let action = UIAction(title: country.country_name ?? "" , handler: {  [weak self] action in
+                self?.setCountryButtonTitle(title: action.title)
+                self?.setAreaButton(country: country)
+
+            })
+            
+            actions.append(action)
+        }
+        
+        self.countryButton.menu = .init(children: actions)
+        
+    }
+    
+    func setAreaButton(country: CountryModel) {
+        let city = CityCenter.share.citys.filter({$0.country_id == country.country_id ?? ""})
+        self.areaButton.menu = .init(children: city.map({UIAction(title: $0.city_name ?? "") { [weak self] action in
+            self?.setAreaButtonTitle(title: action.title)
+        }}))
     }
     
 }
