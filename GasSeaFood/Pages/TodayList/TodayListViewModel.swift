@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TodayListMethod {
-    func cellDidSelect(title: String)
+    func cellDidSelect(model: GasOrderModel)
 }
 
 class TodayListViewModel: NSObject {
@@ -23,30 +23,31 @@ class TodayListViewModel: NSObject {
         self.adapter = adapter
     }
     
+    var orderListModel: GasOrderListModel?
+    
     
     func setupRow(index: Int = 0) {
         var rowModels: [CellRowModel] = []
-        
-        
-        var list: [String] = []
-        switch index {
-        case 0:
-            list = ["訂單1","訂單2","訂單3","訂單4"]
-        case 1:
-            list = ["訂單5","訂單6","訂單7","訂單8"]
-        default:
-            break
-        }
-        
-        for order in list {
-            let row = TodayListCellRowModel(title: order,
+
+        for order in orderListModel?.list ?? [] {
+            let row = TodayListCellRowModel(title: "訂單:\(order.orderID ?? "")",
                                             titleLabelAction: { [weak self] in
-                self?.delegate?.cellDidSelect(title: order)
+                self?.delegate?.cellDidSelect(model: order)
             })
             rowModels.append(row)
         }
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
+    }
+    
+    
+    func getGasOrderAPI() {
+        APIService.shared.requestWithParam(urlText: .gasOrder, params: [:], modelType: GasOrderListModel.self) { jsonModel, error in
+            if let jsonModel = jsonModel {
+                self.orderListModel = jsonModel
+                self.setupRow()
+            }
+        }
     }
     
 }

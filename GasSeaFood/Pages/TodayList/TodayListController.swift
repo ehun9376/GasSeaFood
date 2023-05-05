@@ -23,7 +23,7 @@ class TodayListController: BaseTableViewController {
         self.setSegmentControl()
         self.resetTableView()
         self.viewModel = .init(delegate: self, adapter: .init(self.defaultTableView))
-        self.viewModel?.setupRow()
+        self.viewModel?.getGasOrderAPI()
     }
     
     func setSegmentControl() {
@@ -64,10 +64,12 @@ class TodayListController: BaseTableViewController {
         
 }
 extension TodayListController: TodayListMethod {
-    func cellDidSelect(title: String) {
+    func cellDidSelect(model: GasOrderModel) {
         let vc = OrderDetailViewController()
-        vc.naviTitle = title
+        vc.naviTitle = model.orderID ?? ""
+        vc.gasOrderModel = model
         self.navigationController?.pushViewController(vc, animated: true)
     }
+
 }
 
