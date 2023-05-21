@@ -34,6 +34,8 @@
 		362C2CD729E7CFD100811E29 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD629E7CFD100811E29 /* APIService.swift */; };
 		362C2CD929E7D0F800811E29 /* DefaultSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */; };
 		362C2CDB29E7E70100811E29 /* InfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C2CDA29E7E70100811E29 /* InfoHelper.swift */; };
+		36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */; };
+		36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA212A048D9E00771A62 /* CustomModel.swift */; };
 		9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429FC3B29EC318D006F90E9 /* CityCenter.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
@@ -112,6 +114,8 @@
 		362C2CD629E7CFD100811E29 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSuccessModel.swift; sourceTree = "<group>"; };
 		362C2CDA29E7E70100811E29 /* InfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHelper.swift; sourceTree = "<group>"; };
+		36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasOrderModel.swift; sourceTree = "<group>"; };
+		36C3BA212A048D9E00771A62 /* CustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModel.swift; sourceTree = "<group>"; };
 		9429FC3B29EC318D006F90E9 /* CityCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCenter.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 			children = (
 				360C421729AEF64500E2D960 /* TodayListController.swift */,
 				360C421929AEF66400E2D960 /* TodayListViewModel.swift */,
+				36C3BA1E2A04824900771A62 /* Model */,
 			);
 			path = TodayList;
 			sourceTree = "<group>";
@@ -250,8 +255,17 @@
 			isa = PBXGroup;
 			children = (
 				362C2CD429E7944300811E29 /* OrderDetailViewController.swift */,
+				36C3BA212A048D9E00771A62 /* CustomModel.swift */,
 			);
 			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		36C3BA1E2A04824900771A62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		94A8E72529A799CC00E37402 = {
@@ -511,6 +525,7 @@
 			files = (
 				360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */,
 				9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */,
+				36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */,
 				360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */,
 				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
 				94A8E78E29A7B62000E37402 /* ButtonCell.swift in Sources */,
@@ -540,6 +555,7 @@
 				360C421A29AEF66400E2D960 /* TodayListViewModel.swift in Sources */,
 				94A8E76D29A79B5400E37402 /* CollectionViewAdapter.swift in Sources */,
 				94A8E78629A7AE5300E37402 /* TitleTextFieldCell.swift in Sources */,
+				36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */,
 				360C420829A8997F00E2D960 /* HeadInfoCell.swift in Sources */,
 				360C41F129A84C7000E2D960 /* ResetPasswordViewController.swift in Sources */,
 				94A8E76E29A79B5400E37402 /* TableViewAdapter.swift in Sources */,

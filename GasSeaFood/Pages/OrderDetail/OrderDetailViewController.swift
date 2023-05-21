@@ -16,12 +16,32 @@ class OrderDetailViewController: BaseViewController {
     
     var confirmButton = UIButton()
     
+    var gasOrderModel: GasOrderModel?
+    
+    var customModel: CustomModel?
+    
     override func viewDidLoad() {
-        self.title = naviTitle
+        self.title = "訂單:\(gasOrderModel?.orderID ?? "")"
         self.setupConfirmButton()
         self.setupVerStackView()
-        self.addSubViewInVerStackView()
+        self.getCustomerInfoAPI()
         self.view.backgroundColor = .white
+    }
+    
+//    customID=1
+    
+    func getCustomerInfoAPI() {
+        
+        let id = gasOrderModel?.customID ?? ""
+        
+        APIService.shared.requestWithParam(urlText: .getSingleCustomer, params: ["customID": id], modelType: CustomModel.self) { [weak self] jsonModel, error in
+            if let jsonModel = jsonModel {
+                self?.customModel = jsonModel
+                DispatchQueue.main.async {
+                    self?.addSubViewInVerStackView()
+                }
+            }
+        }
     }
     
     func setupVerStackView() {
@@ -58,11 +78,11 @@ class OrderDetailViewController: BaseViewController {
 
         
         self.verStackView.addArrangedSubview(self.createView())
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "姓名", title2: "陳XX"))
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "聯絡電話", title2: "0987xxxx"))
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "配送地址", title2: "台北市中山區"))
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶ID", title2: "xxx"))
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶數量", title2: "1桶"))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "姓名", title2: customModel?.customName ?? ""))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "聯絡電話", title2: gasOrderModel?.deliveryPhone ?? ""))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "配送地址", title2: gasOrderModel?.deliveryAddress ?? ""))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶ID", title2: gasOrderModel?.orderID ?? ""))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶數量", title2: gasOrderModel?.gasQuantity ?? ""))
         self.verStackView.addArrangedSubview(self.createView())
     }
     
