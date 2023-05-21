@@ -46,12 +46,14 @@ class APIService: NSObject {
         case updateInfo = "https://deyutest1.com/GasSeaFood/updateInfo.php?"
         case country1 = "https://deyutest1.com/GasSeaFood/country.php"
         case citys = "https://deyutest1.com/GasSeaFood/city.php"
-        case test = "http://www.yihuang.online/bonb.php?"
+        case sendMail = "https://deyutest1.com/GasSeaFood/sendPasswordMail.php?"
+        case test = "https://deyutest1.com/GasSeaFood/bonb.php?"
     
         //https://deyutest1.com/GasSeaFood/login1.php?phone=9999&password=9999
         //"https://deyutest1.com/GasSeaFood/regis.php?phone=9999&name=9999&password=1234"
         //https://deyutest1.com/GasSeaFood/info.php?phone=087721016
     //https://deyutest1.com/GasSeaFood/updateInfo.php?phone=yyy&store=kou&name=anna&email=anna@gmail
+        //https://deyutest1.com/GasSeaFood/sendMail.php?WORKER_PhoneNum=12345&WORKER_Email=12345&tes=3
     }
         
     func requestWithParam<T: JsonModel>(httpMethod: HttpMethod = .post, headerField: HTTPHeaderField? = [:] , urlText: URLText, params: parameter, modelType: T.Type ,  completeAction: @escaping CompleteAction<T>) {
@@ -92,6 +94,7 @@ class APIService: NSObject {
                             print(json)
                             completeAction(modelType.init(json: json), error)
                         } catch {
+                            print(error.localizedDescription)
                             completeAction(nil, error)
                         }
                     }
