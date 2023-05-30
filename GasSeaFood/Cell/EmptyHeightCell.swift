@@ -19,14 +19,18 @@ class EmptyHeightRowModel: CellRowModel {
     
     var attr: NSAttributedString?
     
+    var textAligment: NSTextAlignment = .center
+    
     init(
         cellHeight: CGFloat,
         color: UIColor = .white,
-        attr: NSAttributedString? = nil
+        attr: NSAttributedString? = nil,
+        textAligment: NSTextAlignment = .center
     ) {
         self.cellHeight = cellHeight
         self.color = color
         self.attr = attr
+        self.textAligment = textAligment
     }
 }
 
@@ -51,6 +55,8 @@ extension EmptyHeightCell: BaseCellView {
         
         self.cellViewHeight.constant = rowModel.cellHeight
         self.backView.backgroundColor = rowModel.color
+        
+        self.titleLabel.textAlignment = rowModel.textAligment
         
         if let attr = rowModel.attr {
             self.titleLabel.attributedText = attr

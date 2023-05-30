@@ -128,7 +128,7 @@ open class BaseViewController: UIViewController {
         }
     }
     
-    private func defaultNavigationSet() {
+    func defaultNavigationSet() {
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.white

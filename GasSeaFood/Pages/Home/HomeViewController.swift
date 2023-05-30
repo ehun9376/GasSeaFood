@@ -52,7 +52,7 @@ extension HomeViewController: HomeMethod {
     func gotoScane() {
         let vc = QRCodeScannerViewController()
 //        self.navigationController?.pushViewController(vc, animated: true)
-        self.present(vc, animated: true)
+        self.present(UINavigationController(rootViewController: vc) , animated: true)
     }
     
     func gotoList() {

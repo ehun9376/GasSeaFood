@@ -23,64 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D2AD3778-D58C-4576-911E-56FA3C6D774E"
-            shouldBeEnabled = "Yes"
+            uuid = "5551E5F6-30F5-46BB-B09A-14CC11F7691B"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/Pages/Regis/RegisViewModel.swift"
+            filePath = "GasSeaFood/DefaultSuccessModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "setupRow()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D2AD3778-D58C-4576-911E-56FA3C6D774E - 5d0cfdf1eb08ee17"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #11 () -&gt; () in GasSeaFood.RegisViewModel.setupRow() -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yihuang/Desktop/GasSeaFood/GasSeaFood/Pages/Regis/RegisViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "3778">
-               </Location>
-               <Location
-                  uuid = "D2AD3778-D58C-4576-911E-56FA3C6D774E - 8cfc20110964678d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;GasSeaFood.DefaultSuccessModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #11 () -&gt; () in GasSeaFood.RegisViewModel.setupRow() -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yihuang/Desktop/GasSeaFood/GasSeaFood/Pages/Regis/RegisViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "165"
-                  endingLineNumber = "165"
-                  offsetFromSymbolStart = "121">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C4364DFB-F02F-4195-B6AE-466A49DC1371"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/APIService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "init(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -37,6 +37,7 @@
 		36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */; };
 		36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA212A048D9E00771A62 /* CustomModel.swift */; };
 		9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429FC3B29EC318D006F90E9 /* CityCenter.swift */; };
+		945425B22A26582700F21E42 /* LessGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945425B12A26582700F21E42 /* LessGasViewController.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
 		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
@@ -117,6 +118,7 @@
 		36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasOrderModel.swift; sourceTree = "<group>"; };
 		36C3BA212A048D9E00771A62 /* CustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModel.swift; sourceTree = "<group>"; };
 		9429FC3B29EC318D006F90E9 /* CityCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCenter.swift; sourceTree = "<group>"; };
+		945425B12A26582700F21E42 /* LessGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessGasViewController.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A8E73529A799CC00E37402 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				360C421329AED7F900E2D960 /* QrScaneViewController.swift */,
+				945425B12A26582700F21E42 /* LessGasViewController.swift */,
 			);
 			path = QrScane;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */,
 				9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */,
 				36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */,
+				945425B22A26582700F21E42 /* LessGasViewController.swift in Sources */,
 				360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */,
 				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
 				94A8E78E29A7B62000E37402 /* ButtonCell.swift in Sources */,

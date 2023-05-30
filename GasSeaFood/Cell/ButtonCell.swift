@@ -20,14 +20,18 @@ class ButtonCellRowModel: CellRowModel {
     
     var buttonHeight: CGFloat = 50
     
+    var buttonColor: UIColor = .init(hex: "3472D9")
+    
     init(
         buttonTitle: String?,
         buttonHeight: CGFloat = 50,
+        buttonColor: UIColor = .init(hex: "3472D9"),
         buttonAction: (()->())?
     ) {
         self.buttonTitle = buttonTitle
         self.buttonHeight = buttonHeight
         self.buttonAction = buttonAction
+        self.buttonColor = buttonColor
     }
     
 }
@@ -48,7 +52,6 @@ class ButtonCell: UITableViewCell {
         
         button.titleLabel?.font = .systemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .init(hex: "3472D9")
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
@@ -71,5 +74,6 @@ extension ButtonCell: BaseCellView {
         self.rowModel = rowModel
         self.button.setTitle(rowModel.buttonTitle, for: .normal)
         self.buttonheight.constant = rowModel.buttonHeight
+        button.backgroundColor = rowModel.buttonColor
     }
 }

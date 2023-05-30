@@ -27,6 +27,8 @@ class QRCodeScannerViewController: BaseViewController {
     var oldCode: String = ""
     
     var newCode: String = ""
+    
+    var hasOld: Bool = false
 
 
     override func viewDidLoad() {
@@ -55,6 +57,8 @@ class QRCodeScannerViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(!hasOld, animated: false)
+
         if (captureSession?.isRunning == false) {
             DispatchQueue.global().async {
                 self.captureSession.startRunning()
@@ -65,6 +69,8 @@ class QRCodeScannerViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         if (captureSession?.isRunning == true) {
             DispatchQueue.global().async {
                 self.captureSession.stopRunning()
@@ -94,7 +100,7 @@ class QRCodeScannerViewController: BaseViewController {
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     }
     
-    func setupRow(text: String? = nil) {
+    func setupRow(code: String? = nil) {
         
         var rowModels: [CellRowModel] = []
         
@@ -103,29 +109,43 @@ class QRCodeScannerViewController: BaseViewController {
         }
         
         rowModels.append(numberRow)
-        
+                
         let firstAttr = NSMutableAttributedString(string: "原 瓦斯桶\n", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold)
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
         ])
         
-        if let text = text {
             
-            let secondAttr = NSMutableAttributedString(string: "瓦斯桶ID: \(text)", attributes: [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold)
-            ])
-            
-            firstAttr.append(secondAttr)
-        }
+        let secondAttr = NSMutableAttributedString(string: "瓦斯桶ID: \(code ?? "xxxx")", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
+        ])
         
+        firstAttr.append(secondAttr)
+        
+        let thirdAttr = NSMutableAttributedString(string: "新 瓦斯桶\n", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
+        ])
+        
+            
+        let fourthAttr = NSMutableAttributedString(string: "瓦斯桶ID: \(code ?? "xxxx")\n初始容量: xxxxx\n瓦斯筒材質: 傳統鋼瓶/復合材料", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
+        ])
+        
+        thirdAttr.append(fourthAttr)
 
-        
-        
-        let titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: firstAttr)
+        let titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: hasOld ? thirdAttr  : firstAttr, textAligment: hasOld ? .left : .center)
         
         rowModels.append(titleRow)
         
-        let buttonRow = ButtonCellRowModel(buttonTitle: "確認", buttonAction: {
-            self.dismiss(animated: true)
+        let buttonRow = ButtonCellRowModel(buttonTitle:  self.hasOld ? "確認" :"殘氣結算", buttonAction: {
+            
+            if self.hasOld {
+                self.navigationController?.dismiss(animated: true)
+            } else {
+                let vc = LessGasViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+
+            
         })
         
         rowModels.append(buttonRow)
@@ -160,7 +180,7 @@ class QRCodeScannerViewController: BaseViewController {
         }
         
         self.alertLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.alertLabel.text = hasOld ? "請掃新瓦斯桶!" : "請掃舊瓦斯桶!"
+        self.alertLabel.text = self.hasOld ? "請掃新瓦斯桶!" : "請掃舊瓦斯桶!"
         self.alertLabel.textAlignment = .center
         self.alertLabel.font = .systemFont(ofSize: 24, weight: .bold)
         self.alertLabel.textColor = .lightGray
@@ -184,7 +204,7 @@ class QRCodeScannerViewController: BaseViewController {
         self.view.addSubview(preview)
         
         NSLayoutConstraint.activate([
-            self.preview.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            self.preview.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             self.preview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.preview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.preview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40),
@@ -210,7 +230,7 @@ class QRCodeScannerViewController: BaseViewController {
         
         self.showAlert(success: true, complete: { [ weak self] in
             self?.oldCode = code
-            self?.setupRow(text: code)
+            self?.setupRow(code: code)
             self?.setupAlertLabel(hasOld: true)
             DispatchQueue.global().async {
                 self?.captureSession.startRunning()
