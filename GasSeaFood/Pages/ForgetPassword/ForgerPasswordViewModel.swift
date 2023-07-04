@@ -9,6 +9,8 @@ import Foundation
 
 protocol ForgetPasswordMethod {
     func resetButtonAction(success: Bool, message: String)
+    func verifyButtonAction(success: Bool, message: String)
+    func changePasswordCompletion(success: Bool, message: String)
 }
 
 class ForgerPasswordViewModel: NSObject {
@@ -76,5 +78,27 @@ class ForgerPasswordViewModel: NSObject {
             self?.delegate?.resetButtonAction(success: jsonModel?.status ?? false, message: jsonModel?.message ?? "未知錯誤，請再試一次")
         }
         
+    }
+    
+    func verifyCode(_ code:Int) {
+        let param: parameter = [
+            "WORKER_Verifycode": code,
+            "WORKER_Email": self.email
+        ]
+        
+        APIService.shared.requestWithParam(httpMethod: .post, urlText: .verifyCode, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in
+            self?.delegate?.verifyButtonAction(success: jsonModel?.status ?? false, message: jsonModel?.message ?? "未知錯誤，請再試一次")
+        }
+    }
+    
+    func changePassword(_ pwd:String) {
+        let param: parameter = [
+            "WORKER_Password": pwd,
+            "WORKER_Email": self.email
+        ]
+        
+        APIService.shared.requestWithParam(httpMethod: .post, urlText: .changePassword, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in
+            self?.delegate?.changePasswordCompletion(success: jsonModel?.status ?? false, message: jsonModel?.message ?? "未知錯誤，請再試一次")
+        }
     }
 }

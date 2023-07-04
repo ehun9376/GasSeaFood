@@ -50,6 +50,8 @@ class APIService: NSObject {
         case test = "https://deyutest1.com/GasSeaFood/bonb.php?"
         case gasOrder = "https://deyutest1.com/GasSeaFood/gasOrder.php"
         case getSingleCustomer = "https://deyutest1.com/GasSeaFood/getSingleCustomer.php?"
+        case verifyCode = "https://deyutest1.com/GasSeaFood/verifyCode.php?"
+        case changePassword = "https://deyutest1.com/GasSeaFood/changePwd.php?"
     }
         
     func requestWithParam<T: JsonModel>(httpMethod: HttpMethod = .post, headerField: HTTPHeaderField? = [:] , urlText: URLText, params: parameter, modelType: T.Type ,  completeAction: @escaping CompleteAction<T>) {
