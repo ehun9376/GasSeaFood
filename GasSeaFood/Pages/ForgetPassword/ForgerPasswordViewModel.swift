@@ -15,6 +15,17 @@ protocol ForgetPasswordMethod {
 
 class ForgerPasswordViewModel: NSObject {
     
+    enum Status {
+        ///輸入手機跟信箱
+        case getCode
+        
+        ///輸入驗證碼
+        case enterCode
+        
+        ///輸入新密碼
+        case editPassword
+    }
+    
     var delegate: ForgetPasswordMethod?
     
     var adapter: TableViewAdapter?
@@ -22,6 +33,12 @@ class ForgerPasswordViewModel: NSObject {
     var number: String = ""
     
     var email: String = ""
+    
+    var code: String = ""
+    
+    var newPassword: String = ""
+    
+    var status: Status = .getCode
     
     init(delegate: ForgetPasswordMethod? = nil, adapter: TableViewAdapter? = nil) {
         self.delegate = delegate
@@ -34,33 +51,92 @@ class ForgerPasswordViewModel: NSObject {
         
         let imageRow = TitleImageRowModel(title: "忘記密碼", imageName: "lock")
         
-        rowModels.append(imageRow)
-        
-        let phoneRowModel = TitleTextFieldRowModel(title: "手機號碼",
-                                                placeHolder: "請輸入您的手機號碼",
-                                                textDidChange: { [weak self] text in
-            self?.number = text
-        })
-        
-        rowModels.append(phoneRowModel)
-        
-        let passwordRow = TitleTextFieldRowModel(title: "Email",
-                                                 placeHolder: "請輸入您的Email",
-                                                 textDidChange: { text in
-            self.email = text
-        })
-        
-        rowModels.append(passwordRow)
-        
         let emptyRowModel = EmptyHeightRowModel(cellHeight: 87.0, color: .white)
         
-        rowModels.append(emptyRowModel)
         
-        let loginRowModel = ButtonCellRowModel(buttonTitle: "重新設定密碼", buttonAction: { [weak self] in
-            self?.sendPasswordMail()
-        })
+        switch status {
+            
+        case .getCode:
+            
+            rowModels.append(imageRow)
+            
+            let phoneRowModel = TitleTextFieldRowModel(title: "手機號碼",
+                                                       text: self.number,
+                                                       placeHolder: "請輸入您的手機號碼",
+                                                       textDidChange: { [weak self] text in
+                self?.number = text
+            })
+            
+            rowModels.append(phoneRowModel)
+            
+            let passwordRow = TitleTextFieldRowModel(title: "Email",
+                                                     text: self.email,
+                                                     placeHolder: "請輸入您的Email",
+                                                     textDidChange: { text in
+                self.email = text
+            })
+            
+            rowModels.append(passwordRow)
+            
+            
+            rowModels.append(emptyRowModel)
+            
+            let loginRowModel = ButtonCellRowModel(buttonTitle: "重新設定密碼", buttonAction: { [weak self] in
+                self?.sendPasswordMail()
+            })
+            
+            rowModels.append(loginRowModel)
+            
+        case .enterCode:
+            
+            rowModels.append(imageRow)
+            
+            let codeRowModel = TitleTextFieldRowModel(title: "驗證碼",
+                                                      text: self.code,
+                                                      placeHolder: "請輸入收到的驗證碼",
+                                                      textDidChange: { [weak self] text in
+                self?.code = text
+            })
+            
+            rowModels.append(codeRowModel)
+            
+            
+            rowModels.append(emptyRowModel)
+            
+            let loginRowModel = ButtonCellRowModel(buttonTitle: "重新設定密碼", buttonAction: { [weak self] in
+                self?.verifyCode(Int(self?.code ?? "0") ?? 0)
+            })
+            
+            rowModels.append(loginRowModel)
+            
+        case .editPassword:
+            
+            rowModels.append(imageRow)
+            
+            let newPasswordRowModel = TitleTextFieldRowModel(title: "新密碼",
+                                                             text: self.newPassword,
+                                                             placeHolder: "請輸入您的新密碼",
+                                                             textDidChange: { [weak self] text in
+                self?.newPassword = text
+            })
+            
+            rowModels.append(newPasswordRowModel)
+            
+            rowModels.append(emptyRowModel)
+            
+            
+            let loginRowModel = ButtonCellRowModel(buttonTitle: "重新設定密碼", buttonAction: { [weak self] in
+                self?.changePassword(self?.newPassword ?? "")
+            })
+            
+            rowModels.append(loginRowModel)
+            
+        }
         
-        rowModels.append(loginRowModel)
+        
+        
+        
+        
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
         
@@ -80,7 +156,7 @@ class ForgerPasswordViewModel: NSObject {
         
     }
     
-    func verifyCode(_ code:Int) {
+    func verifyCode(_ code: Int) {
         let param: parameter = [
             "WORKER_Verifycode": code,
             "WORKER_Email": self.email
@@ -91,7 +167,7 @@ class ForgerPasswordViewModel: NSObject {
         }
     }
     
-    func changePassword(_ pwd:String) {
+    func changePassword(_ pwd: String) {
         let param: parameter = [
             "WORKER_Password": pwd,
             "WORKER_Email": self.email
