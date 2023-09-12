@@ -19,3 +19,21 @@ class DefaultSuccessModel: JsonModel {
     }
     
 }
+
+class DefaultResponseModel: JsonModel {
+    
+    var response: String?
+    
+    required init(json: JBJson) {
+        self.response = json["response"].stringValue
+    }
+    
+    func isResponseSuccess() -> Bool {
+        return self.response == "success"
+    }
+    
+    func isResponseDuplicate() -> Bool {
+        return self.response == "Duplicate"
+    }
+    
+}

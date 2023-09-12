@@ -2,90 +2,73 @@
 //  TwoButtonCell.swift
 //  GasSeaFood
 //
-//  Created by 陳逸煌 on 2023/2/24.
+//  Created by yihuang on 2023/9/12.
 //
 
 import Foundation
 import UIKit
-
-
-class TwoButtonRowModel: CellRowModel {
+class TwoButtonCellRowModel: CellRowModel {
+    init(leftTitle: String? = nil, righttitle: String? = nil, leftButtonAction: (() -> ())? = nil, rightButtonAction: (() -> ())? = nil) {
+        self.leftTitle = leftTitle
+        self.righttitle = righttitle
+        self.leftButtonAction = leftButtonAction
+        self.rightButtonAction = rightButtonAction
+    }
+    
     override func cellReUseID() -> String {
         return "TwoButtonCell"
     }
     
-    var buttonAction: ((String)->())?
-    init(buttonAction: ( (String) -> ())? = nil) {
-        self.buttonAction = buttonAction
-    }
+    var leftTitle: String?
+    var righttitle: String?
+    var leftButtonAction: (()->())?
+    var rightButtonAction: (()->())?
 }
 
 class TwoButtonCell: UITableViewCell {
     
-    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
     
-    @IBOutlet weak var femaleButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     
-    @IBOutlet weak var stackView: UIStackView!
-    
-    var rowModel: TwoButtonRowModel?
+    var rowModel: TwoButtonCellRowModel?
     
     override func awakeFromNib() {
-        
-
-        
-        self.maleButton.setTitle("男", for: .normal)
-        if #available(iOS 15.0, *) {
-            self.maleButton.configuration = nil
-        }
-        self.maleButton.setTitleColor(.black, for: .normal)
-        self.maleButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        self.maleButton.setImage(UIImage(named: "uncheck")?.resizeImage(targetSize: .init(width: 20, height: 20)), for: .normal)
-        self.maleButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
-
-        if #available(iOS 15.0, *) {
-            self.femaleButton.configuration = nil
-        }
-        self.femaleButton.setTitleColor(.black, for: .normal)
-        self.femaleButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        self.femaleButton.setTitle("女", for: .normal)
-        self.femaleButton.setImage(UIImage(named: "uncheck")?.resizeImage(targetSize: .init(width: 20, height: 20)), for: .normal)
-        self.femaleButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        self.setButton(button: self.leftButton)
+        self.setButton(button: self.rightButton)
+        self.leftButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
+        self.rightButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+    }
+    @objc func leftButtonAction() {
+        self.rowModel?.leftButtonAction?()
+    }
+    @objc func rightButtonAction() {
+        self.rowModel?.rightButtonAction?()
     }
     
-    
-    func resetButton() {
-        self.maleButton.isSelected = false
-        self.femaleButton.isSelected = false
+    func setButton(button: UIButton){
         
-        self.maleButton.imageView?.backgroundColor = .clear
-        self.femaleButton.imageView?.backgroundColor = .clear
+        button.titleLabel?.font = .systemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 5
+        button.backgroundColor = .init(hex: "3472D9")
         
-        self.maleButton.imageView?.layer.cornerRadius = (self.maleButton.imageView?.frame.height ?? 0) / 2
-        self.femaleButton.imageView?.layer.cornerRadius = (self.femaleButton.imageView?.frame.height ?? 0) / 2
         
-        self.maleButton.imageView?.layer.borderWidth = 2
-        self.femaleButton.imageView?.layer.borderWidth = 2
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 5.0
         
-        self.maleButton.imageView?.layer.borderColor = UIColor.black.cgColor
-        self.femaleButton.imageView?.layer.borderColor = UIColor.black.cgColor
-
     }
-    
-    @objc func buttonAction(_ sender: UIButton) {
-        self.resetButton()
-        sender.isSelected = true
-        sender.imageView?.backgroundColor = .init(hex: "3472D9")
-        self.rowModel?.buttonAction?(sender.titleLabel?.text ?? "")
-    }
-    
 }
 
 extension TwoButtonCell: BaseCellView {
     func setupCellView(model: BaseCellModel) {
-        guard let rowModel = model as? TwoButtonRowModel else { return }
+        guard let rowModel = model  as? TwoButtonCellRowModel else { return }
+        
         self.rowModel = rowModel
-        self.resetButton()
+        self.leftButton.setTitle(rowModel.leftTitle, for: .normal)
+        self.rightButton.setTitle(rowModel.righttitle, for: .normal)
+        
     }
 }

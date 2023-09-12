@@ -83,7 +83,7 @@ class RegisViewModel: NSObject {
         
         rowModels.append(nameRow)
         
-        let sexRow = TwoButtonRowModel(buttonAction: { [weak self] text in
+        let sexRow = GenderTwoButtonRowModel(buttonAction: { [weak self] text in
             self?.regisModel.sex = text
         })
         

@@ -20,7 +20,7 @@ class RegisViewController: BaseTableViewController {
             "LabelCell",
             "ButtonCell",
             "EmptyHeightCell",
-            "TwoButtonCell",
+            "GenderTwoButtonCell",
             "TitleTwoButtonsTextfieldCell"
         ])
 

@@ -45,6 +45,7 @@ class EmptyHeightCell: UITableViewCell {
     
     override func awakeFromNib() {
         titleLabel.numberOfLines = 0
+        self.selectionStyle = .none
     }
     
 }

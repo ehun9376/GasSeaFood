@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5551E5F6-30F5-46BB-B09A-14CC11F7691B"
-            shouldBeEnabled = "No"
+            uuid = "A9156D2D-69B3-4688-93B2-9FAFA507B440"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/DefaultSuccessModel.swift"
+            filePath = "GasSeaFood/APIService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "init(json:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

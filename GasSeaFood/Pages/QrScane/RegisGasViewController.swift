@@ -1,16 +1,14 @@
 //
-//  QrScaneViewController.swift
+//  RegisGasViewController.swift
 //  GasSeaFood
 //
-//  Created by 陳逸煌 on 2023/3/1.
+//  Created by yihuang on 2023/9/12.
 //
-
-import Foundation
 
 import AVFoundation
 import UIKit
 
-class QRCodeScannerViewController: BaseViewController {
+class RegisGasViewController: BaseViewController {
 
     var captureSession: AVCaptureSession!
     
@@ -26,9 +24,16 @@ class QRCodeScannerViewController: BaseViewController {
     
     var titleRow:EmptyHeightRowModel?
     
-    var oldCode: String = "" {
+    var newGasID: String = "" {
         didSet {
-            self.titleRow?.attr = self.createAttr(id: oldCode)
+            self.titleRow?.attr = self.createAttr(id: newGasID, weight: emptyWeight)
+            self.titleRow?.updateCellView()
+        }
+    }
+    
+    var emptyWeight: String = "" {
+        didSet {
+            self.titleRow?.attr = self.createAttr(id: newGasID, weight: emptyWeight)
             self.titleRow?.updateCellView()
         }
     }
@@ -37,7 +42,9 @@ class QRCodeScannerViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = "瓦斯桶註冊"
+        
         self.view.backgroundColor = .white
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewAction))
@@ -61,7 +68,6 @@ class QRCodeScannerViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(!hasOld, animated: false)
 
         if (captureSession?.isRunning == false) {
             DispatchQueue.global().async {
@@ -73,7 +79,6 @@ class QRCodeScannerViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
 
         if (captureSession?.isRunning == true) {
             DispatchQueue.global().async {
@@ -102,11 +107,13 @@ class QRCodeScannerViewController: BaseViewController {
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         self.tableView.register(.init(nibName: "EmptyHeightCell", bundle: nil), forCellReuseIdentifier: "EmptyHeightCell")
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
+        self.tableView.register(.init(nibName: "TwoButtonCell", bundle: nil), forCellReuseIdentifier: "TwoButtonCell")
+        
     }
     
-    func createAttr(id: String) -> NSMutableAttributedString {
-        let firstAttr = NSMutableAttributedString(string: "原瓦斯桶ID: \(id)", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
+    func createAttr(id: String, weight: String) -> NSMutableAttributedString {
+        let firstAttr = NSMutableAttributedString(string: "新瓦斯桶ID: \(id)\n瓦斯桶空桶重：\(weight)", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
         ])
         return firstAttr
     }
@@ -116,27 +123,39 @@ class QRCodeScannerViewController: BaseViewController {
         
         var rowModels: [CellRowModel] = []
         
-        let numberRow = TitleTextFieldRowModel(title: "輸入瓦斯桶編號", placeHolder: "請輸入您的瓦斯桶編號") { [weak self] text in
-            self?.oldCode = text
+        let numberRow = TitleTextFieldRowModel(title: "輸入瓦斯桶編號", placeHolder: "請輸入瓦斯桶編號") { [weak self] text in
+            self?.newGasID = text
         }
         
         rowModels.append(numberRow)
         
-        self.titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: createAttr(id: oldCode), textAligment: .center)
+        let weightRow = TitleTextFieldRowModel(title: "輸入瓦斯桶空桶重", placeHolder: "請輸入瓦斯桶空桶重") { [weak self] text in
+            self?.emptyWeight = text
+        }
+        
+        rowModels.append(weightRow)
+        
+        self.titleRow = EmptyHeightRowModel(cellHeight: 100, color: .white, attr: createAttr(id: newGasID, weight: emptyWeight), textAligment: .center)
 
         if let titleRow = titleRow {
             rowModels.append(titleRow)
         }
         
-        let buttonRow = ButtonCellRowModel(buttonTitle: "下一頁", buttonAction: { [weak self] in
-            guard self?.oldCode ?? "" != "" else {
-                self?.showSingleAlert(message: "請先輸入或掃描取得瓦斯桶編號")
-                return
-            }
-            self?.checkGasID(gasID: self?.oldCode ?? "")
+        let twoButtonRow = TwoButtonCellRowModel(leftTitle: "確認註冊",
+                                                 righttitle: "跳過註冊",
+                                                 leftButtonAction: {  [weak self] in
+            //TODO: - 確認註冊
+            guard self?.checkGasInfo() ?? false else { return }
+            self?.regisGas()
+
+        },
+                                                 rightButtonAction: { [weak self] in
+            //TODO: - 跳過註冊
+            
         })
         
-        rowModels.append(buttonRow)
+        rowModels.append(twoButtonRow)
+        
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
         
@@ -213,33 +232,60 @@ class QRCodeScannerViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    func checkGasID(gasID: String) {
+    func checkGasInfo() -> Bool {
         
-        APIService.shared.requestWithParam(headerField: .form, urlText: .showGasInfo, params: ["id": gasID], modelType: DefaultResponseModel.self) { [weak self] jsonModel, error in
-            if let jsonModel = jsonModel {
-                if jsonModel.isResponseSuccess() {
-                    let lessGasVC = LessGasViewController()
-                    self?.navigationController?.pushViewController(lessGasVC, animated: true)
-                } else {
-                    self?.showToast(message: "此瓦斯桶尚未註冊", complete: {
-                        //TODO: - 註冊
-                        self?.gotoRegisGasVC()
-                    })
-                }
-            } else {
-                self?.showSingleAlert(message: "檢查失敗，請再試一次")
-            }
+        guard self.newGasID != "" else {
+            self.showSingleAlert(message: "請輸入或是掃描取得瓦斯桶ID")
+            return false
         }
+        
+        guard self.newGasID.count == 10 else {
+            self.showSingleAlert(message: "請輸入正確十碼瓦斯桶編號")
+            return false
+        }
+        
+        guard self.emptyWeight != "" else {
+            self.showSingleAlert(message: "請輸入瓦斯空桶重")
+            return false
+        }
+        
+        return true
     }
     
-    func gotoRegisGasVC() {
-        let vc = RegisGasViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    func regisGas() {
+        
+        let param: parameter = [
+            "gasId" : self.newGasID,
+            "gasWeightEmpty": self.emptyWeight
+        ]
+        
+        APIService.shared.requestWithParam(headerField: .form, urlText: .regisGas, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in
+            if let jsonModel = jsonModel, jsonModel.status {
+                self?.showToast(message: "瓦斯桶新增成功", complete: {
+                    let lessGasVC = LessGasViewController()
+                    self?.navigationController?.pushViewController(lessGasVC, animated: true)
+                    self?.navigationController?.viewControllers.removeAll(where: {$0 == self})
+                })
+            } else {
+                self?.showSingleAlert(message: "瓦斯桶新增失敗，請再試一次")
+            }
+        }
+
     }
 
     func found(code: String) {
         
-        self.oldCode = code
+        self.newGasID = code
+        
+//        self.showAlert(success: true, complete: { [ weak self] in
+//            self?.oldCode = code
+//            self?.setupRow(code: code)
+//            self?.setupAlertLabel(hasOld: true)
+//            DispatchQueue.global().async {
+//                self?.captureSession.startRunning()
+//            }
+//        })
+        
  
     }
 
@@ -248,7 +294,7 @@ class QRCodeScannerViewController: BaseViewController {
     }
 }
 
-extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+extension RegisGasViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
 
         if let metadataObject = metadataObjects.first {

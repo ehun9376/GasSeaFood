@@ -35,7 +35,7 @@ open class BaseViewController: UIViewController {
         KeyboardHelper.shared.unregist()
     }
     
-    public func showAlert(title:String = "",message: String = "",confirmTitle: String = "",cancelTitle: String,confirmAction: (()->())? = nil,cancelAction:(()->())? = nil){
+    public func showAlert(title:String = "提示",message: String = "",confirmTitle: String = "OK",cancelTitle: String = "取消",confirmAction: (()->())? = nil,cancelAction:(()->())? = nil){
         DispatchQueue.main.async {
             let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
@@ -58,7 +58,7 @@ open class BaseViewController: UIViewController {
 
     }
     
-    public func showSingleAlert(title:String = "",message: String = "",confirmTitle: String = "",confirmAction: (()->())? = nil){
+    public func showSingleAlert(title:String = "提示",message: String = "",confirmTitle: String = "OK",confirmAction: (()->())? = nil){
         DispatchQueue.main.async {
             let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
             

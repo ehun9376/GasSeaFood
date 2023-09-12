@@ -39,20 +39,6 @@ class LessGasViewController: BaseViewController {
     @objc func viewAction() {
         self.view.endEditing(true)
     }
-    
-    override func defaultNavigationSet() {
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : UIColor.white
-        ]
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = .init(hex: "D60702")
-        UINavigationBar.appearance().tintColor = .white
-        self.navigationController?.navigationBar.standardAppearance = appearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
-    
-
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

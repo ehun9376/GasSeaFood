@@ -13,8 +13,8 @@
 		360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F229A84C9000E2D960 /* ResetPasswordViewModel.swift */; };
 		360C41F529A84FA400E2D960 /* RegisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F429A84F9F00E2D960 /* RegisViewController.swift */; };
 		360C41F829A84FDE00E2D960 /* RegisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41F729A84FDE00E2D960 /* RegisViewModel.swift */; };
-		360C41FA29A8597E00E2D960 /* TwoButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360C41F929A8597E00E2D960 /* TwoButtonCell.xib */; };
-		360C41FC29A859C900E2D960 /* TwoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41FB29A859C900E2D960 /* TwoButtonCell.swift */; };
+		360C41FA29A8597E00E2D960 /* GenderTwoButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360C41F929A8597E00E2D960 /* GenderTwoButtonCell.xib */; };
+		360C41FC29A859C900E2D960 /* GenderTwoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41FB29A859C900E2D960 /* GenderTwoButtonCell.swift */; };
 		360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */; };
 		360C420029A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */; };
 		360C420329A8973500E2D960 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C420229A8973500E2D960 /* HomeViewController.swift */; };
@@ -41,6 +41,9 @@
 		36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA212A048D9E00771A62 /* CustomModel.swift */; };
 		9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429FC3B29EC318D006F90E9 /* CityCenter.swift */; };
 		945425B22A26582700F21E42 /* LessGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945425B12A26582700F21E42 /* LessGasViewController.swift */; };
+		94964C302AB0872900ECC8A1 /* RegisGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */; };
+		94964C322AB08A1100ECC8A1 /* TwoButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94964C312AB08A1100ECC8A1 /* TwoButtonCell.xib */; };
+		94964C342AB08A7400ECC8A1 /* TwoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94964C332AB08A7400ECC8A1 /* TwoButtonCell.swift */; };
 		94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73129A799CC00E37402 /* AppDelegate.swift */; };
 		94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8E73529A799CC00E37402 /* LaunchViewController.swift */; };
 		94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8E73A29A799CD00E37402 /* Assets.xcassets */; };
@@ -97,8 +100,8 @@
 		360C41F229A84C9000E2D960 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		360C41F429A84F9F00E2D960 /* RegisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisViewController.swift; sourceTree = "<group>"; };
 		360C41F729A84FDE00E2D960 /* RegisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisViewModel.swift; sourceTree = "<group>"; };
-		360C41F929A8597E00E2D960 /* TwoButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoButtonCell.xib; sourceTree = "<group>"; };
-		360C41FB29A859C900E2D960 /* TwoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonCell.swift; sourceTree = "<group>"; };
+		360C41F929A8597E00E2D960 /* GenderTwoButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderTwoButtonCell.xib; sourceTree = "<group>"; };
+		360C41FB29A859C900E2D960 /* GenderTwoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTwoButtonCell.swift; sourceTree = "<group>"; };
 		360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTwoButtonsTextfieldCell.swift; sourceTree = "<group>"; };
 		360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTwoButtonsTextfieldCell.xib; sourceTree = "<group>"; };
 		360C420229A8973500E2D960 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +128,9 @@
 		36C3BA212A048D9E00771A62 /* CustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModel.swift; sourceTree = "<group>"; };
 		9429FC3B29EC318D006F90E9 /* CityCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCenter.swift; sourceTree = "<group>"; };
 		945425B12A26582700F21E42 /* LessGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessGasViewController.swift; sourceTree = "<group>"; };
+		94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisGasViewController.swift; sourceTree = "<group>"; };
+		94964C312AB08A1100ECC8A1 /* TwoButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoButtonCell.xib; sourceTree = "<group>"; };
+		94964C332AB08A7400ECC8A1 /* TwoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonCell.swift; sourceTree = "<group>"; };
 		94A8E72E29A799CC00E37402 /* GasSeaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasSeaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A8E73129A799CC00E37402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A8E73529A799CC00E37402 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				360C421329AED7F900E2D960 /* QrScaneViewController.swift */,
+				94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */,
 				945425B12A26582700F21E42 /* LessGasViewController.swift */,
 			);
 			path = QrScane;
@@ -376,8 +383,8 @@
 				3612321B29AEFCF0009C5BF2 /* TodayListCell.xib */,
 				360C41FD29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift */,
 				360C41FF29A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib */,
-				360C41FB29A859C900E2D960 /* TwoButtonCell.swift */,
-				360C41F929A8597E00E2D960 /* TwoButtonCell.xib */,
+				360C41FB29A859C900E2D960 /* GenderTwoButtonCell.swift */,
+				360C41F929A8597E00E2D960 /* GenderTwoButtonCell.xib */,
 				94A8E78F29A7B7F400E37402 /* EmptyHeightCell.swift */,
 				94A8E79129A7B8BA00E37402 /* EmptyHeightCell.xib */,
 				94A8E78D29A7B62000E37402 /* ButtonCell.swift */,
@@ -392,6 +399,8 @@
 				360C420929A899E800E2D960 /* HeadInfoCell.xib */,
 				362FE0182AB05CF700BB1FAB /* OrderCell.swift */,
 				362FE01A2AB05D5100BB1FAB /* OrderCell.xib */,
+				94964C312AB08A1100ECC8A1 /* TwoButtonCell.xib */,
+				94964C332AB08A7400ECC8A1 /* TwoButtonCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -500,7 +509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360C41FA29A8597E00E2D960 /* TwoButtonCell.xib in Resources */,
+				360C41FA29A8597E00E2D960 /* GenderTwoButtonCell.xib in Resources */,
 				94A8E73E29A799CD00E37402 /* LaunchScreen.storyboard in Resources */,
 				362FE01B2AB05D5100BB1FAB /* OrderCell.xib in Resources */,
 				360C420029A87F4B00E2D960 /* TitleTwoButtonsTextfieldCell.xib in Resources */,
@@ -511,6 +520,7 @@
 				94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */,
 				94A8E79229A7B8BA00E37402 /* EmptyHeightCell.xib in Resources */,
 				360C420A29A899E800E2D960 /* HeadInfoCell.xib in Resources */,
+				94964C322AB08A1100ECC8A1 /* TwoButtonCell.xib in Resources */,
 				3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,16 +557,18 @@
 				3612321E29AF42B1009C5BF2 /* CustomAlertController.swift in Sources */,
 				360C41F329A84C9000E2D960 /* ResetPasswordViewModel.swift in Sources */,
 				94A8E77429A79B5400E37402 /* KeyboardHelper.swift in Sources */,
+				94964C342AB08A7400ECC8A1 /* TwoButtonCell.swift in Sources */,
 				3612321A29AEFBFD009C5BF2 /* TodayListCell.swift in Sources */,
 				94A8E77129A79B5400E37402 /* BaseCollectionViewController.swift in Sources */,
 				94A8E77729A79E2300E37402 /* ActionButton.swift in Sources */,
 				94A8E78029A7A17F00E37402 /* TitleImageCell.swift in Sources */,
+				94964C302AB0872900ECC8A1 /* RegisGasViewController.swift in Sources */,
 				360C41F529A84FA400E2D960 /* RegisViewController.swift in Sources */,
 				94A8E76B29A79B5400E37402 /* DeviceType.swift in Sources */,
 				362FE0172AB055D200BB1FAB /* OrderDetailModel.swift in Sources */,
 				94A8E77329A79B5400E37402 /* BaseViewController.swift in Sources */,
 				360C421829AEF64500E2D960 /* TodayListController.swift in Sources */,
-				360C41FC29A859C900E2D960 /* TwoButtonCell.swift in Sources */,
+				360C41FC29A859C900E2D960 /* GenderTwoButtonCell.swift in Sources */,
 				360C420629A8975000E2D960 /* HomeViewModel.swift in Sources */,
 				94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */,
 				94A8E73229A799CC00E37402 /* AppDelegate.swift in Sources */,
