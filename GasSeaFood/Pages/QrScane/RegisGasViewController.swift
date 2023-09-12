@@ -151,6 +151,7 @@ class RegisGasViewController: BaseViewController {
         },
                                                  rightButtonAction: { [weak self] in
             //TODO: - 跳過註冊
+            self?.gotoLessGasVC()
             
         })
         
@@ -262,8 +263,7 @@ class RegisGasViewController: BaseViewController {
         APIService.shared.requestWithParam(headerField: .form, urlText: .regisGas, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in
             if let jsonModel = jsonModel, jsonModel.status {
                 self?.showToast(message: "瓦斯桶新增成功", complete: {
-                    let lessGasVC = LessGasViewController()
-                    self?.navigationController?.pushViewController(lessGasVC, animated: true)
+                    self?.gotoLessGasVC()
                     self?.navigationController?.viewControllers.removeAll(where: {$0 == self})
                 })
             } else {
@@ -271,6 +271,11 @@ class RegisGasViewController: BaseViewController {
             }
         }
 
+    }
+    
+    func gotoLessGasVC() {
+        let lessGasVC = LessGasViewController()
+        self.navigationController?.pushViewController(lessGasVC, animated: true)
     }
 
     func found(code: String) {

@@ -15,6 +15,13 @@ class LessGasViewController: BaseViewController {
     var adapter: TableViewAdapter?
     
     var lessGasCount: Int = 1
+    
+    let topView = UIView()
+
+    var companyLabel = UILabel()
+    
+    var confirmButton = UIButton()
+
 
 
     override func viewDidLoad() {
@@ -29,7 +36,8 @@ class LessGasViewController: BaseViewController {
         
         self.view.addGestureRecognizer(tap)
 
-        
+        self.setupConfirmButton()
+        self.setupTopView()
         self.setupTableView()
         
         self.setupRow()
@@ -45,6 +53,75 @@ class LessGasViewController: BaseViewController {
 
     }
     
+    func setupTopView() {
+        self.topView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(self.topView)
+        
+        NSLayoutConstraint.activate([
+            self.topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+        
+        let lessGasTitleLabel = UILabel()
+        lessGasTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        lessGasTitleLabel.text = "殘氣結算"
+        lessGasTitleLabel.font = .systemFont(ofSize: 28, weight: .bold)
+        
+        self.topView.addSubview(lessGasTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            lessGasTitleLabel.topAnchor.constraint(equalTo: self.topView.topAnchor,constant: 20),
+            lessGasTitleLabel.leadingAnchor.constraint(equalTo: self.topView.leadingAnchor,constant: 20),
+            lessGasTitleLabel.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor,constant: -20)
+        ])
+        
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = 20
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.distribution = .fillEqually
+        
+        self.topView.addSubview(stack)
+        
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: lessGasTitleLabel.bottomAnchor,constant: 10),
+            stack.heightAnchor.constraint(equalToConstant: 35),
+            stack.leadingAnchor.constraint(equalTo: self.topView.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor)
+        ])
+        
+        let companyTitleLabel = UILabel()
+        companyTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        companyTitleLabel.text = "瓦斯行："
+        companyTitleLabel.font = .systemFont(ofSize: 16)
+        companyTitleLabel.textAlignment = .center
+        
+        stack.addArrangedSubview(companyTitleLabel)
+        
+        self.companyLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.companyLabel.text = ""
+        self.companyLabel.font = .systemFont(ofSize: 16)
+        self.companyLabel.textAlignment = .center
+        
+        stack.addArrangedSubview(self.companyLabel)
+        
+        let inputTitleLabel = UILabel()
+        inputTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        inputTitleLabel.text = "輸入殘氣結算"
+        inputTitleLabel.font = .systemFont(ofSize: 28, weight: .bold)
+        
+        self.topView.addSubview(inputTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            inputTitleLabel.topAnchor.constraint(equalTo: stack.bottomAnchor,constant: 50),
+            inputTitleLabel.leadingAnchor.constraint(equalTo: self.topView.leadingAnchor,constant: 20),
+            inputTitleLabel.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor,constant: -20)
+        ])
+    }
+    
     func setupTableView() {
         
         self.adapter = .init(self.tableView)
@@ -55,96 +132,58 @@ class LessGasViewController: BaseViewController {
         self.tableView.separatorStyle = .none
         
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10),
+            self.tableView.topAnchor.constraint(equalTo: self.topView.bottomAnchor, constant: 10),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
+            self.tableView.bottomAnchor.constraint(equalTo: self.confirmButton.topAnchor, constant: -10)
         ])
         
         self.tableView.register(.init(nibName: "TitleTextFieldCell", bundle: nil), forCellReuseIdentifier: "TitleTextFieldCell")
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         self.tableView.register(.init(nibName: "EmptyHeightCell", bundle: nil), forCellReuseIdentifier: "EmptyHeightCell")
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
+        self.tableView.register(.init(nibName: "LessGasCell", bundle: nil), forCellReuseIdentifier: "LessGasCell")
     }
     
     func setupRow() {
-        
-        var rowModels: [CellRowModel] = []
-        
-        let firstAttr = NSMutableAttributedString(string: "殘氣結算\n\n", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
-        ])
-        
-            
-        let secondAttr = NSMutableAttributedString(string: "瓦斯桶行 XXX", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
-        ])
-        
-        firstAttr.append(secondAttr)
-
-        let titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: firstAttr, textAligment: .left)
-        
-        rowModels.append(titleRow)
-        
-        for _ in 0..<self.lessGasCount {
-            let lessGasRow = TitleTextFieldRowModel(title: "輸入殘氣結算",
-                                                    text: "",
-                                                    required: true,
-                                                    textDidChange: { [weak self] text in
-            })
-            
-            rowModels.append(lessGasRow)
-        }
-        
-        if self.lessGasCount < 3 {
-            let addLessGasRow = ButtonCellRowModel(buttonTitle: "+ 下一個", buttonColor: .init(hex: "AAA8A9") , buttonAction: {
-                self.lessGasCount += 1
-                self.setupRow()
-            })
-            
-            rowModels.append(addLessGasRow)
-        }
-        
-        let emptyRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: nil)
-        
-        rowModels.append(emptyRow)
-
-        
-        let buttonRow = ButtonCellRowModel(buttonTitle: "掃瞄新瓦斯桶 ->", buttonAction: {
-            let vc = QRCodeScannerViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        })
-        
-        rowModels.append(buttonRow)
-        
-        self.adapter?.updateTableViewData(rowModels: rowModels)
+       
         
     }
     
-  
+    func setupConfirmButton() {
+        
+        self.confirmButton = self.createCommandButton(title: "掃瞄新瓦斯桶",
+                                                      action:{
+            
+        })
+        
+        self.view.addSubview(self.confirmButton)
+        NSLayoutConstraint.activate([
+            self.confirmButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.confirmButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.confirmButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+        ])
+    }
     
-    func showAlert(success: Bool, complete: (()->())? = nil) {
+    func createCommandButton(title: String, action: (()->())?) -> UIButton {
+        let button = ActionButton(action: action)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
-        let alert = CustomAlertController(title: success ? "瓦斯桶配對成功" : "換桶失敗",
-                                          content: success ? "已通知換桶成功" : "請重新掃描",
-                                          imageName: success ? "success" : "faild",
-                                          buttonTitle: "確定",
-                                          dismissAction: {
-            complete?()
-        })
-        self.present(alert, animated: true)
-    }
-
-    func found(code: String) {
+        button.titleLabel?.font = .systemFont(ofSize: 18)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .init(hex: "3472D9")
+        button.layer.cornerRadius = 5
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        self.showAlert(success: true, complete: { [ weak self] in
-            self?.setupRow()
-        })
         
- 
+        
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 5.0
+        
+        return button
     }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
+    
 }

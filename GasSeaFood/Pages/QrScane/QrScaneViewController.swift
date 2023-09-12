@@ -218,8 +218,7 @@ class QRCodeScannerViewController: BaseViewController {
         APIService.shared.requestWithParam(headerField: .form, urlText: .showGasInfo, params: ["id": gasID], modelType: DefaultResponseModel.self) { [weak self] jsonModel, error in
             if let jsonModel = jsonModel {
                 if jsonModel.isResponseSuccess() {
-                    let lessGasVC = LessGasViewController()
-                    self?.navigationController?.pushViewController(lessGasVC, animated: true)
+                    self?.gotoLessGasVC()
                 } else {
                     self?.showToast(message: "此瓦斯桶尚未註冊", complete: {
                         //TODO: - 註冊
@@ -230,6 +229,11 @@ class QRCodeScannerViewController: BaseViewController {
                 self?.showSingleAlert(message: "檢查失敗，請再試一次")
             }
         }
+    }
+    
+    func gotoLessGasVC() {
+        let lessGasVC = LessGasViewController()
+        self.navigationController?.pushViewController(lessGasVC, animated: true)
     }
     
     func gotoRegisGasVC() {

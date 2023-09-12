@@ -39,6 +39,8 @@
 		362FE01B2AB05D5100BB1FAB /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362FE01A2AB05D5100BB1FAB /* OrderCell.xib */; };
 		36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */; };
 		36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA212A048D9E00771A62 /* CustomModel.swift */; };
+		941B13ED2AB124C500B85409 /* LessGasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B13EC2AB124C500B85409 /* LessGasCell.swift */; };
+		941B13EF2AB1255100B85409 /* LessGasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941B13EE2AB1255100B85409 /* LessGasCell.xib */; };
 		9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429FC3B29EC318D006F90E9 /* CityCenter.swift */; };
 		945425B22A26582700F21E42 /* LessGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945425B12A26582700F21E42 /* LessGasViewController.swift */; };
 		94964C302AB0872900ECC8A1 /* RegisGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */; };
@@ -126,6 +128,8 @@
 		362FE01A2AB05D5100BB1FAB /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasOrderModel.swift; sourceTree = "<group>"; };
 		36C3BA212A048D9E00771A62 /* CustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModel.swift; sourceTree = "<group>"; };
+		941B13EC2AB124C500B85409 /* LessGasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessGasCell.swift; sourceTree = "<group>"; };
+		941B13EE2AB1255100B85409 /* LessGasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessGasCell.xib; sourceTree = "<group>"; };
 		9429FC3B29EC318D006F90E9 /* CityCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCenter.swift; sourceTree = "<group>"; };
 		945425B12A26582700F21E42 /* LessGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessGasViewController.swift; sourceTree = "<group>"; };
 		94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisGasViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 				362FE01A2AB05D5100BB1FAB /* OrderCell.xib */,
 				94964C312AB08A1100ECC8A1 /* TwoButtonCell.xib */,
 				94964C332AB08A7400ECC8A1 /* TwoButtonCell.swift */,
+				941B13EC2AB124C500B85409 /* LessGasCell.swift */,
+				941B13EE2AB1255100B85409 /* LessGasCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				94A8E78A29A7B41C00E37402 /* LabelCell.xib in Resources */,
 				94A8E73B29A799CD00E37402 /* Assets.xcassets in Resources */,
 				94A8E79229A7B8BA00E37402 /* EmptyHeightCell.xib in Resources */,
+				941B13EF2AB1255100B85409 /* LessGasCell.xib in Resources */,
 				360C420A29A899E800E2D960 /* HeadInfoCell.xib in Resources */,
 				94964C322AB08A1100ECC8A1 /* TwoButtonCell.xib in Resources */,
 				3612321C29AEFCF0009C5BF2 /* TodayListCell.xib in Resources */,
@@ -568,6 +575,7 @@
 				362FE0172AB055D200BB1FAB /* OrderDetailModel.swift in Sources */,
 				94A8E77329A79B5400E37402 /* BaseViewController.swift in Sources */,
 				360C421829AEF64500E2D960 /* TodayListController.swift in Sources */,
+				941B13ED2AB124C500B85409 /* LessGasCell.swift in Sources */,
 				360C41FC29A859C900E2D960 /* GenderTwoButtonCell.swift in Sources */,
 				360C420629A8975000E2D960 /* HomeViewModel.swift in Sources */,
 				94A8E73629A799CC00E37402 /* LaunchViewController.swift in Sources */,
