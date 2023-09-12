@@ -60,7 +60,7 @@ class InfoViewModel: NSObject {
             rowModels.append(emailRow)
             
             let saveRow = ButtonCellRowModel(buttonTitle: "儲存", buttonHeight: 50, buttonAction: {
-                //https://deyutest1.com/GasSeaFood/updateInfo.php?phone=yyy&store=kou&name=anna&email=anna@gmail
+                //http://54.199.33.241/ios_test_2/updateInfo.php?phone=yyy&store=kou&name=anna&email=anna@gmail
                 
                 let param: parameter = [
                     "WORKER_PhoneNum": UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? "",
@@ -68,7 +68,7 @@ class InfoViewModel: NSObject {
                     "WORKER_Email": self.regisModel?.email ?? ""
                 ]
                 
-                APIService.shared.requestWithParam(urlText: .updateInfo, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in
+                APIService.shared.requestWithParam(headerField: .form,urlText: .updateInfo, params: param, modelType: DefaultSuccessModel.self) { jsonModel, error in
                     self.delegate?.save(success: jsonModel?.status ?? false)
                 }
             })

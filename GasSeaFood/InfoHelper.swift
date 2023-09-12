@@ -13,7 +13,7 @@ class InfoHelper: NSObject {
     
     private var regisModel: RegisModel?
     
-    func getRegisModel(reset: Bool = true, cellPhoneNumber: String, complete: ((RegisModel?)->())? = nil) {
+    func getRegisModel(reset: Bool = false, cellPhoneNumber: String? = nil, complete: ((RegisModel?)->())? = nil) {
         
         if reset {
             self.regisModel = nil
@@ -23,7 +23,7 @@ class InfoHelper: NSObject {
             complete?(regisModel)
         } else {
             let param = [
-                "WORKER_PhoneNum": cellPhoneNumber
+                "WORKER_PhoneNum": cellPhoneNumber ?? ""
             ]
             
             APIService.shared.requestWithParam(urlText: .info, params: param, modelType: RegisModel.self) { jsonModel, error in

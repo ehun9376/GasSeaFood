@@ -119,159 +119,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61E55537-DDF3-4908-9F19-067FC477B9D8"
+            uuid = "591F3D34-250E-4FC2-89EE-CF75CFF5BC0F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/Base/TableViewAdapter.swift"
+            filePath = "GasSeaFood/Pages/OrderDetail/CustomModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init(json:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "61E55537-DDF3-4908-9F19-067FC477B9D8 - ee4e5cfa79d3bf2f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GasSeaFood.TableViewAdapter.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/Base/TableViewAdapter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "296">
-               </Location>
-               <Location
-                  uuid = "61E55537-DDF3-4908-9F19-067FC477B9D8 - ee4e5cfa79d3bf2f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GasSeaFood.TableViewAdapter.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/Base/TableViewAdapter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "344">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BA2E2FCB-151E-445D-B17D-293E74B49900"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/InfoHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "getRegisModel(cellPhoneNumber:complete:)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "BA2E2FCB-151E-445D-B17D-293E74B49900 - afed74cb6d651e70"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;GasSeaFood.RegisModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GasSeaFood.InfoHelper.getRegisModel(cellPhoneNumber: Swift.String, complete: Swift.Optional&lt;(Swift.Optional&lt;GasSeaFood.RegisModel&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/InfoHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "BA2E2FCB-151E-445D-B17D-293E74B49900 - afed74cb6d651e70"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;GasSeaFood.RegisModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GasSeaFood.InfoHelper.getRegisModel(cellPhoneNumber: Swift.String, complete: Swift.Optional&lt;(Swift.Optional&lt;GasSeaFood.RegisModel&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/InfoHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1A558289-4CE7-4470-835B-DE3FF8EE7216"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GasSeaFood/InfoHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "getRegisModel(cellPhoneNumber:complete:)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "1A558289-4CE7-4470-835B-DE3FF8EE7216 - eea732c3706acd10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GasSeaFood.InfoHelper.getRegisModel(cellPhoneNumber: Swift.String, complete: Swift.Optional&lt;(Swift.Optional&lt;GasSeaFood.RegisModel&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/InfoHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "272">
-               </Location>
-               <Location
-                  uuid = "1A558289-4CE7-4470-835B-DE3FF8EE7216 - afed74cb6d651e70"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;GasSeaFood.RegisModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GasSeaFood.InfoHelper.getRegisModel(cellPhoneNumber: Swift.String, complete: Swift.Optional&lt;(Swift.Optional&lt;GasSeaFood.RegisModel&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "GasSeaFood"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ehun9376/Desktop/GasSeaFood/GasSeaFood/InfoHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "911BCB12-5317-414E-865A-E6236A7C4CDA"
-            shouldBeEnabled = "Yes"
+            uuid = "4C1C3EAC-6FD7-47E1-B2DE-8352BAE0BB15"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GasSeaFood/APIService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "requestWithParam(httpMethod:headerField:urlText:params:modelType:completeAction:)"
             landmarkType = "7">
          </BreakpointContent>

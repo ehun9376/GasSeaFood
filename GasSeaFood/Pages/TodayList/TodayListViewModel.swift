@@ -30,7 +30,7 @@ class TodayListViewModel: NSObject {
         var rowModels: [CellRowModel] = []
 
         for order in orderListModel?.list ?? [] {
-            let row = TodayListCellRowModel(title: "訂單:\(order.orderID ?? "")",
+            let row = TodayListCellRowModel(title: order.deliveryAddress,
                                             titleLabelAction: { [weak self] in
                 self?.delegate?.cellDidSelect(model: order)
             })
@@ -42,12 +42,17 @@ class TodayListViewModel: NSObject {
     
     
     func getGasOrderAPI() {
-        APIService.shared.requestWithParam(urlText: .gasOrder, params: [:], modelType: GasOrderListModel.self) { jsonModel, error in
-            if let jsonModel = jsonModel {
-                self.orderListModel = jsonModel
-                self.setupRow()
+        var id = 0
+        InfoHelper.shared.getRegisModel(cellPhoneNumber: UserInfoCenter.shared.loadValue(.cellphoneNumber) as? String ?? "") { regisModel in
+            id = regisModel?.id ?? 0
+            APIService.shared.requestWithParam( headerField: .form, urlText: .unOrderList, params: ["id": id], modelType: GasOrderListModel.self) { jsonModel, error in
+                if let jsonModel = jsonModel {
+                    self.orderListModel = jsonModel
+                    self.setupRow()
+                }
             }
         }
+
     }
     
 }

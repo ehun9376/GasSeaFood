@@ -126,7 +126,6 @@ class LessGasViewController: BaseViewController {
         
         let buttonRow = ButtonCellRowModel(buttonTitle: "掃瞄新瓦斯桶 ->", buttonAction: {
             let vc = QRCodeScannerViewController()
-            vc.hasOld = true
             self.navigationController?.pushViewController(vc, animated: true)
         })
         

@@ -23,9 +23,9 @@ class LoginViewModel: NSObject {
     
     var delegate: LoginMethod?
     
-    var password: String = ""
+    var password: String = "1234567"
     
-    var cellphoneNumber: String = ""
+    var cellphoneNumber: String = "12345678"
     
     init(
         adapter: TableViewAdapter?,

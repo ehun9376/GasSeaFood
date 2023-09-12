@@ -11,6 +11,7 @@ import UIKit
 class RegisModel: JsonModel {
 
     
+    var id: Int?
     
     var name: String?
 
@@ -35,6 +36,8 @@ class RegisModel: JsonModel {
     var rule: Bool = false
     
     required init(json: JBJson) {
+        
+        self.id = json["WORKER_Id"].intValue
         self.name = json["WORKER_Name"].stringValue
         self.sex = json["WORKER_Sex"].stringValue
         self.cellphoneNumber = json["WORKER_PhoneNum"].stringValue
@@ -165,7 +168,7 @@ class RegisViewModel: NSObject {
         let regisRowModel = ButtonCellRowModel(buttonTitle: "完成註冊", buttonAction: { [weak self] in
             
             
-//        https://deyutest1.com/GasSeaFood/regis.php?WORKER_Name=anna&WORKER_Sex=M&WORKER_PhoneNum=0987721&WORKER_HouseTelpNo=2603&WORKER_Password=1234&WORKER_Email=ehun@gmail&WORKER_Address=tai&WORKER_Company_Id=16776387
+//        http://54.199.33.241/ios_test_2/regis.php?WORKER_Name=anna&WORKER_Sex=M&WORKER_PhoneNum=0987721&WORKER_HouseTelpNo=2603&WORKER_Password=1234&WORKER_Email=ehun@gmail&WORKER_Address=tai&WORKER_Company_Id=16776387
             
             let param: parameter = [
                 "WORKER_Name" : self?.regisModel.name ?? "default",

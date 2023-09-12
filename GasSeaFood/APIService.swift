@@ -22,11 +22,18 @@ enum HeaderField {
     
     case json
     
+    case form
+    
     var field: HTTPHeaderField {
         switch self {
         case .json:
             return [
                 "Content-Type" : "application/json"
+            ]
+            
+        case .form:
+            return [
+               "Content-Type" : "application/x-www-form-urlencoded"
             ]
         }
     }
@@ -40,45 +47,65 @@ class APIService: NSObject {
     private let apiQueue = DispatchQueue(label: "api_queue", qos: .utility)
 
     enum URLText: String {
-        case login = "https://deyutest1.com/GasSeaFood/login.php?"
-        case regis = "https://deyutest1.com/GasSeaFood/regis.php?"
-        case info = "https://deyutest1.com/GasSeaFood/info.php?"
-        case updateInfo = "https://deyutest1.com/GasSeaFood/updateInfo.php?"
-        case country1 = "https://deyutest1.com/GasSeaFood/country.php"
-        case citys = "https://deyutest1.com/GasSeaFood/city.php"
-        case sendMail = "https://deyutest1.com/GasSeaFood/sendPasswordMail.php?"
-        case test = "https://deyutest1.com/GasSeaFood/bonb.php?"
-        case gasOrder = "https://deyutest1.com/GasSeaFood/gasOrder.php"
-        case getSingleCustomer = "https://deyutest1.com/GasSeaFood/getSingleCustomer.php?"
-        case verifyCode = "https://deyutest1.com/GasSeaFood/verifyCode.php?"
-        case changePassword = "https://deyutest1.com/GasSeaFood/changePwd.php?"
+        case login = "http://54.199.33.241/ios_test_2/login.php?"
+        case regis = "http://54.199.33.241/ios_test_2/regis.php?"
+        case info = "http://54.199.33.241/ios_test_2/info.php?"
+        case updateInfo = "http://54.199.33.241/ios_test_2/updateInfo.php?"
+        case country1 = "http://54.199.33.241/ios_test_2/country.php"
+        case citys = "http://54.199.33.241/ios_test_2/city.php"
+        case sendMail = "http://54.199.33.241/ios_test_2/sendPasswordMail.php?"
+        case unOrderList = "http://54.199.33.241/ios_test_2/Worker_UnOrderList.php?"
+        case workerOrderDetail = "http://54.199.33.241/ios_test_2/Worker_OrderDetail.php?"
+        case showOrderInfo = "http://54.199.33.241/ios_test_2/Show_Order_Info.php?"
+        case verifyCode = "http://54.199.33.241/ios_test_2/verifyCode.php?"
+        case changePassword = "http://54.199.33.241/ios_test_2/changePwd.php?"
     }
         
-    func requestWithParam<T: JsonModel>(httpMethod: HttpMethod = .post, headerField: HTTPHeaderField? = [:] , urlText: URLText, params: parameter, modelType: T.Type ,  completeAction: @escaping CompleteAction<T>) {
+    func requestWithParam<T: JsonModel>(httpMethod: HttpMethod = .post, headerField: HeaderField? = .json, urlText: URLText, params: parameter, modelType: T.Type ,  completeAction: @escaping CompleteAction<T>) {
         
         var url = urlText.rawValue
         
-        var paramText: [String] = []
-        for param in params {
-            paramText.append("\(param.key)=\(param.value)")
+        switch headerField ?? .json {
+        case .json:
+            var paramText: [String] = []
+            for param in params {
+                paramText.append("\(param.key)=\(param.value)")
+            }
+            let paramTextUrl = paramText.joined(separator: "&")
+            url = url + paramTextUrl
+            
+            if let text = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                url = text
+            }
+        case .form:
+            break
         }
-        let paramTextUrl = paramText.joined(separator: "&")
-        url = url + paramTextUrl
         
-        if let text = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            url = text
-        }
+        
+
+        
+//
         
         if let url = URL(string: url) {
             var request = URLRequest(url: url)
             
-            for header in headerField ?? [:] {
+            for header in headerField?.field ?? [:] {
                 request.setValue(header.value, forHTTPHeaderField: header.key)
             }
             
-
-            
             request.httpMethod = httpMethod.rawValue
+            
+            switch headerField ?? .json {
+            case .json:
+                break
+            case .form:
+                var requestBodyComponents = URLComponents()
+                requestBodyComponents.queryItems = params.map({.init(name: $0.key, value: "\($0.value)")})
+
+                if let requestBodyString = requestBodyComponents.percentEncodedQuery {
+                    request.httpBody = Data(requestBodyString.utf8)
+                }
+            }
 
             
             self.apiQueue.async {
@@ -92,6 +119,7 @@ class APIService: NSObject {
                             print(json)
                             completeAction(modelType.init(json: json), error)
                         } catch {
+                            print(params)
                             print(error.localizedDescription)
                             completeAction(nil, error)
                         }

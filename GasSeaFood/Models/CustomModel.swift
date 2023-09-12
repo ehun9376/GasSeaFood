@@ -12,6 +12,6 @@ class CustomModel: JsonModel {
     var customName: String?
     
     required init(json: JBJson) {
-        self.customName = json["CUSTOMER_Name"].stringValue
+        self.customName = json["Order_Name"].stringValue
     }
 }

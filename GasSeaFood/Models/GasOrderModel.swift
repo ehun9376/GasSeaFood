@@ -10,7 +10,7 @@ import Foundation
 class GasOrderListModel: JsonModel {
     var list: [GasOrderModel] = []
     required init(json: JBJson) {
-        self.list = json["list"].arrayValue.map({GasOrderModel(json: $0)})
+        self.list = json.arrayValue.map({GasOrderModel(json: $0)})
     }
 }
 

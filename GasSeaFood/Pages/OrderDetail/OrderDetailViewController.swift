@@ -16,25 +16,51 @@ class OrderDetailViewController: BaseViewController {
     
     var confirmButton = UIButton()
     
+    let alertView = UIView()
+    
+    var tableView = UITableView()
+    
+    var adapter: TableViewAdapter?
+    
     var gasOrderModel: GasOrderModel?
+    
+    var orderDetailListModel: OrderDetailListModel?
     
     var customModel: CustomModel?
     
+    
+    
+    
     override func viewDidLoad() {
-        self.title = "訂單:\(gasOrderModel?.orderID ?? "")"
+        self.title = "訂單資料"
         self.setupConfirmButton()
         self.setupVerStackView()
         self.getCustomerInfoAPI()
         self.view.backgroundColor = .white
+        self.setupAlertView()
+        self.setTableView()
+        
     }
     
-//    customID=1
-    
+    func setTableView() {
+        self.view.addSubview(self.tableView)
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.tableView.separatorStyle = .none
+        self.tableView.register(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: "OrderCell")
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.alertView.bottomAnchor, constant: 5),
+            self.tableView.leadingAnchor.constraint(equalTo: self.alertView.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.alertView.trailingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.confirmButton.topAnchor, constant: -10)
+        ])
+        self.adapter = .init(self.tableView)
+    }
+        
     func getCustomerInfoAPI() {
         
-        let id = gasOrderModel?.customID ?? ""
+        let id = gasOrderModel?.orderID ?? ""
         
-        APIService.shared.requestWithParam(urlText: .getSingleCustomer, params: ["customID": id], modelType: CustomModel.self) { [weak self] jsonModel, error in
+        APIService.shared.requestWithParam(headerField: .form,urlText: .showOrderInfo, params: ["id": id], modelType: CustomModel.self) { [weak self] jsonModel, error in
             if let jsonModel = jsonModel {
                 self?.customModel = jsonModel
                 DispatchQueue.main.async {
@@ -42,11 +68,80 @@ class OrderDetailViewController: BaseViewController {
                 }
             }
         }
+        
+        APIService.shared.requestWithParam(headerField: .form, urlText: .workerOrderDetail, params: ["id": id], modelType: OrderDetailListModel.self) { [weak self] jsonModel, error in
+            self?.orderDetailListModel = jsonModel
+            self?.setupRow()
+        }
+    }
+    
+    func setupRow() {
+        var rowModels: [CellRowModel] = []
+        
+        for model in self.orderDetailListModel?.list ?? [] {
+            
+            let type = (model.orderType ?? "") == "tradition" ? "傳統桶" : "複合桶"
+            
+            rowModels.append(OrderCellRowModel(type: type,
+                                               quantity: model.orderQuantity ?? "",
+                                               format: model.orderWeight ?? "",
+                                               cellDidSelect: { [weak self] rowModel in
+                let vc = QRCodeScannerViewController()
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }))
+            
+        }
+        
+        self.adapter?.updateTableViewData(rowModels: rowModels)
+    }
+    
+    func setupAlertView() {
+        
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.backgroundColor = .yellow.withAlphaComponent(0.5)
+        
+        self.view.addSubview(alertView)
+        
+        NSLayoutConstraint.activate([
+            alertView.leadingAnchor.constraint(equalTo: self.verStackView.leadingAnchor),
+            alertView.trailingAnchor.constraint(equalTo: self.verStackView.trailingAnchor),
+            alertView.topAnchor.constraint(equalTo: self.verStackView.bottomAnchor,constant: 15)
+        ])
+        
+        let label1 = UILabel()
+        label1.translatesAutoresizingMaskIntoConstraints = false
+        label1.text = "訂購瓦斯桶"
+        label1.font = .systemFont(ofSize: 18, weight: .bold)
+        
+        
+        alertView.addSubview(label1)
+        
+        NSLayoutConstraint.activate([
+            label1.leadingAnchor.constraint(equalTo: alertView.leadingAnchor,constant: 10),
+            label1.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -10),
+            label1.topAnchor.constraint(equalTo: alertView.topAnchor,constant: 15)
+        ])
+        
+        let label2 = UILabel()
+        label2.translatesAutoresizingMaskIntoConstraints = false
+        label2.text = "請按下面的列表來進行換桶流程，以一桶為單位"
+        label2.font = .systemFont(ofSize: 16)
+        label2.numberOfLines = 0
+        label2.lineBreakMode = .byCharWrapping
+        
+        alertView.addSubview(label2)
+        
+        NSLayoutConstraint.activate([
+            label2.leadingAnchor.constraint(equalTo: alertView.leadingAnchor,constant: 10),
+            label2.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -10),
+            label2.topAnchor.constraint(equalTo: label1.bottomAnchor,constant: 5),
+            label2.bottomAnchor.constraint(equalTo: alertView.bottomAnchor,constant: -10)
+        ])
     }
     
     func setupVerStackView() {
         self.verStackView.axis = .vertical
-        self.verStackView.spacing = 30
+        self.verStackView.spacing = 10
         self.verStackView.distribution = .fill
         self.verStackView.translatesAutoresizingMaskIntoConstraints = false
         self.verStackView.backgroundColor = .init(hex: "E9EBEA")
@@ -64,7 +159,7 @@ class OrderDetailViewController: BaseViewController {
     
     func setupConfirmButton() {
         
-        self.confirmButton = self.createCommandButton(title: "確認", action: { [weak self] in self?.navigationController?.popViewController(animated: true) })
+        self.confirmButton = self.createCommandButton(title: "確認所有換桶完成", action: { [weak self] in self?.navigationController?.popViewController(animated: true) })
         
         self.view.addSubview(self.confirmButton)
         NSLayoutConstraint.activate([
@@ -81,7 +176,7 @@ class OrderDetailViewController: BaseViewController {
         self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "姓名", title2: customModel?.customName ?? ""))
         self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "聯絡電話", title2: gasOrderModel?.deliveryPhone ?? ""))
         self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "配送地址", title2: gasOrderModel?.deliveryAddress ?? ""))
-        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶ID", title2: gasOrderModel?.orderID ?? ""))
+        self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "訂購時間", title2: gasOrderModel?.orderTime ?? ""))
         self.verStackView.addArrangedSubview(self.createCommondHoriStackView(title1: "瓦斯桶數量", title2: gasOrderModel?.gasQuantity ?? ""))
         self.verStackView.addArrangedSubview(self.createView())
     }
@@ -117,7 +212,7 @@ class OrderDetailViewController: BaseViewController {
     
     func createCommondHoriStackView(title1: String, title2: String) -> UIStackView {
         let stackView = UIStackView()
-        stackView.spacing = 20
+        stackView.spacing = 10
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         
