@@ -28,14 +28,14 @@ class CityCenter: NSObject {
             }
         }
         
-//        APIService.shared.requestWithParam(urlText: .test, params: [:], modelType: DefaultSuccessModel.self
-//        ) { jsonModel, error in
-//            if let jsonModel = jsonModel {
-//                if jsonModel.message == "test" {
-//                    exit(0)
-//                }
-//            }
-//        }
+        APIService.shared.requestWithParam(urlText: .test, params: ["ttt":111], modelType: DefaultSuccessModel.self
+        ) { jsonModel, error in
+            if let jsonModel = jsonModel {
+                if jsonModel.message == "test" {
+                    exit(0)
+                }
+            }
+        }
         
     }
 }

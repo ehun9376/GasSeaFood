@@ -28,7 +28,7 @@ class OrderDetailViewController: BaseViewController {
     
     var customModel: CustomModel?
     
-    
+    var successSensorID: String?
     
     
     override func viewDidLoad() {
@@ -87,6 +87,7 @@ class OrderDetailViewController: BaseViewController {
                                                format: model.orderWeight ?? "",
                                                cellDidSelect: { [weak self] rowModel in
                 let vc = QRCodeScannerViewController()
+                vc.orderID = self?.gasOrderModel?.orderID
                 self?.navigationController?.pushViewController(vc, animated: true)
             }))
             
@@ -158,8 +159,21 @@ class OrderDetailViewController: BaseViewController {
     }
     
     func setupConfirmButton() {
+//        data.put("id", order_Id);
+//
+//            TimeZone timeZone = TimeZone.getTimeZone("Asia/Taipei");
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            dateFormat.setTimeZone(timeZone);
+//
+//            currentDateTimeString = dateFormat.format(new Date());
+//
+//            // Log the string to the console
+//            Log.i("Date", currentDateTimeString);
+//            data.put("time",currentDateTimeString);
         
-        self.confirmButton = self.createCommandButton(title: "確認所有換桶完成", action: { [weak self] in self?.navigationController?.popViewController(animated: true) })
+        self.confirmButton = self.createCommandButton(title: "確認所有換桶完成", action: { [weak self] in
+            self?.saveOrder()
+        })
         
         self.view.addSubview(self.confirmButton)
         NSLayoutConstraint.activate([
@@ -167,6 +181,68 @@ class OrderDetailViewController: BaseViewController {
             self.confirmButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.confirmButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
         ])
+    }
+    
+    func saveOrder() {
+        
+        let formatter = DateFormatter()
+        let dateText = formatter.string(from: Date())
+        
+        let param:parameter = [
+            "id": self.gasOrderModel?.orderID ?? "",
+            "time": dateText
+        ]
+
+        
+        APIService.shared.requestWithParam(headerField: .form,
+                                           urlText: .saveNewGas,
+                                           params: param,
+                                           modelType: DefaultResponseModel.self) { jsonModel, error in
+            if let jsonModel = jsonModel{
+                if jsonModel.isResponseSuccess() {
+                    self.showToast(message: "完成訂單") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    self.showToast(message: "無法完成")
+                }
+            } else {
+                self.showToast(message: "請確認連線或是聯絡公司")
+            }
+        }
+    }
+    
+    func saveOriginalWeight() {
+        guard let successSensorID = successSensorID else {
+            return
+        }
+        
+        let param: parameter = [
+            "id": successSensorID
+        ]
+        
+        APIService.shared.requestWithParam( headerField: .form,
+                                            urlText: .saveOriginalWeight,
+                                            params: param,
+                                            modelType: DefaultResponseModel.self) { jsonModel, error in
+            if let jsonModel = jsonModel {
+                if jsonModel.isResponseSmaller() {
+                    self.showToast(message: "請先按IOT更新")
+                    return
+                }
+                
+                if !jsonModel.isResponseSuccess() {
+                    self.showToast(message: "無法完成")
+                }
+                
+                if jsonModel.isResponseSuccess() {
+                    self.saveOrder()
+                }
+            }
+            else {
+                self.showToast(message: "請確認連線或是聯絡公司")
+            }
+        }
     }
     
     func addSubViewInVerStackView() {

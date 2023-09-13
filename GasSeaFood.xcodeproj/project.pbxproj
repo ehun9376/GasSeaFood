@@ -37,6 +37,10 @@
 		362FE0172AB055D200BB1FAB /* OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE0162AB055D200BB1FAB /* OrderDetailModel.swift */; };
 		362FE0192AB05CF700BB1FAB /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE0182AB05CF700BB1FAB /* OrderCell.swift */; };
 		362FE01B2AB05D5100BB1FAB /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362FE01A2AB05D5100BB1FAB /* OrderCell.xib */; };
+		362FE01D2AB14B0500BB1FAB /* CompanyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE01C2AB14B0500BB1FAB /* CompanyInfoModel.swift */; };
+		362FE01F2AB14E4F00BB1FAB /* SensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE01E2AB14E4F00BB1FAB /* SensorModel.swift */; };
+		362FE0212AB15D9700BB1FAB /* ScanNewGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE0202AB15D9700BB1FAB /* ScanNewGasViewController.swift */; };
+		362FE0232AB190C200BB1FAB /* GasDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362FE0222AB190C200BB1FAB /* GasDetailModel.swift */; };
 		36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */; };
 		36C3BA222A048D9E00771A62 /* CustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C3BA212A048D9E00771A62 /* CustomModel.swift */; };
 		941B13ED2AB124C500B85409 /* LessGasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B13EC2AB124C500B85409 /* LessGasCell.swift */; };
@@ -126,6 +130,10 @@
 		362FE0162AB055D200BB1FAB /* OrderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailModel.swift; sourceTree = "<group>"; };
 		362FE0182AB05CF700BB1FAB /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		362FE01A2AB05D5100BB1FAB /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		362FE01C2AB14B0500BB1FAB /* CompanyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoModel.swift; sourceTree = "<group>"; };
+		362FE01E2AB14E4F00BB1FAB /* SensorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorModel.swift; sourceTree = "<group>"; };
+		362FE0202AB15D9700BB1FAB /* ScanNewGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNewGasViewController.swift; sourceTree = "<group>"; };
+		362FE0222AB190C200BB1FAB /* GasDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDetailModel.swift; sourceTree = "<group>"; };
 		36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasOrderModel.swift; sourceTree = "<group>"; };
 		36C3BA212A048D9E00771A62 /* CustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModel.swift; sourceTree = "<group>"; };
 		941B13EC2AB124C500B85409 /* LessGasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessGasCell.swift; sourceTree = "<group>"; };
@@ -257,6 +265,7 @@
 				360C421329AED7F900E2D960 /* QrScaneViewController.swift */,
 				94964C2F2AB0872900ECC8A1 /* RegisGasViewController.swift */,
 				945425B12A26582700F21E42 /* LessGasViewController.swift */,
+				362FE0202AB15D9700BB1FAB /* ScanNewGasViewController.swift */,
 			);
 			path = QrScane;
 			sourceTree = "<group>";
@@ -281,9 +290,13 @@
 		362FE0152AB055A000BB1FAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				362FE0222AB190C200BB1FAB /* GasDetailModel.swift */,
+				362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */,
 				36C3BA1F2A04825A00771A62 /* GasOrderModel.swift */,
 				36C3BA212A048D9E00771A62 /* CustomModel.swift */,
 				362FE0162AB055D200BB1FAB /* OrderDetailModel.swift */,
+				362FE01C2AB14B0500BB1FAB /* CompanyInfoModel.swift */,
+				362FE01E2AB14E4F00BB1FAB /* SensorModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,7 +327,6 @@
 				94A8E73129A799CC00E37402 /* AppDelegate.swift */,
 				362C2CD629E7CFD100811E29 /* APIService.swift */,
 				362C2CDA29E7E70100811E29 /* InfoHelper.swift */,
-				362C2CD829E7D0F800811E29 /* DefaultSuccessModel.swift */,
 				3612321D29AF42B1009C5BF2 /* CustomAlertController.swift */,
 				360C421229AED7C700E2D960 /* Pages */,
 				362FE0152AB055A000BB1FAB /* Models */,
@@ -556,6 +568,7 @@
 				360C41EF29A83C0900E2D960 /* ForgerPasswordViewModel.swift in Sources */,
 				9429FC3C29EC318D006F90E9 /* CityCenter.swift in Sources */,
 				36C3BA202A04825A00771A62 /* GasOrderModel.swift in Sources */,
+				362FE01F2AB14E4F00BB1FAB /* SensorModel.swift in Sources */,
 				945425B22A26582700F21E42 /* LessGasViewController.swift in Sources */,
 				360C420F29A8AD9900E2D960 /* InfoViewController.swift in Sources */,
 				360C41FE29A87F4100E2D960 /* TitleTwoButtonsTextfieldCell.swift in Sources */,
@@ -587,6 +600,7 @@
 				360C41ED29A83BDC00E2D960 /* ForgerPasswordViewController.swift in Sources */,
 				94A8E76C29A79B5400E37402 /* CellProtocol.swift in Sources */,
 				362FE0192AB05CF700BB1FAB /* OrderCell.swift in Sources */,
+				362FE0212AB15D9700BB1FAB /* ScanNewGasViewController.swift in Sources */,
 				360C420329A8973500E2D960 /* HomeViewController.swift in Sources */,
 				360C421A29AEF66400E2D960 /* TodayListViewModel.swift in Sources */,
 				94A8E76D29A79B5400E37402 /* CollectionViewAdapter.swift in Sources */,
@@ -603,7 +617,9 @@
 				362C2CDB29E7E70100811E29 /* InfoHelper.swift in Sources */,
 				94A8E78829A7B2A000E37402 /* LabelCell.swift in Sources */,
 				360C421429AED7F900E2D960 /* QrScaneViewController.swift in Sources */,
+				362FE01D2AB14B0500BB1FAB /* CompanyInfoModel.swift in Sources */,
 				94A8E77229A79B5400E37402 /* JBJson.swift in Sources */,
+				362FE0232AB190C200BB1FAB /* GasDetailModel.swift in Sources */,
 				362C2CD529E7944300811E29 /* OrderDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

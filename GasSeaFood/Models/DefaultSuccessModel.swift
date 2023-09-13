@@ -36,4 +36,10 @@ class DefaultResponseModel: JsonModel {
         return self.response == "Duplicate"
     }
     
+    func isResponseSmaller() -> Bool {
+        return self.response == "smaller"
+    }
+    
+    
+    
 }

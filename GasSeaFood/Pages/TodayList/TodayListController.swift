@@ -14,20 +14,29 @@ class TodayListController: BaseTableViewController {
     
     let segmentControl: UISegmentedControl = .init(items: ["未完成","已完成"])
     
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "今日訂單"
         self.regisCellID(cellIDs: [
-            "TodayListCell"
+            "TodayListCell",
+            "EmptyHeightCell"
         ])
         self.setSegmentControl()
         self.resetTableView()
         self.viewModel = .init(delegate: self, adapter: .init(self.defaultTableView))
-        self.viewModel?.getGasOrderAPI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel?.getGasOrderAPI(index: self.index)
+    }
+    
+    
+    
     func setSegmentControl() {
-        self.segmentControl.selectedSegmentIndex = 0
+        self.segmentControl.selectedSegmentIndex = self.index
         self.segmentControl.translatesAutoresizingMaskIntoConstraints = false
         
         self.segmentControl.addTarget(self, action: #selector(changePage(_:)), for: .valueChanged)
@@ -44,7 +53,8 @@ class TodayListController: BaseTableViewController {
     }
     
     @objc func changePage(_ sender: UISegmentedControl) {
-        self.viewModel?.setupRow(index: sender.selectedSegmentIndex)
+        self.index = sender.selectedSegmentIndex
+        self.viewModel?.getGasOrderAPI(index: self.index)
     }
     
     

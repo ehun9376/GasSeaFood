@@ -13,15 +13,15 @@ class LessGasCellRowModel: CellRowModel {
     override func cellReUseID() -> String {
         return "LessGasCell"
     }
-    init(sensorNumber: Int? = nil, weight: Int? = nil, cutButtonAction: ((Int) -> ())? = nil) {
+    init(sensorNumber: String? = nil, weight: Int? = nil, cutButtonAction: ((String) -> ())? = nil) {
         self.sensorNumber = sensorNumber
         self.weight = weight
         self.cutButtonAction = cutButtonAction
     }
     
-    var sensorNumber: Int?
+    var sensorNumber: String?
     var weight: Int?
-    var cutButtonAction: ((_ sensorNumber: Int)->())?
+    var cutButtonAction: ((_ sensorNumber: String)->())?
 }
 
 
@@ -37,7 +37,8 @@ class LessGasCell: UITableViewCell {
     override func awakeFromNib() {
         self.selectionStyle = .none
         
-        self.cutButton.setTitle("——", for: .normal)
+        self.cutButton.setTitle("—", for: .normal)
+        self.cutButton.setTitleColor(.white, for: .normal)
         self.cutButton.backgroundColor = .gray
         self.cutButton.layer.cornerRadius = 5
         self.cutButton.clipsToBounds = true
@@ -52,7 +53,7 @@ class LessGasCell: UITableViewCell {
     }
     
     @objc func cutButtonAction() {
-        self.rowModel?.cutButtonAction?(self.rowModel?.sensorNumber ?? 0)
+        self.rowModel?.cutButtonAction?(self.rowModel?.sensorNumber ?? "")
     }
     
 }
@@ -64,7 +65,7 @@ extension LessGasCell: BaseCellView {
         guard let rowModel = model as? LessGasCellRowModel else { return }
         self.rowModel = rowModel
         self.weightLabel.text = "\(rowModel.weight ?? 0)  公斤"
-        self.idLabel.text = "感應器 \(rowModel.sensorNumber ?? 0)"
+        self.idLabel.text = "感應器 \(rowModel.sensorNumber ?? "")"
         
     }
 }

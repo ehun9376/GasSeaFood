@@ -26,13 +26,14 @@ class QRCodeScannerViewController: BaseViewController {
     
     var titleRow:EmptyHeightRowModel?
     
+    var orderID: String?
+    
     var oldCode: String = "" {
         didSet {
             self.titleRow?.attr = self.createAttr(id: oldCode)
             self.titleRow?.updateCellView()
         }
     }
-    
 
 
     override func viewDidLoad() {
@@ -232,13 +233,21 @@ class QRCodeScannerViewController: BaseViewController {
     }
     
     func gotoLessGasVC() {
-        let lessGasVC = LessGasViewController()
-        self.navigationController?.pushViewController(lessGasVC, animated: true)
+        DispatchQueue.main.async {
+            let lessGasVC = LessGasViewController()
+            lessGasVC.orderID = self.orderID
+            self.navigationController?.pushViewController(lessGasVC, animated: true)
+        }
+
     }
     
     func gotoRegisGasVC() {
-        let vc = RegisGasViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            let vc = RegisGasViewController()
+            vc.orderID = self.orderID
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
 
     func found(code: String) {

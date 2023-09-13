@@ -21,6 +21,22 @@ class LessGasViewController: BaseViewController {
     var companyLabel = UILabel()
     
     var confirmButton = UIButton()
+    
+    var orderID: String?
+    
+    var companyInfoModel: CompanyInfoModel? {
+        didSet {
+            DispatchQueue.main.async {
+                self.companyLabel.text = self.companyInfoModel?.companyName
+            }
+        }
+    }
+    
+    var sensorModels: SensorDatalistModel? {
+        didSet {
+            self.setupRow()
+        }
+    }
 
 
 
@@ -39,8 +55,9 @@ class LessGasViewController: BaseViewController {
         self.setupConfirmButton()
         self.setupTopView()
         self.setupTableView()
-        
         self.setupRow()
+        
+        self.getCompanyInfo()
                 
     }
     
@@ -118,7 +135,8 @@ class LessGasViewController: BaseViewController {
         NSLayoutConstraint.activate([
             inputTitleLabel.topAnchor.constraint(equalTo: stack.bottomAnchor,constant: 50),
             inputTitleLabel.leadingAnchor.constraint(equalTo: self.topView.leadingAnchor,constant: 20),
-            inputTitleLabel.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor,constant: -20)
+            inputTitleLabel.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor,constant: -20),
+            inputTitleLabel.bottomAnchor.constraint(equalTo: self.topView.bottomAnchor,constant: -10)
         ])
     }
     
@@ -128,9 +146,7 @@ class LessGasViewController: BaseViewController {
         
         self.view.addSubview(self.tableView)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView.separatorStyle = .none
-        
+                
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.topView.bottomAnchor, constant: 10),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -145,15 +161,12 @@ class LessGasViewController: BaseViewController {
         self.tableView.register(.init(nibName: "LessGasCell", bundle: nil), forCellReuseIdentifier: "LessGasCell")
     }
     
-    func setupRow() {
-       
-        
-    }
-    
     func setupConfirmButton() {
         
         self.confirmButton = self.createCommandButton(title: "掃瞄新瓦斯桶",
                                                       action:{
+            guard self.checkSensorTime() else { return }
+            self.saveRemainGas()
             
         })
         
@@ -185,5 +198,103 @@ class LessGasViewController: BaseViewController {
         
         return button
     }
+    
+    func gotoScanNewGas() {
+        DispatchQueue.main.async {
+            let vc = ScanNewGasViewController()
+            vc.sensorID = self.sensorModels?.list.first?.sensorId
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
+    }
+    
+    func saveRemainGas() {
+
+        let param : parameter = [
+            "id": self.companyInfoModel?.customerID ?? "",
+            "gas": "\(self.sensorModels?.list.first?.sensorWeight ?? 0)" ,
+            "company": self.companyInfoModel?.companyID ?? ""
+        ]
+        
+        APIService.shared.requestWithParam(headerField: .form, urlText: .saveRemainGas, params: param, modelType: DefaultResponseModel.self) { jsonModel, error in
+            self.gotoScanNewGas()
+        }
+    }
+    
+    func getCompanyInfo() {
+        APIService.shared.requestWithParam(headerField: .form, urlText: .showCompanyName, params: ["id": self.orderID ?? ""], modelType: CompanyInfoModel.self) { [weak self] jsonModel, error in
+            if let jsonModel = jsonModel {
+                
+                self?.companyInfoModel = jsonModel
+
+                APIService.shared.requestWithParam(headerField: .form, urlText: .showIOT, params: ["id": self?.companyInfoModel?.customerID ?? ""], modelType: SensorDatalistModel.self) { [weak self] jsonModel, error in
+                    
+                    if let jsonModel = jsonModel {
+                        self?.sensorModels = jsonModel
+                    } else {
+                        self?.showToast(message: "取得資料失敗，請再試一次", complete: {
+                            self?.navigationController?.popViewController(animated: true)
+                        })
+                    }
+                    
+                }
+                
+            } else {
+                self?.showToast(message: "取得資料失敗，請再試一次", complete: {
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            }
+        }
+    }
+    
+    func checkSensorTime() -> Bool {
+        guard self.sensorModels?.list.count == 1 else {
+            self.showToast(message: "僅留一個感應器, 以便做殘氣計算")
+            return false
+        }
+        
+        guard let first = self.sensorModels?.list.first else {
+            self.showToast(message: "未找到感應器，請退回上一頁再試一次")
+            return false
+        }
+        
+        let dateString = first.sensorTime ?? ""
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
+
+        if let targetDate = dateFormatter.date(from: dateString) {
+            
+            let timeDifference = Calendar.current.dateComponents([.minute], from:  targetDate, to: Date())
+            
+            if let minutes = timeDifference.minute, minutes < 30 {
+                return true
+            } else {
+                self.showToast(message: "請先更新感應器重量")
+            }
+        } else {
+            self.showToast(message: "日期格式錯誤")
+        }
+        
+        return false
+    }
+    
+    
+    func setupRow() {
+        var rowModels: [CellRowModel] = []
+        for model in self.sensorModels?.list ?? [] {
+            let rowModel = LessGasCellRowModel(sensorNumber: model.sensorId, weight: model.sensorWeight) { [weak self] id in
+                guard let self = self else { return }
+                let copy = self.sensorModels
+                copy?.list = copy?.list.filter({$0.sensorId ?? "" != id}) ?? []
+                self.sensorModels = copy
+            }
+            rowModels.append(rowModel)
+        }
+        self.adapter?.updateTableViewData(rowModels: rowModels)
+        
+    }
+    
+
     
 }

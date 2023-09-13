@@ -55,12 +55,21 @@ class APIService: NSObject {
         case citys = "http://54.199.33.241/ios_test_2/city.php"
         case sendMail = "http://54.199.33.241/ios_test_2/sendPasswordMail.php?"
         case unOrderList = "http://54.199.33.241/ios_test_2/Worker_UnOrderList.php?"
+        case orderList = "http://54.199.33.241/ios_test_2/Worker_OrderList.php?"
         case workerOrderDetail = "http://54.199.33.241/ios_test_2/Worker_OrderDetail.php?"
         case showOrderInfo = "http://54.199.33.241/ios_test_2/Show_Order_Info.php?"
         case verifyCode = "http://54.199.33.241/ios_test_2/verifyCode.php?"
         case changePassword = "http://54.199.33.241/ios_test_2/changePwd.php?"
-        case showGasInfo = "http://54.199.33.241/ios_test_2/Show_Gas_Info.php"
-        case regisGas = "http://54.199.33.241/ios_test_2/registGas.php"
+        case showGasInfo = "http://54.199.33.241/ios_test_2/Show_Gas_Info.php?"
+        case regisGas = "http://54.199.33.241/ios_test_2/registGas.php?"
+        case showCompanyName = "http://54.199.33.241/ios_test_2/Show_Company_Name.php?"
+        case showIOT = "http://54.199.33.241/ios_test_2/Show_IOT.php?"
+        case saveRemainGas = "http://54.199.33.241/ios_test_2/Save_RemainGas.php?"
+        case scanNewGas = "http://54.199.33.241/ios_test_2/scanNewGas_iot.php"
+        case saveNewGas = "http://54.199.33.241/ios_test_2/Save_NewGasID.php"
+        case saveOriginalWeight = "http://54.199.33.241/ios_test_2/Save_OriginalWeight.php"
+        case test = "http://www.yihuang.online/yihuang.online/ehun9376/testGasSeaFood.json?"
+        
     }
         
     func requestWithParam<T: JsonModel>(httpMethod: HttpMethod = .post, headerField: HeaderField? = .json, urlText: URLText, params: parameter, modelType: T.Type ,  completeAction: @escaping CompleteAction<T>) {
@@ -123,6 +132,7 @@ class APIService: NSObject {
                         } catch {
                             print(params)
                             print(error.localizedDescription)
+                            print(String(data: data, encoding: .utf8))
                             completeAction(nil, error)
                         }
                     }

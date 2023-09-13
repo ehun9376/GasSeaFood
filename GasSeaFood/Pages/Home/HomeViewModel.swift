@@ -58,11 +58,11 @@ class HomeViewModel: NSObject {
 
             rowModels.append(todayListRow)
 
-            let scanRow = ButtonCellRowModel(buttonTitle: "前往掃描頁面", buttonHeight: 150, buttonAction: {
-                self.delegate?.gotoScane()
-            })
-
-            rowModels.append(scanRow)
+//            let scanRow = ButtonCellRowModel(buttonTitle: "前往掃描頁面", buttonHeight: 150, buttonAction: {
+//                self.delegate?.gotoScane()
+//            })
+//
+//            rowModels.append(scanRow)
 
             self.adapter?.updateTableViewData(rowModels: rowModels)
         }

@@ -1,14 +1,15 @@
 //
-//  RegisGasViewController.swift
+//  ScanNewGasViewController.swift
 //  GasSeaFood
 //
-//  Created by yihuang on 2023/9/12.
+//  Created by 陳逸煌 on 2023/9/13.
 //
 
+import Foundation
 import AVFoundation
 import UIKit
 
-class RegisGasViewController: BaseViewController {
+class ScanNewGasViewController: BaseViewController {
 
     var captureSession: AVCaptureSession!
     
@@ -26,29 +27,19 @@ class RegisGasViewController: BaseViewController {
     
     var orderID: String?
     
-    var isNew: Bool = false
+    var sensorID: String?
     
-    var newGasID: String = "" {
+    var code: String = "" {
         didSet {
-            self.titleRow?.attr = self.createAttr(id: newGasID, weight: emptyWeight)
+            self.titleRow?.attr = self.createAttr(id: code)
             self.titleRow?.updateCellView()
         }
     }
-    
-    var emptyWeight: String = "" {
-        didSet {
-            self.titleRow?.attr = self.createAttr(id: newGasID, weight: emptyWeight)
-            self.titleRow?.updateCellView()
-        }
-    }
-    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "瓦斯桶註冊"
-        
+
         self.view.backgroundColor = .white
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewAction))
@@ -72,6 +63,7 @@ class RegisGasViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(!hasOld, animated: false)
 
         if (captureSession?.isRunning == false) {
             DispatchQueue.global().async {
@@ -83,6 +75,7 @@ class RegisGasViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
 
         if (captureSession?.isRunning == true) {
             DispatchQueue.global().async {
@@ -111,13 +104,11 @@ class RegisGasViewController: BaseViewController {
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         self.tableView.register(.init(nibName: "EmptyHeightCell", bundle: nil), forCellReuseIdentifier: "EmptyHeightCell")
         self.tableView.register(.init(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
-        self.tableView.register(.init(nibName: "TwoButtonCell", bundle: nil), forCellReuseIdentifier: "TwoButtonCell")
-        
     }
     
-    func createAttr(id: String, weight: String) -> NSMutableAttributedString {
-        let firstAttr = NSMutableAttributedString(string: "新瓦斯桶ID: \(id)\n瓦斯桶空桶重：\(weight)", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
+    func createAttr(id: String) -> NSMutableAttributedString {
+        let firstAttr = NSMutableAttributedString(string: "原瓦斯桶ID: \(id)", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
         ])
         return firstAttr
     }
@@ -127,43 +118,77 @@ class RegisGasViewController: BaseViewController {
         
         var rowModels: [CellRowModel] = []
         
-        let numberRow = TitleTextFieldRowModel(title: "輸入瓦斯桶編號", placeHolder: "請輸入瓦斯桶編號") { [weak self] text in
-            self?.newGasID = text
+        let numberRow = TitleTextFieldRowModel(title: "輸入瓦斯桶編號", placeHolder: "請輸入您的瓦斯桶編號") { [weak self] text in
+            self?.code = text
         }
         
         rowModels.append(numberRow)
         
-        let weightRow = TitleTextFieldRowModel(title: "輸入瓦斯桶空桶重", placeHolder: "請輸入瓦斯桶空桶重") { [weak self] text in
-            self?.emptyWeight = text
-        }
-        
-        rowModels.append(weightRow)
-        
-        self.titleRow = EmptyHeightRowModel(cellHeight: 100, color: .white, attr: createAttr(id: newGasID, weight: emptyWeight), textAligment: .center)
+        self.titleRow = EmptyHeightRowModel(cellHeight: 200, color: .white, attr: createAttr(id: code ?? ""), textAligment: .center)
 
         if let titleRow = titleRow {
             rowModels.append(titleRow)
         }
         
-        let twoButtonRow = TwoButtonCellRowModel(leftTitle: "確認註冊",
-                                                 righttitle: "跳過註冊",
-                                                 leftButtonAction: {  [weak self] in
-            //TODO: - 確認註冊
-            guard self?.checkGasInfo() ?? false else { return }
-            self?.regisGas()
-
-        },
-                                                 rightButtonAction: { [weak self] in
-            //TODO: - 跳過註冊
-            self?.gotoLessGasVC()
-            
+        let buttonRow = ButtonCellRowModel(buttonTitle: "確認完成", buttonAction: { [weak self] in
+            guard self?.code ?? "" != "" else {
+                self?.showSingleAlert(message: "請先輸入或掃描取得瓦斯桶編號")
+                return
+            }
+            self?.checkGasID(gasID: self?.code ?? "",
+                             complete: { isResponseSuccess, gasModel in
+                
+                if isResponseSuccess,
+                    let gasModel = gasModel {
+                    self?.scanNewGas(model: gasModel)
+                } else {
+                    self?.showToast(message: "此瓦斯桶尚未註冊",
+                                    complete: {
+                        self?.gotoRegisGasVC()
+                    })
+                }
+                
+            })
         })
         
-        rowModels.append(twoButtonRow)
-        
+        rowModels.append(buttonRow)
         
         self.adapter?.updateTableViewData(rowModels: rowModels)
         
+    }
+    
+    func scanNewGas(model: GasDetailModel) {
+        
+        let param: parameter = [
+            "gasId":"",//TODO: - GasID
+            "gasWeightEmpty":"",//TODO: - GasID
+            "sensorId": self.sensorID ?? ""
+        ]
+        
+        APIService.shared.requestWithParam(headerField: .form,
+                                           urlText: .scanNewGas,
+                                           params: param,
+                                           modelType: DefaultResponseModel.self) { jsonModel, error in
+            if let jsonModel = jsonModel,jsonModel.isResponseSuccess() {
+                self.showToast(message: "換桶成功") {
+                    self.backToOrderDetailVC()
+                }
+                
+            } else {
+                
+                self.showToast(message: "換桶失敗，請再試一次") {
+                    self.backToOrderDetailVC()
+                }
+            }
+        }
+    }
+        
+    func backToOrderDetailVC() {
+        DispatchQueue.main.async {
+            if let detailVC = self.navigationController?.viewControllers.first(where: {$0 is OrderDetailViewController}) as? OrderDetailViewController {
+                detailVC.successSensorID = self.sensorID
+            }
+        }
     }
     
     func setupImageView() {
@@ -237,72 +262,42 @@ class RegisGasViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    func checkGasInfo() -> Bool {
+    func checkGasID(gasID: String, complete: ((Bool, GasDetailModel?)->())? ) {
         
-        guard self.newGasID != "" else {
-            self.showSingleAlert(message: "請輸入或是掃描取得瓦斯桶ID")
-            return false
-        }
-        
-        guard self.newGasID.count == 10 else {
-            self.showSingleAlert(message: "請輸入正確十碼瓦斯桶編號")
-            return false
-        }
-        
-        guard self.emptyWeight != "" else {
-            self.showSingleAlert(message: "請輸入瓦斯空桶重")
-            return false
-        }
-        
-        return true
-    }
-    
-    func regisGas() {
-        
-        let param: parameter = [
-            "gasId" : self.newGasID,
-            "gasWeightEmpty": self.emptyWeight
-        ]
-        
-        APIService.shared.requestWithParam(headerField: .form, urlText: .regisGas, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in
-            if let jsonModel = jsonModel, jsonModel.status {
-                self?.showToast(message: "瓦斯桶註冊成功", complete: {
-                    if self?.isNew ?? false {
-                        if let vc = self?.navigationController?.viewControllers.first(where: {$0 is OrderDetailViewController}) {
-                            self?.navigationController?.popToViewController(vc, animated: true)
-                        }
-                    } else {
-                        self?.gotoLessGasVC()
-                        self?.navigationController?.viewControllers.removeAll(where: {$0 == self})
-                    }
-
-                })
+        APIService.shared.requestWithParam(headerField: .form,
+                                           urlText: .showGasInfo,
+                                           params: ["id": gasID],
+                                           modelType: GasDetailModel.self) { [weak self] jsonModel, error in
+            if let jsonModel = jsonModel {
+                complete?(jsonModel.isResponseSuccess(), jsonModel)
             } else {
-                self?.showSingleAlert(message: "瓦斯桶新增失敗，請再試一次")
+                self?.showSingleAlert(message: "檢查失敗，請再試一次")
             }
         }
-
     }
     
     func gotoLessGasVC() {
-        let lessGasVC = LessGasViewController()
-        lessGasVC.orderID = self.orderID
-        self.navigationController?.pushViewController(lessGasVC, animated: true)
+        DispatchQueue.main.async {
+            let lessGasVC = LessGasViewController()
+            lessGasVC.orderID = self.orderID
+            self.navigationController?.pushViewController(lessGasVC, animated: true)
+        }
+
+    }
+    
+    func gotoRegisGasVC() {
+        DispatchQueue.main.async {
+            let vc = RegisGasViewController()
+            vc.orderID = self.orderID
+            vc.isNew = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
 
     func found(code: String) {
         
-        self.newGasID = code
-        
-//        self.showAlert(success: true, complete: { [ weak self] in
-//            self?.oldCode = code
-//            self?.setupRow(code: code)
-//            self?.setupAlertLabel(hasOld: true)
-//            DispatchQueue.global().async {
-//                self?.captureSession.startRunning()
-//            }
-//        })
-        
+        self.code = code
  
     }
 
@@ -311,7 +306,7 @@ class RegisGasViewController: BaseViewController {
     }
 }
 
-extension RegisGasViewController: AVCaptureMetadataOutputObjectsDelegate {
+extension ScanNewGasViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
 
         if let metadataObject = metadataObjects.first {
