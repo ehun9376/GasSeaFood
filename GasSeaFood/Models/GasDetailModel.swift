@@ -19,8 +19,11 @@ import Foundation
 class GasDetailModel: JsonModel {
     
     var response: String?
+    var gasID: String?
     
     required init(json: JBJson) {
+        self.response = json["response"].stringValue
+        self.gasID = json["GAS_Id"].stringValue
         print(json)
     }
     
