@@ -261,7 +261,8 @@ class RegisGasViewController: BaseViewController {
         
         let param: parameter = [
             "gasId" : self.newGasID,
-            "gasWeightEmpty": self.emptyWeight
+            "gasWeightEmpty": self.emptyWeight,
+            "Worker_Id": InfoHelper.shared.regisModel?.id ?? 0
         ]
         
         APIService.shared.requestWithParam(headerField: .form, urlText: .regisGas, params: param, modelType: DefaultSuccessModel.self) { [weak self] jsonModel, error in

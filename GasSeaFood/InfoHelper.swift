@@ -11,7 +11,7 @@ class InfoHelper: NSObject {
     
     static let shared = InfoHelper()
     
-    private var regisModel: RegisModel?
+     var regisModel: RegisModel?
     
     func getRegisModel(reset: Bool = false, cellPhoneNumber: String? = nil, complete: ((RegisModel?)->())? = nil) {
         
