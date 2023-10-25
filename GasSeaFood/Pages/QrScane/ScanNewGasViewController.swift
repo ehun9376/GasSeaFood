@@ -160,7 +160,7 @@ class ScanNewGasViewController: BaseViewController {
     func scanNewGas(model: GasDetailModel) {
         
         let param: parameter = [
-            "gasId":"",//TODO: - GasID
+            "gasId": model.gasID ?? "",//TODO: - GasID
             "gasWeightEmpty":"",//TODO: - GasID
             "sensorId": self.sensorID ?? ""
         ]
@@ -187,6 +187,7 @@ class ScanNewGasViewController: BaseViewController {
         DispatchQueue.main.async {
             if let detailVC = self.navigationController?.viewControllers.first(where: {$0 is OrderDetailViewController}) as? OrderDetailViewController {
                 detailVC.successSensorID = self.sensorID
+                self.navigationController?.popToViewController(detailVC, animated: true)
             }
         }
     }
